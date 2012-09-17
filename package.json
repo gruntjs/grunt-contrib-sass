@@ -1,0 +1,40 @@
+{
+  "name": "grunt-contrib-sass",
+  "description": "",
+  "version": "0.2.0",
+  "homepage": "https://github.com/gruntjs/grunt-contrib-sass",
+  "author": {
+    "name": "Sindre Sorhus",
+    "url": "http://github.com/sindresorhus"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gruntjs/grunt-contrib-sass.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gruntjs/grunt-contrib-sass/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/gruntjs/grunt-contrib-sass/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "grunt.js",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "grunt-contrib-lib": "~0.2.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.15",
+    "grunt-contrib-clean": "~0.2.0"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
