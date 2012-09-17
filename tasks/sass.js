@@ -2,7 +2,7 @@
  * grunt-contrib-sass
  * http://gruntjs.com/
  *
- * Copyright (c) 2012 Tim Branyen, contributors
+ * Copyright (c) 2012 Sindre Sorhus, contributors
  * Licensed under the MIT license.
  * https://github.com/gruntjs/grunt-contrib-sass/blob/master/LICENSE-MIT
  */
