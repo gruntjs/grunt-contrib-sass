@@ -1,5 +1,5 @@
-# grunt-contrib-sass
-> Precompile Handlebars templates to JST file (part of the [grunt-contrib](https://github.com/gruntjs/grunt-contrib) collection).  Submitted by [Sindre Sorhus](/sindresorhus).
+# grunt-contrib-sass (not released)
+> Your description here (part of the [grunt-contrib](https://github.com/gruntjs/grunt-contrib) collection).  Submitted by [Sindre Sorhus](/sindresorhus).
 
 ## Getting Started
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-contrib-sass`
