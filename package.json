@@ -1,11 +1,11 @@
 {
   "name": "grunt-contrib-sass",
-  "description": "Your description here.",
+  "description": "Grunt task to compile Sass",
   "version": "0.2.0",
   "homepage": "https://github.com/gruntjs/grunt-contrib-sass",
   "author": {
     "name": "Sindre Sorhus",
-    "url": "http://github.com/sindresorhus"
+    "url": "http://sindresorhus.com"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   ],
   "main": "grunt.js",
   "engines": {
-    "node": "*"
+    "node": ">=0.6.0"
   },
   "scripts": {
     "test": "grunt test"
@@ -35,6 +35,12 @@
     "grunt-contrib-clean": "~0.2.0"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "scss",
+    "sass",
+    "css",
+    "compile",
+    "preprocessor",
+    "style"
   ]
 }
