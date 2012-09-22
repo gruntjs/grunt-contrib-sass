@@ -17,7 +17,7 @@ module.exports = function(grunt) {
   var _ = grunt.util._;
   var async = grunt.util.async;
 
-  grunt.registerMultiTask('sass', 'Compile Sass', function() {
+  grunt.registerMultiTask('sass', 'Compile Sass to CSS', function() {
     var helpers = require('grunt-contrib-lib').init(grunt);
     var options = helpers.options(this);
     var cb = this.async();
