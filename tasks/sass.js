@@ -14,46 +14,18 @@ module.exports = function(grunt) {
   grunt.util = grunt.util || grunt.utils;
 
   var path = require('path');
-  var _ = grunt.util._;
   var async = grunt.util.async;
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function() {
     var helpers = require('grunt-contrib-lib').init(grunt);
     var options = helpers.options(this);
     var cb = this.async();
-    var args = ['--stdin'];
+    var args = ['--stdin'].concat(helpers.optsToArgs(options));
 
     grunt.verbose.writeflags(options, 'Options');
 
     // TODO: ditch this when grunt v0.4 is released
     this.files = this.files || helpers.normalizeMultiTaskFiles(this.data, this.target);
-
-    // Options -> CLI parameters
-    Object.keys(options).forEach(function(el) {
-      var val = '' + options[ el ];
-
-      el = el.replace(/[A-Z]/g, function(match) {
-        return '-' + match.toLowerCase();
-      });
-
-      if (val === true) {
-        args.push('--' + el);
-      }
-
-      if (_.isString(val)) {
-        args.push('--' + el, val);
-      }
-
-      if (_.isNumber(val)) {
-        args.push('--' + el, '' + val);
-      }
-
-      if (_.isArray(val)) {
-        val.forEach(function(arrVal) {
-          args.push('--' + el, arrVal);
-        });
-      }
-    });
 
     async.forEachSeries(this.files, function(el, cb2) {
       var elArgs = [el.dest];
