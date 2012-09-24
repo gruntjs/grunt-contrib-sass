@@ -1,7 +1,5 @@
-# grunt-contrib-sass (not released) [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-sass)
-
+# grunt-contrib-sass [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-sass)
 > Compile Sass to CSS (part of the [grunt-contrib](https://github.com/gruntjs/grunt-contrib) collection). Submitted by [Sindre Sorhus](http://sindresorhus.com).
-
 
 ## Getting Started
 
