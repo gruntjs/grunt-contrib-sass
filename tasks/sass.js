@@ -47,6 +47,12 @@ module.exports = function(grunt) {
         args: elArgs.concat(args)
       }, function(error, result, code) {
         cb2(code > 0);
+      }).on('exit', function(code) {
+        if ( code === 127 ) {
+          grunt.fail.fatal('\nYou need to have Ruby and Sass installed for ' +
+            'this task to work.\nMore info: ' +
+            'https://github.com/gruntjs/grunt-contrib-sass\n');
+        }
       });
 
       sass.stdin.write(new Buffer(max));
