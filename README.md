@@ -5,7 +5,7 @@
 
 ## Getting Started
 
-This task requires you to have Ruby and Sass installed `gem install sass`
+This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html). If you're on OS X or Linux you probably already have it installed, try `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to get Sass.
 
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-contrib-sass`
 
