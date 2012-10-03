@@ -172,11 +172,6 @@ The path to put cached Sass files. Defaults to `.sass-cache`.
 
 Don't cache to sassc files.
 
-
-## Release History
-
-* 2012/09/24 - v0.1.0 - Initial release.
-
 --
 
-Task submitted by [Sindre Sorhus](http://sindresorhus.com).
+*Task submitted by [Sindre Sorhus](http://sindresorhus.com).*
