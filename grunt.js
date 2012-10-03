@@ -4,7 +4,6 @@
  *
  * Copyright (c) 2012 Sindre Sorhus, contributors
  * Licensed under the MIT license.
- * https://github.com/gruntjs/grunt-contrib-sass/blob/master/LICENSE-MIT
  */
 
 module.exports = function(grunt) {
