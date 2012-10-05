@@ -41,8 +41,12 @@ module.exports = function(grunt) {
         elArgs.push('--load-path', path.dirname(el));
       });
 
+      var
+        isWin = process.platform.indexOf('win') !== -1,
+        cmd = isWin ? 'sass.bat' : 'sass';
+
       var sass = grunt.util.spawn({
-        cmd: 'sass',
+        cmd: cmd,
         args: elArgs.concat(args)
       }, function(error, result, code) {
         cb2(code > 0);
