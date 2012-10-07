@@ -13,8 +13,8 @@ Then add this line to your project's `grunt.js` gruntfile:
 grunt.loadNpmTasks('grunt-contrib-sass');
 ```
 
-[grunt]: https://github.com/cowboy/grunt
-[getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
+[grunt]: https://github.com/gruntjs/grunt
+[getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
 
 ## Documentation
@@ -109,7 +109,7 @@ grunt.initConfig({
 
 This defines what files this task will process and should contain key:value pairs.
 
-The key (destination) should be an unique filepath (supports [grunt.template](https://github.com/cowboy/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
+The key (destination) should be an unique filepath (supports [grunt.template](https://github.com/gruntjs/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
 
 Note: When the value contains an array of multiple filepaths, the contents are concatenated in the order passed.
 
