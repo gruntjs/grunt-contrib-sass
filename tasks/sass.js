@@ -36,13 +36,16 @@ module.exports = function(grunt) {
         elArgs.push('--scss');
       }
 
+      // Make sure grunt creates the destination folders.
+      grunt.file.write(el.dest, "");
+
       // Add dirs of specified files to the sass path
       files.forEach(function(el) {
         elArgs.push('--load-path', path.dirname(el));
       });
 
       var
-        isWin = process.platform.indexOf('win') !== -1,
+        isWin = process.platform == "win32",
         cmd = isWin ? 'sass.bat' : 'sass';
 
       var sass = grunt.util.spawn({
