@@ -45,7 +45,7 @@ module.exports = function(grunt) {
       });
 
       var
-        isWin = process.platform.indexOf('win') == "win32",
+        isWin = process.platform == "win32",
         cmd = isWin ? 'sass.bat' : 'sass';
 
       var sass = grunt.util.spawn({
