@@ -30,7 +30,9 @@ module.exports = function(grunt) {
       var elArgs = [el.dest];
       var src = el.src;
       var files = grunt.file.expandFiles(src);
-      var max = grunt.helper('concat', files);
+      var max = files.map(function (filepath) {
+        return grunt.file.read(filepath);
+      }).join('\n');
 
       if (path.extname(src) === '.scss') {
         elArgs.push('--scss');
