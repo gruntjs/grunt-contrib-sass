@@ -53,9 +53,11 @@ module.exports = function(grunt) {
         cb2(code > 0);
       }).on('exit', function(code) {
         if ( code === 127 ) {
-          grunt.fail.fatal('\nYou need to have Ruby and Sass installed for ' +
-            'this task to work.\nMore info: ' +
-            'https://github.com/gruntjs/grunt-contrib-sass\n');
+          grunt.warn(
+            'You need to have Ruby and Sass installed and in your PATH for ' +
+            'this task to work. More info: ' +
+            'https://github.com/gruntjs/grunt-contrib-sass'
+          );
         }
       });
 
