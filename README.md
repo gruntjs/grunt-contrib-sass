@@ -1,122 +1,34 @@
 # grunt-contrib-sass [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-sass)
-> Compile Sass to CSS.
+
+> Compile Sass to CSS
+
+_Note that this plugin has not yet been released, and only works with the latest bleeding-edge, in-development version of grunt. See the [When will I be able to use in-development feature 'X'?](https://github.com/gruntjs/grunt/blob/devel/docs/faq.md#when-will-i-be-able-to-use-in-development-feature-x) FAQ entry for more information._
 
 ## Getting Started
+_If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide._
 
-This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html). If you're on OS X or Linux you probably already have it installed, try `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to get Sass.
+From the same directory as your project's [Gruntfile][Getting Started] and [package.json][], install this plugin with the following command:
 
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-contrib-sass`
+```shell
+npm install grunt-contrib-sass --save-dev
+```
 
-Then add this line to your project's `grunt.js` gruntfile:
+Once that's done, add this line to your project's Gruntfile:
 
-```javascript
+```js
 grunt.loadNpmTasks('grunt-contrib-sass');
 ```
 
-[grunt]: https://github.com/gruntjs/grunt
-[getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
+If the plugin has been installed correctly, running `grunt --help` at the command line should list the newly-installed plugin's task or tasks. In addition, the plugin should be listed in package.json as a `devDependency`, which ensures that it will be installed whenever the `npm install` command is run.
+
+[grunt]: http://gruntjs.com/
+[Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
+[package.json]: https://npmjs.org/doc/json.html
 
 
-## Documentation
+## Sass task
 
-
-### Example config
-
-```javascript
-grunt.initConfig({
-	sass: {										// Task
-		dist: {									// Target
-			files: {							// Dictionary of files
-				'main.css': 'main.scss',		// 'destination': 'source'
-				'widgets.css': 'widgets.scss'
-			}
-		},
-		dev: {									// Another target
-			options: {							// Target options
-				style: 'expanded'
-			},
-			files: {
-				'main.css': 'main.scss',
-				'widgets.css': [
-					'button.scss',
-					'tab.scss',
-					'debug.scss'				// Maybe you need one extra file in dev
-				]
-			}
-		}
-	}
-});
-
-grunt.loadNpmTasks('grunt-contrib-sass');
-
-grunt.registerTask('default', 'lint sass');
-```
-
-
-### Example usage
-
-
-#### Compile
-
-```javascript
-grunt.initConfig({
-	sass: {
-		files: {
-			'main.css': 'main.scss'
-		}
-	}
-});
-```
-
-
-#### Concat and compile
-
-If you specify an array of `src` paths they will be concatenated. However, in most cases you would want to just `@import` them into `main.scss`.
-
-```javascript
-grunt.initConfig({
-	sass: {
-		files: {
-			'main.css': [
-				'reset.scss',
-				'main.scss'
-			]
-		}
-	}
-});
-```
-
-
-#### Compile multiple files
-
-You can specify multiple `destination: source` items in `files`.
-
-```javascript
-grunt.initConfig({
-	sass: {
-		files: {
-			'main.css': 'main.scss',
-			'widgets.css': 'widgets.scss'
-		}
-	}
-});
-```
-
-
-### Parameters
-
-#### files ```object```
-
-This defines what files this task will process and should contain key:value pairs.
-
-The key (destination) should be an unique filepath (supports [grunt.template](https://github.com/gruntjs/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
-
-Note: When the value contains an array of multiple filepaths, the contents are concatenated in the order passed.
-
-#### options ```object```
-
-This controls how this task (and its helpers) operate and should contain key:value pairs, see options below.
-
+This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html). If you're on OS X or Linux you probably already have Ruby installed, try `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
 
 ### Options
 
@@ -172,6 +84,100 @@ The path to put cached Sass files. Defaults to `.sass-cache`.
 
 Don't cache to sassc files.
 
---
+### Examples
 
-*Task submitted by [Sindre Sorhus](http://sindresorhus.com).*
+#### Example config
+
+```javascript
+grunt.initConfig({
+  sass: {                              // Task
+    dist: {                            // Target
+      files: {                         // Dictionary of files
+        'main.css': 'main.scss',       // 'destination': 'source'
+        'widgets.css': 'widgets.scss'
+      }
+    },
+    dev: {                             // Another target
+      options: {                       // Target options
+        style: 'expanded'
+      },
+      files: {
+        'main.css': 'main.scss',
+        'widgets.css': [
+          'button.scss',
+          'tab.scss',
+          'debug.scss'  // Maybe you need one extra file in dev
+        ]
+      }
+    }
+  }
+});
+
+grunt.loadNpmTasks('grunt-contrib-sass');
+
+grunt.registerTask('default', ['jshint', 'sass']);
+```
+
+#### Compile
+
+```javascript
+grunt.initConfig({
+  sass: {
+    dist: {
+      files: {
+        'main.css': 'main.scss'
+      }
+    }
+  }
+});
+```
+
+#### Concat and compile
+
+If you specify an array of `src` paths they will be concatenated. However, in most cases you would want to just `@import` them into `main.scss`.
+
+```javascript
+grunt.initConfig({
+  sass: {
+    dist: {
+      files: {
+      'main.css': [
+          'reset.scss',
+          'main.scss'
+        ]
+      }
+    }
+  }
+});
+```
+
+#### Compile multiple files
+
+You can specify multiple `destination: source` items in `files`.
+
+```javascript
+grunt.initConfig({
+  sass: {
+    dist: {
+      files: {
+        'main.css': 'main.scss',
+        'widgets.css': 'widgets.scss'
+      }
+    }
+  }
+});
+```
+
+
+## Release History
+
+ * 2012-10-12   v0.1.3   Rename grunt-contrib-lib dep to grunt-lib-contrib.
+ * 2012-10-08   v0.1.2   Fix regression for darwin.
+ * 2012-10-05   v0.1.1   Windows support.
+ * 2012-09-24   v0.1.0   Initial release.
+
+---
+
+Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
+
+*Generated on Mon Oct 22 2012 19:58:41*
