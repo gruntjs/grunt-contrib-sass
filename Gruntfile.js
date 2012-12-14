@@ -35,7 +35,15 @@ module.exports = function(grunt) {
       compile: {
         files: {
           'tmp/scss.css': ['test/fixtures/compile.scss'],
-          'tmp/sass.css': ['test/fixtures/compile.sass']
+          'tmp/sass.css': ['test/fixtures/compile.sass'],
+        }
+      },
+      compile_debugInfo : {
+        options: {
+          debugInfo : true
+        },
+        files: {
+          'tmp/scss_debuginfo.css': ['test/fixtures/compile_debuginfo.scss']
         }
       }
     },

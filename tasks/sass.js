@@ -17,14 +17,12 @@ module.exports = function(grunt) {
     var cb = this.async();
     var src = this.file.src;
     var dest = this.file.dest;
-    var args = [dest, '--stdin'].concat(helpers.optsToArgs(options));
-    var max = src.map(function(filepath) {
-      return grunt.file.read(filepath);
-    }).join('\n');
+
+    var args = helpers.optsToArgs(options);
 
     grunt.verbose.writeflags(options, 'Options');
 
-    if (path.extname(src[0]) === '.scss') {
+    if (path.extname(src) === '.scss') {
       args.push('--scss');
     }
 
@@ -38,7 +36,7 @@ module.exports = function(grunt) {
 
     var sass = grunt.util.spawn({
       cmd: process.platform === 'win32' ? 'sass.bat' : 'sass',
-      args: args
+      args: args.concat(src).concat(dest)
     }, function(error, result, code) {
       if (code === 127) {
         return grunt.warn(
@@ -50,9 +48,5 @@ module.exports = function(grunt) {
       cb(error);
     });
 
-    sass.stdin.write(new Buffer(max));
-    sass.stdin.end();
-    sass.stdout.pipe(process.stdout);
-    sass.stderr.pipe(process.stderr);
   });
 };
