@@ -1,53 +1,72 @@
 # Options
 
-## trace ```boolean```
+## separator
+Type: `String`
+Default: linefeed
+
+Concatenated files will be joined on this string.
+
+## trace
+Type: `Boolean`
 
 Show a full traceback on error.
 
-## unixNewlines ```boolean```
+## unixNewlines
+Type: `Boolean`
 
 Force Unix newlines in written files.
 
-## check ```boolean```
+## check
+Type: `Boolean`
 
 Just check syntax, don't evaluate.
 
-## style ```string```
+## style
+Type: `String`
 
 Output style. Can be `nested` (default), `compact`, `compressed`, or `expanded`.
 
-## precision ```number```
+## precision
+Type: `Number`
 
 How many digits of precision to use when outputting decimal numbers. Defaults to 3.
 
-## quiet ```boolean```
+## quiet
+Type: `Boolean`
 
 Silence warnings and status messages during compilation.
 
-## compass ```boolean```
+## compass
+Type: `Boolean`
 
 Make Compass imports available and load project configuration.
 
-## debugInfo ```boolean```
+## debugInfo
+Type: `Boolean`
 
 Emit extra information in the generated CSS that can be used by the FireSass Firebug plugin.
 
-## lineNumbers ```boolean```
+## lineNumbers
+Type: `Boolean`
 
 Emit comments in the generated CSS indicating the corresponding source line.
 
-## loadPath ```string|array```
+## loadPath
+Type: `String|Array`
 
 Add a (or multiple) Sass import path.
 
-## require ```string|array```
+## require
+Type: `String|Array`
 
 Require a (or multiple) Ruby library before running Sass.
 
-## cacheLocation ```string```
+## cacheLocation
+Type: `String`
 
 The path to put cached Sass files. Defaults to `.sass-cache`.
 
-## noCache ```boolean```
+## noCache
+Type: `Boolean`
 
 Don't cache to sassc files.

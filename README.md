@@ -2,85 +2,95 @@
 
 > Compile Sass to CSS
 
-_Note that this plugin has not yet been released, and only works with the latest bleeding-edge, in-development version of grunt. See the [When will I be able to use in-development feature 'X'?](https://github.com/gruntjs/grunt/blob/devel/docs/faq.md#when-will-i-be-able-to-use-in-development-feature-x) FAQ entry for more information._
 
 ## Getting Started
-_If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide._
+If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
-From the same directory as your project's [Gruntfile][Getting Started] and [package.json][], install this plugin with the following command:
-
-```bash
+```shell
 npm install grunt-contrib-sass --save-dev
 ```
 
-Once that's done, add this line to your project's Gruntfile:
-
-```js
-grunt.loadNpmTasks('grunt-contrib-sass');
-```
-
-If the plugin has been installed correctly, running `grunt --help` at the command line should list the newly-installed plugin's task or tasks. In addition, the plugin should be listed in package.json as a `devDependency`, which ensures that it will be installed whenever the `npm install` command is run.
-
 [grunt]: http://gruntjs.com/
 [Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
-[package.json]: https://npmjs.org/doc/json.html
 
 
-## The sass task
+## Sass task
+_Run this task with the `grunt sass` command._
 
 This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html). If you're on OS X or Linux you probably already have Ruby installed, try `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
 
+_This plugin is only compatible with Grunt `>= 0.4.0`._
+
 ### Options
 
-#### trace ```boolean```
+#### separator
+Type: `String`
+Default: linefeed
+
+Concatenated files will be joined on this string.
+
+#### trace
+Type: `Boolean`
 
 Show a full traceback on error.
 
-#### unixNewlines ```boolean```
+#### unixNewlines
+Type: `Boolean`
 
 Force Unix newlines in written files.
 
-#### check ```boolean```
+#### check
+Type: `Boolean`
 
 Just check syntax, don't evaluate.
 
-#### style ```string```
+#### style
+Type: `String`
 
 Output style. Can be `nested` (default), `compact`, `compressed`, or `expanded`.
 
-#### precision ```number```
+#### precision
+Type: `Number`
 
 How many digits of precision to use when outputting decimal numbers. Defaults to 3.
 
-#### quiet ```boolean```
+#### quiet
+Type: `Boolean`
 
 Silence warnings and status messages during compilation.
 
-#### compass ```boolean```
+#### compass
+Type: `Boolean`
 
 Make Compass imports available and load project configuration.
 
-#### debugInfo ```boolean```
+#### debugInfo
+Type: `Boolean`
 
 Emit extra information in the generated CSS that can be used by the FireSass Firebug plugin.
 
-#### lineNumbers ```boolean```
+#### lineNumbers
+Type: `Boolean`
 
 Emit comments in the generated CSS indicating the corresponding source line.
 
-#### loadPath ```string|array```
+#### loadPath
+Type: `String|Array`
 
 Add a (or multiple) Sass import path.
 
-#### require ```string|array```
+#### require
+Type: `String|Array`
 
 Require a (or multiple) Ruby library before running Sass.
 
-#### cacheLocation ```string```
+#### cacheLocation
+Type: `String`
 
 The path to put cached Sass files. Defaults to `.sass-cache`.
 
-#### noCache ```boolean```
+#### noCache
+Type: `Boolean`
 
 Don't cache to sassc files.
 
@@ -171,13 +181,15 @@ grunt.initConfig({
 
 ## Release History
 
- * 2012-11-05 - v0.2.0 - Grunt 0.4 compatibility Improve error message when Sass binary couldn't be found
- * 2012-10-12 - v0.1.3 - Rename grunt-contrib-lib dep to grunt-lib-contrib.
- * 2012-10-08 - v0.1.2 - Fix regression for darwin.
- * 2012-10-05 - v0.1.1 - Windows support.
- * 2012-09-24 - v0.1.0 - Initial release.
+ * 2013-01-08   v0.2.1rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api. Add separator option.
+ * 2012-11-04   v0.2.0   Grunt 0.4 compatibility. Improve error message when Sass binary couldn't be found
+ * 2012-10-11   v0.1.3   Rename grunt-contrib-lib dep to grunt-lib-contrib.
+ * 2012-10-07   v0.1.2   Fix regression for darwin.
+ * 2012-10-04   v0.1.1   Windows support.
+ * 2012-09-23   v0.1.0   Initial release.
 
---
-Task submitted by <a href="http://github.com/sindresorhus">Sindre Sorhus</a>.
+---
 
-*Generated on Mon Nov 05 2012 18:12:24.*
+Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
+
+*This file was generated on Thu Jan 10 2013 14:36:27.*

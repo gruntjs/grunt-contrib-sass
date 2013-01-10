@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 
     // Unit tests.
     nodeunit: {
-      tasks: ['test/*_test.js']
+      tests: ['test/*_test.js']
     }
   });
 
@@ -55,9 +55,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-internal');
 
-  grunt.registerTask('mkdir', function(dir) {
-    require('fs').mkdirSync(dir);
-  });
+  grunt.registerTask('mkdir', grunt.file.mkdir);
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
@@ -70,5 +68,5 @@ module.exports = function(grunt) {
   ]);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['test', 'build-contrib']);
+  grunt.registerTask('default', ['jshint', 'test', 'build-contrib']);
 };

@@ -13,46 +13,61 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function() {
     var helpers = require('grunt-lib-contrib').init(grunt);
-    var options = this.options();
+    var options = this.options({
+      separator: grunt.util.linefeed
+    });
     var cb = this.async();
-    var src = this.file.src;
-    var dest = this.file.dest;
-    var args = [dest, '--stdin'].concat(helpers.optsToArgs(options));
-    var max = src.map(function(filepath) {
-      return grunt.file.read(filepath);
-    }).join('\n');
 
     grunt.verbose.writeflags(options, 'Options');
 
-    if (path.extname(src[0]) === '.scss') {
-      args.push('--scss');
-    }
+    // Dont pass separator option to cli
+    var lf = options.separator;
+    delete options.separator;
 
-    // Make sure grunt creates the destination folders
-    grunt.file.write(dest, '');
+    grunt.util.async.forEachSeries(this.files, function(f, next) {
+      var args = [f.dest, '--stdin'].concat(helpers.optsToArgs(options));
 
-    // Add dirs of specified files to the sass path
-    src.forEach(function(el) {
-      args.push('--load-path', path.dirname(el));
-    });
-
-    var sass = grunt.util.spawn({
-      cmd: process.platform === 'win32' ? 'sass.bat' : 'sass',
-      args: args
-    }, function(error, result, code) {
-      if (code === 127) {
-        return grunt.warn(
-          'You need to have Ruby and Sass installed and in your PATH for ' +
-          'this task to work. More info: ' +
-          'https://github.com/gruntjs/grunt-contrib-sass'
-        );
+      // If were compiling scss files
+      if (path.extname(f.src[0]) === '.scss') {
+        args.push('--scss');
       }
-      cb(error);
-    });
 
-    sass.stdin.write(new Buffer(max));
-    sass.stdin.end();
-    sass.stdout.pipe(process.stdout);
-    sass.stderr.pipe(process.stderr);
+      var max = f.src.filter(function(filepath) {
+        // Warn on and remove invalid source files (if nonull was set).
+        if (!grunt.file.exists(filepath)) {
+          grunt.log.warn('Source file "' + filepath + '" not found.');
+          return false;
+        } else {
+          return true;
+        }
+      }).map(function(filepath) {
+        // Add dirs of specified files to the sass path
+        args.push('--load-path', path.dirname(filepath));
+
+        return grunt.file.read(filepath);
+      }).join(grunt.util.normalizelf(lf));
+
+      // Make sure grunt creates the destination folders
+      grunt.file.write(f.dest, '');
+
+      var sass = grunt.util.spawn({
+        cmd: process.platform === 'win32' ? 'sass.bat' : 'sass',
+        args: args
+      }, function(error, result, code) {
+        if (code === 127) {
+          return grunt.warn(
+            'You need to have Ruby and Sass installed and in your PATH for\n' +
+            'this task to work. More info:\n' +
+            'https://github.com/gruntjs/grunt-contrib-sass'
+          );
+        }
+        next(error);
+      });
+
+      sass.stdin.write(new Buffer(max));
+      sass.stdin.end();
+      sass.stdout.pipe(process.stdout);
+      sass.stderr.pipe(process.stderr);
+    }, cb);
   });
 };

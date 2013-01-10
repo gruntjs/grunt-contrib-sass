@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-sass",
   "description": "Compile Sass to CSS",
-  "version": "0.2.1",
+  "version": "0.2.2rc5",
   "homepage": "https://github.com/gruntjs/grunt-contrib-sass",
   "author": {
     "name": "Grunt Team",
@@ -20,22 +20,22 @@
       "url": "https://github.com/gruntjs/grunt-contrib-sass/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "grunt.js",
+  "main": "Gruntfile.js",
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt-lib-contrib": "~0.3.0"
+    "grunt-lib-contrib": "~0.5.1"
   },
   "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-internal": "~0.1.0",
-    "grunt-contrib-clean": "~0.4.0a",
-    "grunt-contrib-jshint": "~0.1.0",
-    "grunt-contrib-nodeunit": "~0.1.0"
+    "grunt": "~0.4.0rc5",
+    "grunt-contrib-internal": "*",
+    "grunt-contrib-clean": "~0.4.0rc5",
+    "grunt-contrib-jshint": "~0.1.1rc5",
+    "grunt-contrib-nodeunit": "~0.1.2rc5"
   },
   "keywords": [
     "gruntplugin",
