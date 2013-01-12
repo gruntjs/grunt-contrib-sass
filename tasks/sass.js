@@ -13,16 +13,10 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function() {
     var helpers = require('grunt-lib-contrib').init(grunt);
-    var options = this.options({
-      separator: grunt.util.linefeed
-    });
+    var options = this.options();
     var cb = this.async();
 
     grunt.verbose.writeflags(options, 'Options');
-
-    // Dont pass separator option to cli
-    var lf = options.separator;
-    delete options.separator;
 
     grunt.util.async.forEachSeries(this.files, function(f, next) {
       var args = [f.dest, '--stdin'].concat(helpers.optsToArgs(options));
@@ -45,7 +39,7 @@ module.exports = function(grunt) {
         args.push('--load-path', path.dirname(filepath));
 
         return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(lf));
+      }).join(grunt.util.normalizelf(grunt.util.linefeed));
 
       // Make sure grunt creates the destination folders
       grunt.file.write(f.dest, '');

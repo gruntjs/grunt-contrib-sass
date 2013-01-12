@@ -23,12 +23,6 @@ _This plugin is only compatible with Grunt `>= 0.4.0`._
 
 ### Options
 
-#### separator
-Type: `String`
-Default: linefeed
-
-Concatenated files will be joined on this string.
-
 #### trace
 Type: `Boolean`
 
@@ -192,4 +186,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Thu Jan 10 2013 14:36:27.*
+*This file was generated on Fri Jan 11 2013 17:43:11.*
