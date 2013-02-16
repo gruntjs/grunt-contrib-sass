@@ -3,24 +3,21 @@
 > Compile Sass to CSS
 
 
+
 ## Getting Started
-If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
 npm install grunt-contrib-sass --save-dev
 ```
 
-[grunt]: http://gruntjs.com/
-[Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
+
 
 
 ## Sass task
 _Run this task with the `grunt sass` command._
 
 This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html). If you're on OS X or Linux you probably already have Ruby installed, try `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
-
-_This plugin is only compatible with Grunt `>= 0.4.0`._
-
 ### Options
 
 #### trace
@@ -175,7 +172,9 @@ grunt.initConfig({
 
 ## Release History
 
- * 2013-01-08   v0.2.1rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api. Add separator option.
+ * 2013-02-14   v0.2.2   First official release for Grunt 0.4.0.
+ * 2013-01-24   v0.2.2rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+ * 2013-01-08   v0.2.2rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api. Add separator option.
  * 2012-11-04   v0.2.0   Grunt 0.4 compatibility. Improve error message when Sass binary couldn't be found
  * 2012-10-11   v0.1.3   Rename grunt-contrib-lib dep to grunt-lib-contrib.
  * 2012-10-07   v0.1.2   Fix regression for darwin.
@@ -186,4 +185,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Fri Jan 11 2013 17:43:11.*
+*This file was generated on Fri Feb 15 2013 20:00:57.*
