@@ -21,8 +21,9 @@ module.exports = function(grunt) {
     grunt.util.async.forEachSeries(this.files, function(f, next) {
       var args = [f.dest, '--stdin'].concat(helpers.optsToArgs(options));
 
-      // If were compiling scss files
-      if (path.extname(f.src[0]) === '.scss') {
+      // If we're compiling scss or css files
+      var extension = path.extname(f.src[0]);
+      if (extension === '.scss' || extension === '.css') {
         args.push('--scss');
       }
 
