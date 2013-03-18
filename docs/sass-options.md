@@ -64,3 +64,8 @@ The path to put cached Sass files. Defaults to `.sass-cache`.
 Type: `Boolean`
 
 Don't cache to sassc files.
+
+## bundleExec
+Type: `Boolean`
+
+Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.

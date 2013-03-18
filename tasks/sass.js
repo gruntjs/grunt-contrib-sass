@@ -19,9 +19,24 @@ module.exports = function(grunt) {
     grunt.verbose.writeflags(options, 'Options');
 
     grunt.util.async.forEachSeries(this.files, function(f, next) {
-      var args = [f.dest, '--stdin'].concat(helpers.optsToArgs(options));
+      var args;
+      var bundleExec = options.bundleExec;
 
-      // If were compiling scss files
+      delete options.bundleExec;
+
+      args = [f.dest, '--stdin'].concat(helpers.optsToArgs(options));
+
+      if (process.platform === 'win32') {
+        args.unshift('sass.bat');
+      } else {
+        args.unshift('sass');
+      }
+
+      if (bundleExec) {
+        args.unshift('bundle', 'exec');
+      }
+
+      // If we're compiling scss files
       if (path.extname(f.src[0]) === '.scss') {
         args.push('--scss');
       }
@@ -45,7 +60,7 @@ module.exports = function(grunt) {
       grunt.file.write(f.dest, '');
 
       var sass = grunt.util.spawn({
-        cmd: process.platform === 'win32' ? 'sass.bat' : 'sass',
+        cmd: args.shift(),
         args: args
       }, function(error, result, code) {
         if (code === 127) {
