@@ -36,9 +36,9 @@ module.exports = function(grunt) {
         args.unshift('bundle', 'exec');
       }
 
-	    // If we're compiling scss or css files
-	  var extension = path.extname(f.src[0]);
-	  if (extension === '.scss' || extension === '.css') {
+      // If we're compiling scss or css files
+      var extension = path.extname(f.src[0]);
+      if (extension === '.scss' || extension === '.css') {
         args.push('--scss');
       }
 
