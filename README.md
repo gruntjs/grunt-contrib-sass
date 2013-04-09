@@ -2,6 +2,7 @@
 
 > Compile Sass to CSS
 
+[Sass](http://sass-lang.com/) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to css. Sass files compile into well-formatted, standard CSS to use in your site or application. 
 
 
 ## Getting Started
