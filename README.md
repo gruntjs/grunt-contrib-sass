@@ -2,13 +2,12 @@
 
 > Compile Sass to CSS
 
-[Sass](http://sass-lang.com/) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to css. Sass files compile into well-formatted, standard CSS to use in your site or application. 
 
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
 
-This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
 npm install grunt-contrib-sass --save-dev
@@ -26,7 +25,10 @@ grunt.loadNpmTasks('grunt-contrib-sass');
 ## Sass task
 _Run this task with the `grunt sass` command._
 
-This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html). If you're on OS X or Linux you probably already have Ruby installed, try `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+[Sass](http://sass-lang.com/) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to css. Sass files compile into well-formatted, standard CSS to use in your site or application. 
+
+This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+
 ### Options
 
 #### trace
@@ -60,9 +62,9 @@ Type: `Boolean`
 Silence warnings and status messages during compilation.
 
 #### compass
-Type: `Boolean`
+Type: `String`
 
-Make Compass imports available and load project configuration.
+Path to your `config.rb`. Make Compass imports available and load project configuration.
 
 #### debugInfo
 Type: `Boolean`
@@ -200,4 +202,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Tue Mar 26 2013 16:59:50.*
+*This file was generated on Thu Apr 11 2013 19:00:37.*

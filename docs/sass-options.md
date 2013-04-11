@@ -31,9 +31,9 @@ Type: `Boolean`
 Silence warnings and status messages during compilation.
 
 ## compass
-Type: `Boolean`
+Type: `String`
 
-Make Compass imports available and load project configuration.
+Path to your `config.rb`. Make Compass imports available and load project configuration.
 
 ## debugInfo
 Type: `Boolean`
