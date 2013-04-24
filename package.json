@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt-lib-contrib": "~0.6.1"
+    "dargs": "~0.1.0"
   },
   "devDependencies": {
     "grunt-contrib-clean": "~0.4.0",

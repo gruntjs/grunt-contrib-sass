@@ -10,9 +10,9 @@
 
 module.exports = function(grunt) {
   var path = require('path');
+  var dargs = require('dargs');
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function() {
-    var helpers = require('grunt-lib-contrib').init(grunt);
     var options = this.options();
     var cb = this.async();
 
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
       delete options.bundleExec;
 
-      args = [f.dest, '--stdin'].concat(helpers.optsToArgs(options));
+      args = [f.dest, '--stdin'].concat(dargs(options));
 
       if (process.platform === 'win32') {
         args.unshift('sass.bat');
