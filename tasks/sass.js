@@ -22,9 +22,7 @@ module.exports = function(grunt) {
       var args;
       var bundleExec = options.bundleExec;
 
-      delete options.bundleExec;
-
-      args = [f.dest, '--stdin'].concat(dargs(options));
+      args = [f.dest, '--stdin'].concat(dargs(options, ['bundleExec']));
 
       if (process.platform === 'win32') {
         args.unshift('sass.bat');
