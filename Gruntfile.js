@@ -34,9 +34,26 @@ module.exports = function(grunt) {
     sass: {
       compile: {
         files: {
-          'tmp/scss.css': ['test/fixtures/compile.scss'],
           'tmp/sass.css': ['test/fixtures/compile.sass'],
+          'tmp/scss.css': ['test/fixtures/compile.scss'],
           'tmp/css.css': ['test/fixtures/compile.css']
+        }
+      },
+      concat: {
+        files: {
+          'tmp/concat.css': [
+            'test/fixtures/concat.sass',
+            'test/fixtures/concat.scss',
+            'test/fixtures/concat.css'
+          ]
+        }
+      },
+      debugInfo: {
+        options: {
+          debugInfo: true
+        },
+        files: {
+          'tmp/debuginfo.css': ['test/fixtures/compile.scss']
         }
       }
     },
