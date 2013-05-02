@@ -25,7 +25,10 @@ grunt.loadNpmTasks('grunt-contrib-sass');
 ## Sass task
 _Run this task with the `grunt sass` command._
 
-This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html). If you're on OS X or Linux you probably already have Ruby installed, try `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+[Sass](http://sass-lang.com/) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to css. Sass files compile into well-formatted, standard CSS to use in your site or application. 
+
+This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+
 ### Options
 
 #### trace
@@ -59,9 +62,9 @@ Type: `Boolean`
 Silence warnings and status messages during compilation.
 
 #### compass
-Type: `Boolean`
+Type: `String`
 
-Make Compass imports available and load project configuration.
+Path to your `config.rb`. Make Compass imports available and load project configuration.
 
 #### debugInfo
 Type: `Boolean`
@@ -92,6 +95,11 @@ The path to put cached Sass files. Defaults to `.sass-cache`.
 Type: `Boolean`
 
 Don't cache to sassc files.
+
+#### bundleExec
+Type: `Boolean`
+
+Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
 
 ### Examples
 
@@ -180,17 +188,18 @@ grunt.initConfig({
 
 ## Release History
 
- * 2013-02-14   v0.2.2   First official release for Grunt 0.4.0.
- * 2013-01-24   v0.2.2rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
- * 2013-01-08   v0.2.2rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api. Add separator option.
- * 2012-11-04   v0.2.0   Grunt 0.4 compatibility. Improve error message when Sass binary couldn't be found
- * 2012-10-11   v0.1.3   Rename grunt-contrib-lib dep to grunt-lib-contrib.
- * 2012-10-07   v0.1.2   Fix regression for darwin.
- * 2012-10-04   v0.1.1   Windows support.
- * 2012-09-23   v0.1.0   Initial release.
+ * 2013-03-26   v0.3.0   Add support for `bundle exec`. Make sure `.css` files are compiled with SCSS.
+ * 2013-02-15   v0.2.2   First official release for Grunt 0.4.0.
+ * 2013-01-25   v0.2.2rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+ * 2013-01-09   v0.2.2rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api. Add separator option.
+ * 2012-11-05   v0.2.0   Grunt 0.4 compatibility. Improve error message when Sass binary couldn't be found
+ * 2012-10-12   v0.1.3   Rename grunt-contrib-lib dep to grunt-lib-contrib.
+ * 2012-10-08   v0.1.2   Fix regression for darwin.
+ * 2012-10-05   v0.1.1   Windows support.
+ * 2012-09-24   v0.1.0   Initial release.
 
 ---
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Wed Feb 20 2013 12:36:03.*
+*This file was generated on Thu Apr 11 2013 19:00:37.*

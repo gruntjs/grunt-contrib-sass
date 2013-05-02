@@ -1,3 +1,7 @@
+v0.3.0:
+  date: 2013-03-26
+  changes:
+    - Add support for `bundle exec`. Make sure `.css` files are compiled with SCSS.
 v0.2.2:
   date: 2013-02-15
   changes:
