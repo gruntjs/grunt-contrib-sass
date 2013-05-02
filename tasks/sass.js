@@ -19,7 +19,7 @@ module.exports = function (grunt) {
         tmpDir = options.tmpDir || 'tmp/',
         done = this.async();
 
-    grunt.log.warn(filteredOptions);
+    grunt.verbose.writeflags(options, 'Options');
 
     if (options.bundleExec) {
       cmd.unshift('bundle', 'exec');
