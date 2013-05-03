@@ -8,74 +8,78 @@
 
 'use strict';
 
-module.exports = function(grunt) {
-  var path = require('path');
-  var dargs = require('dargs');
+module.exports = function (grunt) {
+  var path = require('path'),
+      dargs = require('dargs'),
+      os = require("os");
 
-  grunt.registerMultiTask('sass', 'Compile Sass to CSS', function() {
-    var options = this.options();
-    var cb = this.async();
+  grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
+    var options = this.options(),
+        filteredOptions = dargs(options, ['bundleExec', 'tmpDir']),
+        cmd = [process.platform === 'win32' ? 'sass.bat' : 'sass'],
+        tmpDir = options.tmpDir || os.tmpDir() || 'tmp',
+        done = this.async();
 
     grunt.verbose.writeflags(options, 'Options');
 
-    grunt.util.async.forEachSeries(this.files, function(f, next) {
-      var args;
-      var bundleExec = options.bundleExec;
+    if (options.bundleExec) {
+      cmd.unshift('bundle', 'exec');
+    }
 
-      args = [f.dest, '--stdin'].concat(dargs(options, ['bundleExec']));
+    grunt.verbose.writeflags(options, 'Options');
 
-      if (process.platform === 'win32') {
-        args.unshift('sass.bat');
-      } else {
-        args.unshift('sass');
-      }
+    function concat(files, dest) {
+      grunt.file.write(dest, files.map(function (filepath) {
+        return grunt.file.read(filepath);
+      }).join(grunt.util.normalizelf(grunt.util.linefeed)));
+    }
 
-      if (bundleExec) {
-        args.unshift('bundle', 'exec');
-      }
+    function iterator(files, next) {
+      var tasks = [],
+          tmpNames = [];
 
-      // If we're compiling scss or css files
-      var extension = path.extname(f.src[0]);
-      if (extension === '.scss' || extension === '.css') {
-        args.push('--scss');
-      }
+      files.src.forEach(function (filepath) {
 
-      var max = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
+          return;
         }
-      }).map(function(filepath) {
-        // Add dirs of specified files to the sass path
+
+        var args = [],
+            extension = path.extname(filepath),
+            tmpFile = tmpDir + "/" + grunt.util._.uniqueId('tmp_') + '.css';
+
+        tmpNames.push(tmpFile);
+
+        if (extension === '.scss' || extension === '.css') {
+          args.push('--scss');
+        }
+
         args.push('--load-path', path.dirname(filepath));
 
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(grunt.util.linefeed));
-
-      // Make sure grunt creates the destination folders
-      grunt.file.write(f.dest, '');
-
-      var sass = grunt.util.spawn({
-        cmd: args.shift(),
-        args: args
-      }, function(error, result, code) {
-        if (code === 127) {
-          return grunt.warn(
-            'You need to have Ruby and Sass installed and in your PATH for\n' +
-            'this task to work. More info:\n' +
-            'https://github.com/gruntjs/grunt-contrib-sass'
-          );
-        }
-        next(error);
+        tasks.push(function (callback) {
+          grunt.util.spawn({
+            cmd: cmd[0],
+            args: [].concat(cmd.slice(1), [filepath, tmpFile], args, filteredOptions)
+          }, function (error, result, code) {
+            if (code === 127) {
+              return grunt.warn(
+                  'You need to have Ruby and Sass installed and in your PATH for\n' +
+                      'this task to work. More info:\n' +
+                      'https://github.com/gruntjs/grunt-contrib-sass'
+              );
+            }
+            callback(error);
+          });
+        });
       });
 
-      sass.stdin.write(new Buffer(max));
-      sass.stdin.end();
-      sass.stdout.pipe(process.stdout);
-      sass.stderr.pipe(process.stderr);
-    }, cb);
+      grunt.util.async.parallel(tasks, function (error) {
+        concat(tmpNames, files.dest);
+        next(error);
+      });
+    }
+
+    grunt.util.async.forEachSeries(this.files, iterator, done);
   });
 };

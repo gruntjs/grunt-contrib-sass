@@ -14,5 +14,25 @@ exports.sass = {
     test.equal(css, expected, 'should compile CSS to CSS');
 
     test.done();
+  },
+  concat: function(test) {
+    'use strict';
+    test.expect(3);
+
+    var css = grunt.file.read('tmp/concat.css');
+    test.ok(css.match(/concat_css/), 'CSS was concatenated');
+    test.ok(css.match(/concat_sass/), 'SASS was concatenated');
+    test.ok(css.match(/concat_scss/), 'SCSS was concatenated');
+
+    test.done();
+  },
+  debugInfo: function(test) {
+    'use strict';
+    test.expect(1);
+
+    var css = grunt.file.read('tmp/debuginfo.css');
+    test.ok(css.match(/@media -sass-debug-info\{filename\{.+\}line\{.+\}\}/), 'should contains debuginfo in CSS');
+
+    test.done();
   }
 };
