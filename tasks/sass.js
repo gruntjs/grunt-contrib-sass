@@ -47,7 +47,7 @@ module.exports = function (grunt) {
 
         var args = [],
             extension = path.extname(filepath),
-            tmpFile = tmpDir + "/" + +grunt.util._.uniqueId('tmp_') + '.css';
+            tmpFile = tmpDir + "/" + grunt.util._.uniqueId('tmp_') + '.css';
 
         tmpNames.push(tmpFile);
 
