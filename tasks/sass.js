@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     var options = this.options(),
         filteredOptions = dargs(options, ['bundleExec', 'tmpDir']),
         cmd = [process.platform === 'win32' ? 'sass.bat' : 'sass'],
-        tmpDir = options.tmpDir || os.tmpDir() || 'tmp/',
+        tmpDir = options.tmpDir || os.tmpDir() || 'tmp',
         done = this.async();
 
     grunt.verbose.writeflags(options, 'Options');
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
 
         var args = [],
             extension = path.extname(filepath),
-            tmpFile = tmpDir + grunt.util._.uniqueId('tmp_') + '.css';
+            tmpFile = tmpDir + "/" + +grunt.util._.uniqueId('tmp_') + '.css';
 
         tmpNames.push(tmpFile);
 
