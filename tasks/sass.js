@@ -10,13 +10,14 @@
 
 module.exports = function (grunt) {
   var path = require('path'),
-      dargs = require('dargs');
+      dargs = require('dargs'),
+      os = require("os");
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var options = this.options(),
         filteredOptions = dargs(options, ['bundleExec', 'tmpDir']),
         cmd = [process.platform === 'win32' ? 'sass.bat' : 'sass'],
-        tmpDir = options.tmpDir || 'tmp/',
+        tmpDir = options.tmpDir || os.tmpDir() || 'tmp/',
         done = this.async();
 
     grunt.verbose.writeflags(options, 'Options');
@@ -46,7 +47,6 @@ module.exports = function (grunt) {
 
         var args = [],
             extension = path.extname(filepath),
-            //tmpFile = tmpDir + filepath.split('/').join('_') + '.css';
             tmpFile = tmpDir + grunt.util._.uniqueId('tmp_') + '.css';
 
         tmpNames.push(tmpFile);
