@@ -11,6 +11,7 @@
 module.exports = function(grunt) {
   var path = require('path');
   var dargs = require('dargs');
+  var numCPUs = require('os').cpus().length;
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function() {
     var options = this.options();
@@ -18,7 +19,7 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    grunt.util.async.forEachSeries(this.files, function(f, next) {
+    grunt.util.async.forEachLimit(this.files, numCPUs, function(f, next) {
       var args;
       var bundleExec = options.bundleExec;
 

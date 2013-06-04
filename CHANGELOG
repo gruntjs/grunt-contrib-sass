@@ -1,3 +1,7 @@
+v0.3.1:
+  date: 2013-06-03
+  changes:
+    - Run many sass commands in parallel instead of in series.
 v0.3.0:
   date: 2013-03-26
   changes:
