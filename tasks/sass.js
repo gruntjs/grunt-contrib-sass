@@ -5,20 +5,19 @@
  * Copyright (c) 2012 Sindre Sorhus, contributors
  * Licensed under the MIT license.
  */
-
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   var path = require('path');
   var dargs = require('dargs');
 
-  grunt.registerMultiTask('sass', 'Compile Sass to CSS', function() {
+  grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var options = this.options();
     var cb = this.async();
 
     grunt.verbose.writeflags(options, 'Options');
 
-    grunt.util.async.forEachSeries(this.files, function(f, next) {
+    grunt.util.async.forEachSeries(this.files, function (f, next) {
       var args;
       var bundleExec = options.bundleExec;
 
@@ -40,7 +39,7 @@ module.exports = function(grunt) {
         args.push('--scss');
       }
 
-      var max = f.src.filter(function(filepath) {
+      var max = f.src.filter(function (filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file "' + filepath + '" not found.');
@@ -48,7 +47,7 @@ module.exports = function(grunt) {
         } else {
           return true;
         }
-      }).map(function(filepath) {
+      }).map(function (filepath) {
         // Add dirs of specified files to the sass path
         args.push('--load-path', path.dirname(filepath));
 
@@ -61,7 +60,7 @@ module.exports = function(grunt) {
       var sass = grunt.util.spawn({
         cmd: args.shift(),
         args: args
-      }, function(error, result, code) {
+      }, function (error, result, code) {
         if (code === 127) {
           return grunt.warn(
             'You need to have Ruby and Sass installed and in your PATH for\n' +
