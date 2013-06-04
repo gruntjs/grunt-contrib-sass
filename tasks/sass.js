@@ -17,11 +17,20 @@ module.exports = function (grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    grunt.util.async.forEachSeries(this.files, function (f, next) {
-      var args;
+    grunt.util.async.forEachSeries(this.files, function (file, next) {
+      var src = file.src[0];
+      var args = [
+        src,
+        file.dest,
+        '--load-path', path.dirname(src)
+      ].concat(dargs(options, ['bundleExec']));
+      var extension = path.extname(src);
       var bundleExec = options.bundleExec;
 
-      args = [f.dest, '--stdin'].concat(dargs(options, ['bundleExec']));
+      if (!grunt.file.exists(src)) {
+        grunt.log.warn('Source file "' + src + '" not found.');
+        next();
+      }
 
       if (process.platform === 'win32') {
         args.unshift('sass.bat');
@@ -34,32 +43,19 @@ module.exports = function (grunt) {
       }
 
       // If we're compiling scss or css files
-      var extension = path.extname(f.src[0]);
-      if (extension === '.scss' || extension === '.css') {
+      if (extension === '.css') {
         args.push('--scss');
       }
 
-      var max = f.src.filter(function (filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function (filepath) {
-        // Add dirs of specified files to the sass path
-        args.push('--load-path', path.dirname(filepath));
-
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(grunt.util.linefeed));
-
       // Make sure grunt creates the destination folders
-      grunt.file.write(f.dest, '');
+      grunt.file.write(file.dest, '');
 
-      var sass = grunt.util.spawn({
+      grunt.util.spawn({
         cmd: args.shift(),
-        args: args
+        args: args,
+        opts: {
+          stdio: 'inherit'
+        }
       }, function (error, result, code) {
         if (code === 127) {
           return grunt.warn(
@@ -68,13 +64,9 @@ module.exports = function (grunt) {
             'https://github.com/gruntjs/grunt-contrib-sass'
           );
         }
+
         next(error);
       });
-
-      sass.stdin.write(new Buffer(max));
-      sass.stdin.end();
-      sass.stdout.pipe(process.stdout);
-      sass.stderr.pipe(process.stderr);
     }, cb);
   });
 };
