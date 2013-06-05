@@ -1,4 +1,4 @@
-# grunt-contrib-sass [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -188,7 +188,6 @@ grunt.initConfig({
 
 ## Release History
 
- * 2013-06-03   v0.3.1   Run many sass commands in parallel instead of in series.
  * 2013-03-26   v0.3.0   Add support for `bundle exec`. Make sure `.css` files are compiled with SCSS.
  * 2013-02-15   v0.2.2   First official release for Grunt 0.4.0.
  * 2013-01-25   v0.2.2rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
@@ -203,4 +202,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Tue Jun 04 2013 00:24:32.*
+*This file was generated on Thu Apr 11 2013 19:00:37.*

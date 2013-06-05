@@ -1,4 +1,4 @@
-v0.3.1:
+master:
   date: 2013-06-03
   changes:
     - Run many sass commands in parallel instead of in series.
