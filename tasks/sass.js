@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    grunt.util.async.forEachLimit(this.files, numCPUs, function (files, next) {
+    grunt.util.async.forEachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
       var args = [
         src,
