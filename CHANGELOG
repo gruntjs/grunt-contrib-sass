@@ -1,7 +1,8 @@
-master:
-  date: 2013-06-03
+v0.4.0:
+  date: 2013-06-30
   changes:
-    - Run many sass commands in parallel instead of in series.
+    - Rewrite task to be able to support Source Maps.
+    - Compile Sass files in parallel for better performance.
 v0.3.0:
   date: 2013-03-26
   changes:
