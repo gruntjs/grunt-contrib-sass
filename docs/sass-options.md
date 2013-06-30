@@ -13,63 +13,72 @@ Enable Source Maps.
 
 ## trace
 
-Type: `Boolean`
+Type: `Boolean`  
+Default: `false`
 
 Show a full traceback on error.
 
 
 ## unixNewlines
 
-Type: `Boolean`
+Type: `Boolean`  
+Default: `false` on Windows, otherwise `true`
 
 Force Unix newlines in written files.
 
 
 ## check
 
-Type: `Boolean`
+Type: `Boolean`  
+Default: `false`
 
 Just check syntax, don't evaluate.
 
 
 ## style
 
-Type: `String`
+Type: `String`  
+Default: `nested`
 
-Output style. Can be `nested` (default), `compact`, `compressed`, or `expanded`.
+Output style. Can be `nested`, `compact`, `compressed`, `expanded`.
 
 
 ## precision
 
-Type: `Number`
+Type: `Number`  
+Default: `3`
 
-How many digits of precision to use when outputting decimal numbers. Defaults to 3.
+How many digits of precision to use when outputting decimal numbers.
 
 
 ## quiet
 
-Type: `Boolean`
+Type: `Boolean`  
+Default: `false`
 
 Silence warnings and status messages during compilation.
 
 
 ## compass
 
-Type: `String`
+Type: `String`  
+Default: `false`
 
 Path to your `config.rb`. Make Compass imports available and load project configuration.
 
 
 ## debugInfo
 
-Type: `Boolean`
+Type: `Boolean`  
+Default: `false`
 
 Emit extra information in the generated CSS that can be used by the FireSass Firebug plugin.
 
 
 ## lineNumbers
 
-Type: `Boolean`
+Type: `Boolean`  
+Default: `false`
 
 Emit comments in the generated CSS indicating the corresponding source line.
 
@@ -90,20 +99,23 @@ Require a (or multiple) Ruby library before running Sass.
 
 ## cacheLocation
 
-Type: `String`
+Type: `String`  
+Default: `.sass-cache`
 
-The path to put cached Sass files. Defaults to `.sass-cache`.
+The path to put cached Sass files.
 
 
 ## noCache
 
-Type: `Boolean`
+Type: `Boolean`  
+Default: `false`
 
 Don't cache to sassc files.
 
 
 ## bundleExec
 
-Type: `Boolean`
+Type: `Boolean`  
+Default: `false`
 
 Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
