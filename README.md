@@ -1,4 +1,4 @@
-# grunt-contrib-sass [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -25,79 +25,129 @@ grunt.loadNpmTasks('grunt-contrib-sass');
 ## Sass task
 _Run this task with the `grunt sass` command._
 
-[Sass](http://sass-lang.com/) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to css. Sass files compile into well-formatted, standard CSS to use in your site or application. 
+[Sass](http://sass-lang.com) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to css. Sass files compile into well-formatted, standard CSS to use in your site or application.
 
 This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
 
 ### Options
 
+
+#### sourcemap
+
+Type: `Boolean`  
+Default: `false`
+
+Enable Source Maps.
+
+**Requires Sass 3.3.0, which can be installed with `gem install sass --pre`**
+
+
 #### trace
-Type: `Boolean`
+
+Type: `Boolean`  
+Default: `false`
 
 Show a full traceback on error.
 
+
 #### unixNewlines
-Type: `Boolean`
+
+Type: `Boolean`  
+Default: `false` on Windows, otherwise `true`
 
 Force Unix newlines in written files.
 
+
 #### check
-Type: `Boolean`
+
+Type: `Boolean`  
+Default: `false`
 
 Just check syntax, don't evaluate.
 
-#### style
-Type: `String`
 
-Output style. Can be `nested` (default), `compact`, `compressed`, or `expanded`.
+#### style
+
+Type: `String`  
+Default: `nested`
+
+Output style. Can be `nested`, `compact`, `compressed`, `expanded`.
+
 
 #### precision
-Type: `Number`
 
-How many digits of precision to use when outputting decimal numbers. Defaults to 3.
+Type: `Number`  
+Default: `3`
+
+How many digits of precision to use when outputting decimal numbers.
+
 
 #### quiet
-Type: `Boolean`
+
+Type: `Boolean`  
+Default: `false`
 
 Silence warnings and status messages during compilation.
 
+
 #### compass
-Type: `String`
+
+Type: `String`  
+Default: `false`
 
 Path to your `config.rb`. Make Compass imports available and load project configuration.
 
+
 #### debugInfo
-Type: `Boolean`
+
+Type: `Boolean`  
+Default: `false`
 
 Emit extra information in the generated CSS that can be used by the FireSass Firebug plugin.
 
+
 #### lineNumbers
-Type: `Boolean`
+
+Type: `Boolean`  
+Default: `false`
 
 Emit comments in the generated CSS indicating the corresponding source line.
 
+
 #### loadPath
+
 Type: `String|Array`
 
 Add a (or multiple) Sass import path.
 
+
 #### require
+
 Type: `String|Array`
 
 Require a (or multiple) Ruby library before running Sass.
 
-#### cacheLocation
-Type: `String`
 
-The path to put cached Sass files. Defaults to `.sass-cache`.
+#### cacheLocation
+
+Type: `String`  
+Default: `.sass-cache`
+
+The path to put cached Sass files.
+
 
 #### noCache
-Type: `Boolean`
+
+Type: `Boolean`  
+Default: `false`
 
 Don't cache to sassc files.
 
+
 #### bundleExec
-Type: `Boolean`
+
+Type: `Boolean`  
+Default: `false`
 
 Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
 
@@ -188,6 +238,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-06-30   v0.4.0   Rewrite task to be able to support Source Maps. Compile Sass files in parallel for better performance.
  * 2013-03-26   v0.3.0   Add support for `bundle exec`. Make sure `.css` files are compiled with SCSS.
  * 2013-02-15   v0.2.2   First official release for Grunt 0.4.0.
  * 2013-01-25   v0.2.2rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
@@ -202,4 +253,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Thu Apr 11 2013 19:00:37.*
+*This file was generated on Sun Jun 30 2013 23:38:31.*
