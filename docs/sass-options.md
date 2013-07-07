@@ -61,10 +61,10 @@ Silence warnings and status messages during compilation.
 
 ## compass
 
-Type: `String`  
+Type: `Boolean`  
 Default: `false`
 
-Path to your `config.rb`. Make Compass imports available and load project configuration.
+Make Compass imports available and load project configuration (`config.rb` located close to the `Gruntfile.js`).
 
 
 ## debugInfo
