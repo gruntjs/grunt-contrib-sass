@@ -20,6 +20,9 @@ module.exports = function (grunt) {
 
     grunt.util.async.forEachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
+      if (typeof src !== 'string') {
+        src = file.orig.src[0];
+      }
       var args = [
         src,
         file.dest,
@@ -30,7 +33,7 @@ module.exports = function (grunt) {
 
       if (!grunt.file.exists(src)) {
         grunt.log.warn('Source file "' + src + '" not found.');
-        next();
+        return next();
       }
 
       if (process.platform === 'win32') {
