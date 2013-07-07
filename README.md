@@ -238,6 +238,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-07-06   v0.4.1   Use file.orig.src if file.src does not exist and return early to avoid passing non-existent files to sass binary.
  * 2013-06-30   v0.4.0   Rewrite task to be able to support Source Maps. Compile Sass files in parallel for better performance.
  * 2013-03-26   v0.3.0   Add support for `bundle exec`. Make sure `.css` files are compiled with SCSS.
  * 2013-02-15   v0.2.2   First official release for Grunt 0.4.0.
@@ -253,4 +254,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Sun Jun 30 2013 23:38:31.*
+*This file was generated on Sat Jul 06 2013 19:55:01.*

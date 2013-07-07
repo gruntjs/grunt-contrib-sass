@@ -1,3 +1,7 @@
+v0.4.1:
+  date: 2013-07-06
+  changes:
+    - Use file.orig.src if file.src does not exist and return early to avoid passing non-existent files to sass binary.
 v0.4.0:
   date: 2013-06-30
   changes:
