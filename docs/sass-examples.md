@@ -6,22 +6,12 @@
 grunt.initConfig({
   sass: {                              // Task
     dist: {                            // Target
-      files: {                         // Dictionary of files
-        'main.css': 'main.scss',       // 'destination': 'source'
-        'widgets.css': 'widgets.scss'
-      }
-    },
-    dev: {                             // Another target
       options: {                       // Target options
         style: 'expanded'
       },
-      files: {
-        'main.css': 'main.scss',
-        'widgets.css': [
-          'button.scss',
-          'tab.scss',
-          'debug.scss'  // Maybe you need one extra file in dev
-        ]
+      files: {                         // Dictionary of files
+        'main.css': 'main.scss',       // 'destination': 'source'
+        'widgets.css': 'widgets.scss'
       }
     }
   }
@@ -29,7 +19,7 @@ grunt.initConfig({
 
 grunt.loadNpmTasks('grunt-contrib-sass');
 
-grunt.registerTask('default', ['jshint', 'sass']);
+grunt.registerTask('default', ['sass']);
 ```
 
 ## Compile
@@ -48,22 +38,8 @@ grunt.initConfig({
 
 ## Concat and compile
 
-If you specify an array of `src` paths they will be concatenated. However, in most cases you would want to just `@import` them into `main.scss`.
+Instead of concatenating the files, just `@import` them into another `.sass` file eg. `main.scss`.
 
-```javascript
-grunt.initConfig({
-  sass: {
-    dist: {
-      files: {
-      'main.css': [
-          'reset.scss',
-          'main.scss'
-        ]
-      }
-    }
-  }
-});
-```
 
 ## Compile multiple files
 
@@ -82,9 +58,9 @@ grunt.initConfig({
 });
 ```
 
-#### Compile without specifying input/output file names
+## Compile files in a directory
 
-Instead of naming all files you want to compile, you can use the `expand` allowing you to specify a directory. More information available on the [official grunt wiki](https://github.com/gruntjs/grunt/wiki/Configuring-tasks) cf: `Building the files object dynamically`
+Instead of naming all files you want to compile, you can use the `expand` property allowing you to specify a directory. More information available in the [grunt docs](https://github.com/gruntjs/grunt/wiki/Configuring-tasks) - `Building the files object dynamically`.
 
 ```javascript
 grunt.initConfig({
