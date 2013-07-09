@@ -81,3 +81,23 @@ grunt.initConfig({
   }
 });
 ```
+
+#### Compile without specifying input/output file names
+
+Instead of naming all files you want to compile, you can use the `expand` allowing you to specify a directory. More information available on the [official grunt wiki](https://github.com/gruntjs/grunt/wiki/Configuring-tasks) cf: `Building the files object dynamically`
+
+```javascript
+grunt.initConfig({
+  sass: {
+    dist: {
+      files: [{
+        expand: true,
+        cwd: 'styles',
+        src: ['*.scss'],
+        dest: '../public',
+        ext: '.css'
+      }]
+    }
+  }
+});
+```
