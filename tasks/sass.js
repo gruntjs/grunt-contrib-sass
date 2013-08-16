@@ -13,8 +13,10 @@ module.exports = function (grunt) {
   var numCPUs = require('os').cpus().length;
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
-    var options = this.options();
     var cb = this.async();
+    var options = this.options();
+    var passedArgs = dargs(options, ['bundleExec']);
+    var bundleExec = options.bundleExec;
 
     grunt.verbose.writeflags(options, 'Options');
 
@@ -23,18 +25,17 @@ module.exports = function (grunt) {
       if (typeof src !== 'string') {
         src = file.orig.src[0];
       }
-      var args = [
-        src,
-        file.dest,
-        '--load-path', path.dirname(src)
-      ].concat(dargs(options, ['bundleExec']));
-      var extension = path.extname(src);
-      var bundleExec = options.bundleExec;
 
       if (!grunt.file.exists(src)) {
         grunt.log.warn('Source file "' + src + '" not found.');
         return next();
       }
+
+      var args = [
+        src,
+        file.dest,
+        '--load-path', path.dirname(src)
+      ].concat(passedArgs);
 
       if (process.platform === 'win32') {
         args.unshift('sass.bat');
@@ -47,7 +48,7 @@ module.exports = function (grunt) {
       }
 
       // If we're compiling scss or css files
-      if (extension === '.css') {
+      if (path.extname(src) === '.css') {
         args.push('--scss');
       }
 
