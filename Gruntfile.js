@@ -9,6 +9,9 @@
 
 module.exports = function (grunt) {
   grunt.initConfig({
+    pkg: {
+      name: 'grunt-contrib-sass'
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -38,6 +41,16 @@ module.exports = function (grunt) {
           'test/tmp/scss.css': ['test/fixtures/compile.scss'],
           'test/tmp/sass.css': ['test/fixtures/compile.sass'],
           'test/tmp/css.css': ['test/fixtures/compile.css']
+        }
+      },
+      compileBanner: {
+        options: {
+          banner: '/* <%= pkg.name %> banner */'
+        },
+        files: {
+          'test/tmp/scss-banner.css': ['test/fixtures/banner.scss'],
+          'test/tmp/sass-banner.css': ['test/fixtures/banner.sass'],
+          'test/tmp/css-banner.css': ['test/fixtures/banner.css']
         }
       }
     }

@@ -12,11 +12,29 @@ module.exports = function (grunt) {
   var dargs = require('dargs');
   var numCPUs = require('os').cpus().length;
 
+  var bannerCallback = function (filename, banner) {
+    var content;
+    grunt.log.verbose.writeln('Writing CSS banner for ' + filename);
+
+    content = grunt.file.read(filename);
+    grunt.file.write(filename, banner + grunt.util.linefeed + content);
+  };
+
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
     var options = this.options();
-    var passedArgs = dargs(options, ['bundleExec']);
-    var bundleExec = options.bundleExec;
+    var passedArgs;
+    var bundleExec;
+    var banner;
+
+    // Unset banner option if set
+    if (options.banner) {
+      banner = options.banner;
+      delete options.banner;
+    }
+
+    passedArgs = dargs(options, ['bundleExec']);
+    bundleExec = options.bundleExec;
 
     grunt.verbose.writeflags(options, 'Options');
 
@@ -68,6 +86,11 @@ module.exports = function (grunt) {
             'this task to work. More info:\n' +
             'https://github.com/gruntjs/grunt-contrib-sass'
           );
+        }
+
+        // Callback to insert banner
+        if (banner) {
+          bannerCallback(file.dest, banner);
         }
 
         next(error);
