@@ -1,4 +1,4 @@
-# grunt-contrib-sass [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.5.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -156,9 +156,7 @@ Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bu
 
 Type: `String`  
 
-Prepend the specified string to the output file. Useful for licensing
-information.
-
+Prepend the specified string to the output file. Useful for licensing information.
 
 ### Examples
 
@@ -243,6 +241,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2013-08-21   v0.5.0   Add banner option.
  * 2013-07-06   v0.4.1   Use file.orig.src if file.src does not exist and return early to avoid passing non-existent files to sass binary.
  * 2013-06-30   v0.4.0   Rewrite task to be able to support Source Maps. Compile Sass files in parallel for better performance.
  * 2013-03-26   v0.3.0   Add support for `bundle exec`. Make sure `.css` files are compiled with SCSS.
@@ -259,4 +258,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Tue Jul 09 2013 13:08:22.*
+*This file was generated on Wed Aug 21 2013 12:55:17.*

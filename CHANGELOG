@@ -1,3 +1,7 @@
+v0.5.0:
+  date: 2013-08-21
+  changes:
+    - Add banner option.
 v0.4.1:
   date: 2013-07-06
   changes:
