@@ -126,3 +126,5 @@ Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bu
 Type: `String`  
 
 Prepend the specified string to the output file. Useful for licensing information.
+
+*Can't be used if you use the `sourcemap` option.*

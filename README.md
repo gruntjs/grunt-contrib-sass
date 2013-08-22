@@ -158,6 +158,8 @@ Type: `String`
 
 Prepend the specified string to the output file. Useful for licensing information.
 
+*Can't be used if you use the `sourcemap` option.*
+
 ### Examples
 
 #### Example config
@@ -258,4 +260,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Wed Aug 21 2013 12:55:17.*
+*This file was generated on Thu Aug 22 2013 03:28:49.*
