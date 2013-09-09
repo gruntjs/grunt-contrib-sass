@@ -93,6 +93,7 @@ module.exports = function (grunt) {
           bannerCallback(file.dest, banner);
         }
 
+        grunt.log.writeln('File "' + file.dest + '" created.');
         next(error);
       });
     }, cb);
