@@ -28,11 +28,12 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "dargs": "~0.1.0"
+    "dargs": "~0.1.0",
+    "async": "~0.2.9"
   },
   "devDependencies": {
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-jshint": "~0.7.2",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-internal": "~0.4.4",
     "grunt": "~0.4.1"

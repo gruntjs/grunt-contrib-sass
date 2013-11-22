@@ -6,12 +6,12 @@
  * Licensed under the MIT license.
  */
 'use strict';
+var path = require('path');
+var dargs = require('dargs');
+var numCPUs = require('os').cpus().length;
+var async = require('async');
 
 module.exports = function (grunt) {
-  var path = require('path');
-  var dargs = require('dargs');
-  var numCPUs = require('os').cpus().length;
-
   var bannerCallback = function (filename, banner) {
     var content;
     grunt.log.verbose.writeln('Writing CSS banner for ' + filename);
@@ -38,7 +38,7 @@ module.exports = function (grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    grunt.util.async.forEachLimit(this.files, numCPUs, function (file, next) {
+    async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
       if (typeof src !== 'string') {
         src = file.orig.src[0];
