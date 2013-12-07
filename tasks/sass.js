@@ -36,8 +36,6 @@ module.exports = function (grunt) {
     passedArgs = dargs(options, ['bundleExec']);
     bundleExec = options.bundleExec;
 
-    grunt.verbose.writeflags(options, 'Options');
-
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
       if (typeof src !== 'string') {
