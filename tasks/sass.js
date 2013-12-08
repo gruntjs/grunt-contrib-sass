@@ -47,6 +47,10 @@ module.exports = function (grunt) {
         return next();
       }
 
+      if (path.basename(src)[0] === '_') {
+        return next();
+      }
+
       var args = [
         src,
         file.dest,
