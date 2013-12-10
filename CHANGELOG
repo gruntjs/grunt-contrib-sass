@@ -1,3 +1,7 @@
+v0.6.0:
+  date: 2013-12-10
+  changes:
+    - Ignore files where filename have leading underscore.
 v0.5.0:
   date: 2013-08-21
   changes:
