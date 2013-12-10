@@ -52,6 +52,13 @@ module.exports = function (grunt) {
           'test/tmp/sass-banner.css': ['test/fixtures/banner.sass'],
           'test/tmp/css-banner.css': ['test/fixtures/banner.css']
         }
+      },
+      ignorePartials: {
+        cwd: 'test/fixtures/partials',
+        src: '*.scss',
+        dest: 'test/tmp',
+        expand: true,
+        ext: '.css'
       }
     }
   });

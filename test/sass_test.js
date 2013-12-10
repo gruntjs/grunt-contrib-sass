@@ -3,7 +3,7 @@ var grunt = require('grunt');
 
 exports.sass = {
   compile: function (test) {
-    test.expect(6);
+    test.expect(7);
 
     var scss = grunt.file.read('test/tmp/scss.css');
     var sass = grunt.file.read('test/tmp/sass.css');
@@ -22,6 +22,8 @@ exports.sass = {
     test.equal(scssBanner, expectedBanner, 'should compile SCSS with a banner to CSS');
     test.equal(sassBanner, expectedBanner, 'should compile SASS with a banner to CSS');
     test.equal(sassBanner, expectedBanner, 'should compile CSS with a banner to CSS');
+
+    test.ok(!grunt.file.exists('test/tmp/_partial.css'), 'underscore partial files should be ignored');
 
     test.done();
   }
