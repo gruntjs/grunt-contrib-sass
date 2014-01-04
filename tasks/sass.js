@@ -10,6 +10,7 @@ var path = require('path');
 var dargs = require('dargs');
 var numCPUs = require('os').cpus().length;
 var async = require('async');
+var chalk = require('chalk');
 
 module.exports = function (grunt) {
   var bannerCallback = function (filename, banner) {
@@ -95,7 +96,7 @@ module.exports = function (grunt) {
           bannerCallback(file.dest, banner);
         }
 
-        grunt.log.writeln('File "' + file.dest + '" created.');
+        grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
         next(error);
       });
     }, cb);
