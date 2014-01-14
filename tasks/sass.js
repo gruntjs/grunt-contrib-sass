@@ -26,6 +26,7 @@ module.exports = function (grunt) {
     var options = this.options();
     var passedArgs;
     var bundleExec;
+    var encoding;
     var banner;
 
     // Unset banner option if set
@@ -34,8 +35,9 @@ module.exports = function (grunt) {
       delete options.banner;
     }
 
-    passedArgs = dargs(options, ['bundleExec']);
+    passedArgs = dargs(options, ['bundleExec', 'encoding']);
     bundleExec = options.bundleExec;
+    encoding = options.encoding;
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
@@ -66,6 +68,10 @@ module.exports = function (grunt) {
 
       if (bundleExec) {
         args.unshift('bundle', 'exec');
+      }
+
+      if (encoding) {
+        args.push('-E', encoding);
       }
 
       // If we're compiling scss or css files

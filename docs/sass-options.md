@@ -123,7 +123,13 @@ Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bu
 
 ## banner
 
-Type: `String`  
+Type: `String`
+
+## encoding
+
+Type: `String`
+
+Forces `sass` to compile files with the specified encoding
 
 Prepend the specified string to the output file. Useful for licensing information.
 
