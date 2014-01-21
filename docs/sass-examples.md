@@ -60,7 +60,7 @@ grunt.initConfig({
 
 ## Compile files in a directory
 
-Instead of naming all files you want to compile, you can use the `expand` property allowing you to specify a directory. More information available in the [grunt docs](https://github.com/gruntjs/grunt/wiki/Configuring-tasks) - `Building the files object dynamically`.
+Instead of naming all files you want to compile, you can use the `expand` property allowing you to specify a directory. More information available in the [grunt docs](http://gruntjs.com/configuring-tasks) - `Building the files object dynamically`.
 
 ```javascript
 grunt.initConfig({
