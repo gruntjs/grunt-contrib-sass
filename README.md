@@ -153,6 +153,11 @@ Default: `false`
 
 Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
 
+#### encoding
+
+Type: `String`
+
+Forces `sass` to compile files with the specified encoding
 
 #### banner
 
