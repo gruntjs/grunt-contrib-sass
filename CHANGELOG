@@ -1,3 +1,7 @@
+v0.7.0:
+  date: 2014-01-26
+  changes:
+    - Improve Windows support.
 v0.6.0:
   date: 2013-12-10
   changes:

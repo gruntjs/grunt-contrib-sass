@@ -1,4 +1,4 @@
-# grunt-contrib-sass v0.6.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.7.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -224,7 +224,7 @@ grunt.initConfig({
 
 #### Compile files in a directory
 
-Instead of naming all files you want to compile, you can use the `expand` property allowing you to specify a directory. More information available in the [grunt docs](https://github.com/gruntjs/grunt/wiki/Configuring-tasks) - `Building the files object dynamically`.
+Instead of naming all files you want to compile, you can use the `expand` property allowing you to specify a directory. More information available in the [grunt docs](http://gruntjs.com/configuring-tasks) - `Building the files object dynamically`.
 
 ```javascript
 grunt.initConfig({
@@ -245,6 +245,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-01-26   v0.7.0   Improve Windows support.
  * 2013-12-10   v0.6.0   Ignore files where filename have leading underscore.
  * 2013-08-21   v0.5.0   Add banner option.
  * 2013-07-06   v0.4.1   Use file.orig.src if file.src does not exist and return early to avoid passing non-existent files to sass binary.
@@ -263,4 +264,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Tue Dec 10 2013 23:59:50.*
+*This file was generated on Sun Jan 26 2014 23:56:36.*
