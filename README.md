@@ -1,4 +1,4 @@
-# grunt-contrib-sass v0.7.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.7.1 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -245,6 +245,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-01-28   v0.7.1   Fix regression of Bundler support.
  * 2014-01-26   v0.7.0   Improve Windows support.
  * 2013-12-10   v0.6.0   Ignore files where filename have leading underscore.
  * 2013-08-21   v0.5.0   Add banner option.
@@ -264,4 +265,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Sun Jan 26 2014 23:56:36.*
+*This file was generated on Tue Jan 28 2014 09:56:57.*

@@ -1,3 +1,7 @@
+v0.7.1:
+  date: 2014-01-28
+  changes:
+    - Fix regression of Bundler support.
 v0.7.0:
   date: 2014-01-26
   changes:
