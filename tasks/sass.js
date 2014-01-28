@@ -59,8 +59,11 @@ module.exports = function (grunt) {
         '--load-path', path.dirname(src)
       ].concat(passedArgs);
 
+      var bin = 'sass';
+
       if (bundleExec) {
-        args.unshift('bundle', 'exec');
+        bin = 'bundle';
+        args.unshift('exec', 'sass');
       }
 
       // If we're compiling scss or css files
@@ -71,7 +74,7 @@ module.exports = function (grunt) {
       // Make sure grunt creates the destination folders
       grunt.file.write(file.dest, '');
 
-      var cp = spawn('sass', args, {stdio: 'inherit'});
+      var cp = spawn(bin, args, {stdio: 'inherit'});
 
       cp.on('error', function (err) {
         grunt.warn(err);
