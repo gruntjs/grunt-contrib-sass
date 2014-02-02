@@ -12,6 +12,7 @@ var numCPUs = require('os').cpus().length;
 var async = require('async');
 var chalk = require('chalk');
 var spawn = require('win-spawn');
+var which = require('which');
 
 module.exports = function (grunt) {
   var bannerCallback = function (filename, banner) {
@@ -28,6 +29,15 @@ module.exports = function (grunt) {
     var passedArgs;
     var bundleExec;
     var banner;
+
+    try {
+      which.sync('sass');
+    } catch (err) {
+      return grunt.warn(
+        '\nYou need to have Ruby and Sass installed and in your PATH for this task to work.\n' +
+        'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
+      );
+    }
 
     // Unset banner option if set
     if (options.banner) {
@@ -81,14 +91,6 @@ module.exports = function (grunt) {
       });
 
       cp.on('close', function (code) {
-        if (code === 127) {
-          return grunt.warn(
-            'You need to have Ruby and Sass installed and in your PATH for\n' +
-            'this task to work. More info:\n' +
-            'https://github.com/gruntjs/grunt-contrib-sass'
-          );
-        }
-
         if (code > 0) {
           return grunt.warn('Exited with error code ' + code);
         }
