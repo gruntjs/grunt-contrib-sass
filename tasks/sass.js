@@ -81,8 +81,10 @@ module.exports = function (grunt) {
         args.push('--scss');
       }
 
-      // Make sure grunt creates the destination folders
-      grunt.file.write(file.dest, '');
+      // Make sure grunt creates the destination folders if they don't exist
+      if(!grunt.file.exists(file.dest)) {
+        grunt.file.write(file.dest, '');
+      }
 
       var cp = spawn(bin, args, {stdio: 'inherit'});
 
