@@ -8,7 +8,7 @@ Default: `false`
 
 Enable Source Maps.
 
-**Requires Sass 3.3.0, which can be installed with `gem install sass --pre`**
+**Requires Sass 3.3.0, which can be installed with `gem install sass`**
 
 
 ## trace
