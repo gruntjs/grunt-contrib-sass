@@ -29,15 +29,7 @@ module.exports = function (grunt) {
     var passedArgs;
     var bundleExec;
     var banner;
-
-    try {
-      which.sync('sass');
-    } catch (err) {
-      return grunt.warn(
-        '\nYou need to have Ruby and Sass installed and in your PATH for this task to work.\n' +
-        'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
-      );
-    }
+    var bin = 'sass';
 
     // Unset banner option if set
     if (options.banner) {
@@ -47,6 +39,19 @@ module.exports = function (grunt) {
 
     passedArgs = dargs(options, ['bundleExec']);
     bundleExec = options.bundleExec;
+
+    if (bundleExec) {
+      bin = 'bundle';
+    }
+
+    try {
+      which.sync(bin);
+    } catch (err) {
+      return grunt.warn(
+        '\nYou need to have Ruby and Sass installed and in your PATH for this task to work.\n' +
+        'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
+      );
+    }
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
@@ -69,10 +74,7 @@ module.exports = function (grunt) {
         '--load-path', path.dirname(src)
       ].concat(passedArgs);
 
-      var bin = 'sass';
-
       if (bundleExec) {
-        bin = 'bundle';
         args.unshift('exec', 'sass');
       }
 
