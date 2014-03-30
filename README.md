@@ -65,7 +65,7 @@ Force Unix newlines in written files.
 Type: `Boolean`  
 Default: `false`
 
-Just check syntax, don't evaluate.
+Just check the Sass syntax, does not evaluate and write the output.
 
 
 #### style
