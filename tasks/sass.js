@@ -23,19 +23,33 @@ module.exports = function (grunt) {
     grunt.file.write(filename, banner + grunt.util.linefeed + content);
   };
 
+  var checkBinary = function (cmd, errMess) {
+    try {
+      which.sync(cmd);
+    }
+    catch (err) {
+      return grunt.warn(
+        '\n' + errMess + '\n' +
+        'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
+      );
+    }
+  };
+
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
     var options = this.options();
-    var passedArgs;
-    var bundleExec;
+    var bundleExec = options.bundleExec;
     var banner;
+    var passedArgs;
 
-    try {
-      which.sync('sass');
-    } catch (err) {
-      return grunt.warn(
-        '\nYou need to have Ruby and Sass installed and in your PATH for this task to work.\n' +
-        'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
+    if (bundleExec) {
+      checkBinary('bundle',
+        'bundleExec options set but no Bundler executable found in your PATH.'
+      );
+    }
+    else {
+      checkBinary('sass',
+        'You need to have Ruby and Sass installed and in your PATH for this task to work.'
       );
     }
 
@@ -46,7 +60,6 @@ module.exports = function (grunt) {
     }
 
     passedArgs = dargs(options, ['bundleExec']);
-    bundleExec = options.bundleExec;
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
