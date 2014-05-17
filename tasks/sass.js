@@ -30,6 +30,12 @@ module.exports = function (grunt) {
     var bundleExec;
     var banner;
 
+    var version = !options.hasOwnProperty('version') ? null : options.version;
+    delete options.version;
+    if (version != null) {
+      version = String(version).trim();
+    }
+
     try {
       which.sync('sass');
     } catch (err) {
@@ -68,6 +74,10 @@ module.exports = function (grunt) {
         file.dest,
         '--load-path', path.dirname(src)
       ].concat(passedArgs);
+
+      if (version) {
+        args.unshift('_' + version + '_');
+      }
 
       var bin = 'sass';
 

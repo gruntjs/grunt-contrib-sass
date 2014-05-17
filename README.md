@@ -34,6 +34,14 @@ Note: Files that begin with "_" are ignored even if they match the globbing patt
 ### Options
 
 
+#### version
+
+Type: `String`  
+Default:
+
+Specifies which version of Sass to use, if multiple versions are installed and you don't want the default one.
+
+
 #### sourcemap
 
 Type: `Boolean`  
