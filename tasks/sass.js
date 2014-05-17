@@ -31,6 +31,7 @@ module.exports = function (grunt) {
     var banner;
 
     var version = !options.hasOwnProperty('version') ? null : options.version;
+    delete options.version;
     if (version != null) {
       version = String(version).trim();
     }
