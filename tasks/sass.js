@@ -55,8 +55,16 @@ module.exports = function (grunt) {
       }
 
       if (!grunt.file.exists(src)) {
-        grunt.log.warn('Source file "' + src + '" not found.');
-        return next();
+        if (options.stopOnError) {
+          // if file does not exist but option stopOnError is set, stop
+          // execution
+          grunt.warn('Source file "' + src + '" not found.');
+        } else {
+          // if option stopOnError has not been set or has been set to false, 
+          // log error message and continue execution
+          grunt.log.warn('Source file "' + src + '" not found.');
+          return next();
+        }
       }
 
       if (path.basename(src)[0] === '_') {
