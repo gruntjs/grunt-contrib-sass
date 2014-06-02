@@ -252,6 +252,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-06-02   v0.7.4   Added optional update options which maps to update argument of sass.
  * 2014-03-06   v0.7.3   Only create empty dest files when they don't already exist.
  * 2014-02-02   v0.7.2   Fix error reporting when Sass is not available.
  * 2014-01-28   v0.7.1   Fix regression of Bundler support.
