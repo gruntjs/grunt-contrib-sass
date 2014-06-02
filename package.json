@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-sass",
   "description": "Compile Sass to CSS",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "homepage": "https://github.com/gruntjs/grunt-contrib-sass",
   "author": {
     "name": "Grunt Team",

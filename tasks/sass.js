@@ -29,6 +29,7 @@ module.exports = function (grunt) {
     var passedArgs;
     var bundleExec;
     var banner;
+    var update;
 
     try {
       which.sync('sass');
@@ -43,6 +44,11 @@ module.exports = function (grunt) {
     if (options.banner) {
       banner = options.banner;
       delete options.banner;
+    }
+
+    if(options.update !== undefined) {
+      update = options.update;
+      delete options.update;
     }
 
     passedArgs = dargs(options, ['bundleExec']);
@@ -79,6 +85,17 @@ module.exports = function (grunt) {
       // If we're compiling scss or css files
       if (path.extname(src) === '.css') {
         args.push('--scss');
+      }
+
+      if(update) {
+        var source = args.shift();
+        var dest = args.shift();
+
+        if(typeof update === 'boolean') {
+          args.unshift('--update', source + ':' + dest);  
+        } else {
+          args.unshift('--update', update);
+        }
       }
 
       // Make sure grunt creates the destination folders if they don't exist

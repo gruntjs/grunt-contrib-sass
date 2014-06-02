@@ -59,6 +59,13 @@ Default: `false` on Windows, otherwise `true`
 
 Force Unix newlines in written files.
 
+#### update
+
+Type: `Boolean`  
+Default: `false`
+
+Only update files when there are changes. This is faster than normal compilation.
+
 
 #### check
 
