@@ -6,6 +6,7 @@
  * Licensed under the MIT license.
  */
 'use strict';
+var fs = require('fs');
 var path = require('path');
 var dargs = require('dargs');
 var numCPUs = require('os').cpus().length;
@@ -53,6 +54,19 @@ module.exports = function (grunt) {
 
     passedArgs = dargs(options, ['bundleExec']);
     bundleExec = options.bundleExec;
+
+    var orgConfig = this.data;
+
+    // If expand is set to false we are going to let sass run the
+    // whole directory as a set.
+    if(update && orgConfig.files && orgConfig.files[0].expand !== true) {
+      var orgFiles = orgConfig.files[0];
+      this.files = [{
+        src: [grunt.config.process(orgFiles.cwd)],
+        dest: grunt.config.process(orgFiles.dest),
+        orig: orgFiles
+      }];
+    }
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
