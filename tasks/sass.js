@@ -8,7 +8,7 @@
 'use strict';
 var path = require('path');
 var dargs = require('dargs');
-var numCPUs = require('os').cpus().length;
+var numCPUs = 1;
 var async = require('async');
 var chalk = require('chalk');
 var spawn = require('win-spawn');
@@ -51,6 +51,10 @@ module.exports = function (grunt) {
       checkBinary('sass',
         'You need to have Ruby and Sass installed and in your PATH for this task to work.'
       );
+    }
+
+    if (typeof require('os').cpus() !== "undefined") {
+      numCPUs = require('os').cpus().length;
     }
 
     // Unset banner option if set
