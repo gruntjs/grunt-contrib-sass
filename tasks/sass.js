@@ -8,7 +8,7 @@
 'use strict';
 var path = require('path');
 var dargs = require('dargs');
-var numCPUs = require('os').cpus().length;
+var numCPUs = require('os').cpus().length || 1;
 var async = require('async');
 var chalk = require('chalk');
 var spawn = require('win-spawn');
