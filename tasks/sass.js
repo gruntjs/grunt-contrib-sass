@@ -99,6 +99,8 @@ module.exports = function (grunt) {
         grunt.file.write(file.dest, '');
       }
 
+      grunt.verbose.writeln('Command: ' + bin + ' ' + args.join(' '));
+
       var cp = spawn(bin, args, {stdio: 'inherit'});
 
       cp.on('error', function (err) {
