@@ -73,7 +73,7 @@ Only update files when there are changes. This is faster than normal compilation
 Type: `Boolean`  
 Default: `false`
 
-Just check syntax, don't evaluate.
+Just check the Sass syntax, does not evaluate and write the output.
 
 
 #### style
@@ -276,4 +276,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Mon Jun 02 2014 17:31:51.*
+*This file was generated on Fri Aug 01 2014 19:45:26.*
