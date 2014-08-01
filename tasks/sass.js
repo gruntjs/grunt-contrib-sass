@@ -9,7 +9,7 @@
 var fs = require('fs');
 var path = require('path');
 var dargs = require('dargs');
-var numCPUs = require('os').cpus().length;
+var numCPUs = require('os').cpus().length || 1;
 var async = require('async');
 var chalk = require('chalk');
 var spawn = require('win-spawn');
@@ -24,20 +24,34 @@ module.exports = function (grunt) {
     grunt.file.write(filename, banner + grunt.util.linefeed + content);
   };
 
+  var checkBinary = function (cmd, errMess) {
+    try {
+      which.sync(cmd);
+    }
+    catch (err) {
+      return grunt.warn(
+        '\n' + errMess + '\n' +
+        'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
+      );
+    }
+  };
+
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
     var options = this.options();
-    var passedArgs;
-    var bundleExec;
+    var bundleExec = options.bundleExec;
     var banner;
+    var passedArgs;
     var update;
 
-    try {
-      which.sync('sass');
-    } catch (err) {
-      return grunt.warn(
-        '\nYou need to have Ruby and Sass installed and in your PATH for this task to work.\n' +
-        'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
+    if (bundleExec) {
+      checkBinary('bundle',
+        'bundleExec options set but no Bundler executable found in your PATH.'
+      );
+    }
+    else {
+      checkBinary('sass',
+        'You need to have Ruby and Sass installed and in your PATH for this task to work.'
       );
     }
 
@@ -53,7 +67,6 @@ module.exports = function (grunt) {
     }
 
     passedArgs = dargs(options, ['bundleExec']);
-    bundleExec = options.bundleExec;
 
     var orgConfig = this.data;
 
@@ -116,6 +129,8 @@ module.exports = function (grunt) {
       if(!grunt.file.exists(file.dest)) {
         grunt.file.write(file.dest, '');
       }
+
+      grunt.verbose.writeln('Command: ' + bin + ' ' + args.join(' '));
 
       var cp = spawn(bin, args, {stdio: 'inherit'});
 
