@@ -59,7 +59,7 @@ module.exports = function (grunt) {
 
     // If expand is set to false we are going to let sass run the
     // whole directory as a set.
-    if(update && orgConfig.files && orgConfig.files[0].expand !== true) {
+    if(update && Array.isArray(orgConfig.files) && orgConfig.files[0].expand !== true) {
       var orgFiles = orgConfig.files[0];
       this.files = [{
         src: [grunt.config.process(orgFiles.cwd)],
