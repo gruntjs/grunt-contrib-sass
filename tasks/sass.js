@@ -6,6 +6,7 @@
  * Licensed under the MIT license.
  */
 'use strict';
+var fs = require('fs');
 var path = require('path');
 var dargs = require('dargs');
 var numCPUs = require('os').cpus().length || 1;
@@ -37,6 +38,8 @@ module.exports = function (grunt) {
     var bundleExec = options.bundleExec;
     var banner;
     var passedArgs;
+    var update;
+    var force;
 
     if (bundleExec) {
       checkBinary('bundle',
@@ -54,7 +57,27 @@ module.exports = function (grunt) {
       delete options.banner;
     }
 
+    if(options.update !== undefined) {
+      update = options.update;
+      delete options.update;
+    } else {
+      delete options.force;  
+    }
+
     passedArgs = dargs(options, ['bundleExec']);
+
+    var orgConfig = this.data;
+
+    // If expand is set to false we are going to let sass run the
+    // whole directory as a set.
+    if(update && Array.isArray(orgConfig.files) && orgConfig.files[0].expand !== true) {
+      var orgFiles = orgConfig.files[0];
+      this.files = [{
+        src: [grunt.config.process(orgFiles.cwd)],
+        dest: grunt.config.process(orgFiles.dest),
+        orig: orgFiles
+      }];
+    }
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
@@ -87,6 +110,17 @@ module.exports = function (grunt) {
       // If we're compiling scss or css files
       if (path.extname(src) === '.css') {
         args.push('--scss');
+      }
+
+      if(update) {
+        var source = args.shift();
+        var dest = args.shift();
+
+        if(typeof update === 'boolean') {
+          args.unshift('--update', source + ':' + dest);  
+        } else {
+          args.unshift('--update', update);
+        }
       }
 
       // Make sure grunt creates the destination folders if they don't exist

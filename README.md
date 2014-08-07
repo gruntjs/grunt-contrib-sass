@@ -1,4 +1,4 @@
-# grunt-contrib-sass v0.7.3 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.7.4 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -60,12 +60,28 @@ Default: `false` on Windows, otherwise `true`
 Force Unix newlines in written files.
 
 
+#### update
+ 
+Type: `Boolean`  
+Default: `false`
+ 
+Only update files when there are changes. This is faster than normal compilation. Also allows for a whole directory to be processed as a set. For this set `expand` to false in the files object and specify a directory as `src` and `dest`.
+
+
+#### force
+ 
+Type: `Boolean`  
+Default: `false`
+ 
+Recompile all Sass files, even if the CSS file is newer. Only works when `update` is set to `true`.
+
+
 #### check
 
 Type: `Boolean`  
 Default: `false`
 
-Just check syntax, don't evaluate.
+Just check the Sass syntax, does not evaluate and write the output.
 
 
 #### style
@@ -245,6 +261,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-06-02   v0.7.4   Added optional update options which maps to update argument of sass
  * 2014-03-06   v0.7.3   Only create empty dest files when they don't already exist.
  * 2014-02-02   v0.7.2   Fix error reporting when Sass is not available.
  * 2014-01-28   v0.7.1   Fix regression of Bundler support.
@@ -267,4 +284,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Thu Mar 06 2014 14:43:40.*
+*This file was generated on Thu Aug 07 2014 14:19:46.*
