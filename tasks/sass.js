@@ -78,8 +78,7 @@ module.exports = function (grunt) {
 
       var args = [
         src,
-        file.dest,
-        '--load-path', path.dirname(src)
+        file.dest
       ].concat(passedArgs);
 
       var bin = 'sass';
