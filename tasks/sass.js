@@ -43,6 +43,7 @@ module.exports = function (grunt) {
     var banner;
     var passedArgs;
     var update;
+    var force;
 
     if (bundleExec) {
       checkBinary('bundle',
@@ -64,6 +65,8 @@ module.exports = function (grunt) {
     if(options.update !== undefined) {
       update = options.update;
       delete options.update;
+    } else {
+      delete options.force;  
     }
 
     passedArgs = dargs(options, ['bundleExec']);

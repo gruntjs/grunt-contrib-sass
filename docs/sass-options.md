@@ -32,7 +32,15 @@ Force Unix newlines in written files.
 Type: `Boolean`  
 Default: `false`
  
-Only update files when there are changes. This is faster than normal compilation.
+Only update files when there are changes. This is faster than normal compilation. Also allows for a whole directory to be processed as a set. For this set `expand` to false in the files object and specify a directory as `src` and `dest`.
+
+
+## force
+ 
+Type: `Boolean`  
+Default: `false`
+ 
+Recompile all Sass files, even if the CSS file is newer. Only works when `update` is set to `true`.
 
 
 ## check
