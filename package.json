@@ -7,42 +7,35 @@
     "name": "Grunt Team",
     "url": "http://gruntjs.com/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/gruntjs/grunt-contrib-sass.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gruntjs/grunt-contrib-sass/issues"
-  },
+  "repository": "gruntjs/grunt-contrib-sass",
   "licenses": [
     {
       "type": "MIT",
       "url": "https://github.com/gruntjs/grunt-contrib-sass/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "Gruntfile.js",
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.0"
   },
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
-    "dargs": "~0.1.0",
-    "async": "~0.2.9",
-    "chalk": "~0.4.0",
-    "win-spawn": "~2.0.0",
-    "which": "~1.0.5"
+    "async": "^0.9.0",
+    "chalk": "^0.5.1",
+    "dargs": "^0.1.0",
+    "which": "^1.0.5",
+    "win-spawn": "^2.0.0"
   },
   "devDependencies": {
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-internal": "~0.4.4",
-    "grunt": "~0.4.1"
+    "grunt": "^0.4.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-internal": "^0.4.4",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.4.1"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin",
