@@ -16,18 +16,14 @@ var which = require('which');
 
 module.exports = function (grunt) {
   var bannerCallback = function (filename, banner) {
-    var content;
-    grunt.log.verbose.writeln('Writing CSS banner for ' + filename);
-
-    content = grunt.file.read(filename);
-    grunt.file.write(filename, banner + grunt.util.linefeed + content);
+    grunt.verbose.writeln('Writing CSS banner for ' + filename);
+    grunt.file.write(filename, banner + grunt.util.linefeed + grunt.file.read(filename));
   };
 
   var checkBinary = function (cmd, errMess) {
     try {
       which.sync(cmd);
-    }
-    catch (err) {
+    } catch (err) {
       return grunt.warn(
         '\n' + errMess + '\n' +
         'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
@@ -46,8 +42,7 @@ module.exports = function (grunt) {
       checkBinary('bundle',
         'bundleExec options set but no Bundler executable found in your PATH.'
       );
-    }
-    else {
+    } else {
       checkBinary('sass',
         'You need to have Ruby and Sass installed and in your PATH for this task to work.'
       );
@@ -63,6 +58,7 @@ module.exports = function (grunt) {
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
+
       if (typeof src !== 'string') {
         src = file.orig.src[0];
       }
@@ -116,7 +112,7 @@ module.exports = function (grunt) {
           bannerCallback(file.dest, banner);
         }
 
-        grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
+        grunt.verbose.writeln('File ' + chalk.cyan(file.dest) + ' created.');
         next();
       });
     }, cb);
