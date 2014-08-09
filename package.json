@@ -28,9 +28,9 @@
     "win-spawn": "^2.0.0"
   },
   "devDependencies": {
-    "grunt": "^0.4.1",
+    "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-internal": "^0.4.4",
+    "grunt-contrib-internal": "^0.4.10",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.4.1"
   },

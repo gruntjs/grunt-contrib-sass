@@ -1,3 +1,9 @@
+v0.7.4:
+  date: 2014-08-09
+  changes:
+    - Fix bundleExec option.
+    - Fix `os.cpus()` issue.
+    - Log `sass` command when `--verbose` flag is set.
 v0.7.3:
   date: 2014-03-06
   changes:

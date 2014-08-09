@@ -1,11 +1,11 @@
-# grunt-contrib-sass v0.7.3 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.7.4 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
 
 
 ## Getting Started
-This plugin requires Grunt `~0.4.0`
+This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -65,7 +65,7 @@ Force Unix newlines in written files.
 Type: `Boolean`  
 Default: `false`
 
-Just check syntax, don't evaluate.
+Just check the Sass syntax, does not evaluate and write the output.
 
 
 #### style
@@ -245,6 +245,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-08-09   v0.7.4   Fix bundleExec option. Fix `os.cpus()` issue. Log `sass` command when `--verbose` flag is set.
  * 2014-03-06   v0.7.3   Only create empty dest files when they don't already exist.
  * 2014-02-02   v0.7.2   Fix error reporting when Sass is not available.
  * 2014-01-28   v0.7.1   Fix regression of Bundler support.
@@ -267,4 +268,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Thu Mar 06 2014 14:43:40.*
+*This file was generated on Sat Aug 09 2014 15:21:14.*
