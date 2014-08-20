@@ -60,6 +60,19 @@ module.exports = function (grunt) {
         dest: 'test/tmp',
         expand: true,
         ext: '.css'
+      },
+      updateTrue: {
+        options: {
+          update: true,
+          // 'no-cache': true,
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures',
+          src: ['updatetrue.scss', 'updatetrue.sass', 'updatetrue.css'],
+          dest: 'test/tmp',
+          ext: '.css'
+        }]
       }
     }
   });

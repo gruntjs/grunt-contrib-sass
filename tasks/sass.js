@@ -58,6 +58,7 @@ module.exports = function (grunt) {
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
+      console.log(src);
 
       if (typeof src !== 'string') {
         src = file.orig.src[0];
@@ -76,6 +77,16 @@ module.exports = function (grunt) {
         src,
         file.dest
       ].concat(passedArgs);
+
+      if (options.update) {
+        if (!grunt.file.exists(file.dest)) {
+          var index = args.indexOf('--update');
+          args.splice(index, 1);
+        } else {
+          var sassPath = args.shift()+':'+args.shift();
+          args.push(sassPath);
+        }
+      }
 
       var bin = 'sass';
 
