@@ -58,7 +58,6 @@ module.exports = function (grunt) {
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
-      console.log(src);
 
       if (typeof src !== 'string') {
         src = file.orig.src[0];
