@@ -63,8 +63,7 @@ module.exports = function (grunt) {
       },
       updateTrue: {
         options: {
-          update: true,
-          // 'no-cache': true,
+          update: true
         },
         files: [{
           expand: true,
