@@ -32,7 +32,7 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-internal": "^0.4.10",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-nodeunit": "^0.4.1"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
