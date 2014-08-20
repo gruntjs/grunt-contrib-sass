@@ -36,7 +36,7 @@ Note: Files that begin with "_" are ignored even if they match the globbing patt
 
 #### sourcemap
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Enable Source Maps.
@@ -46,7 +46,7 @@ Enable Source Maps.
 
 #### trace
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Show a full traceback on error.
@@ -54,7 +54,7 @@ Show a full traceback on error.
 
 #### unixNewlines
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false` on Windows, otherwise `true`
 
 Force Unix newlines in written files.
@@ -62,7 +62,7 @@ Force Unix newlines in written files.
 
 #### check
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Just check the Sass syntax, does not evaluate and write the output.
@@ -70,7 +70,7 @@ Just check the Sass syntax, does not evaluate and write the output.
 
 #### style
 
-Type: `String`
+Type: `String`  
 Default: `nested`
 
 Output style. Can be `nested`, `compact`, `compressed`, `expanded`.
@@ -78,7 +78,7 @@ Output style. Can be `nested`, `compact`, `compressed`, `expanded`.
 
 #### precision
 
-Type: `Number`
+Type: `Number`  
 Default: `3`
 
 How many digits of precision to use when outputting decimal numbers.
@@ -86,7 +86,7 @@ How many digits of precision to use when outputting decimal numbers.
 
 #### quiet
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Silence warnings and status messages during compilation.
@@ -94,7 +94,7 @@ Silence warnings and status messages during compilation.
 
 #### compass
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Make Compass imports available and load project configuration (`config.rb` located close to the `Gruntfile.js`).
@@ -102,7 +102,7 @@ Make Compass imports available and load project configuration (`config.rb` locat
 
 #### debugInfo
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Emit extra information in the generated CSS that can be used by the FireSass Firebug plugin.
@@ -110,7 +110,7 @@ Emit extra information in the generated CSS that can be used by the FireSass Fir
 
 #### lineNumbers
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Emit comments in the generated CSS indicating the corresponding source line.
@@ -132,7 +132,7 @@ Require a (or multiple) Ruby library before running Sass.
 
 #### cacheLocation
 
-Type: `String`
+Type: `String`  
 Default: `.sass-cache`
 
 The path to put cached Sass files.
@@ -140,7 +140,7 @@ The path to put cached Sass files.
 
 #### noCache
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Don't cache to sassc files.
@@ -148,7 +148,7 @@ Don't cache to sassc files.
 
 #### bundleExec
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
@@ -156,18 +156,11 @@ Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bu
 
 #### banner
 
-Type: `String`
+Type: `String`  
 
 Prepend the specified string to the output file. Useful for licensing information.
 
 *Can't be used if you use the `sourcemap` option.*
-
-#### update
-
-Type: `Boolean`
-Default: `false`
-
-Prevent files that haven't changed from compiling.
 
 ### Examples
 
@@ -275,4 +268,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Sat Aug 09 2014 15:21:14.*
+*This file was generated on Wed Aug 20 2014 11:01:33.*
