@@ -31,11 +31,45 @@ module.exports = function (grunt) {
     }
   };
 
+  var getDependencies = function (needle, haystack) {
+    //__ REMOVE THE NEEDLE FROM THE ARRAY OF FILES BECAUSE A FILE SHOULD NOT IMPORT ITSELF
+    var index = haystack.indexOf(needle);
+    var dependentFiles = [];
+    var straw;
+    haystack.splice(index, 1);
+
+    for(straw in haystack) {
+      //_ DEFINE CURRENT FILE
+      var curfile = haystack[straw];
+      var check = chalk.bold.bgYellow()
+
+      var relpath = path.relative(curfile, needle); //__ GET RELATIVE PATH BETWEEN OUR CURRENT FILE AND OUR NEEDLE
+      var string_to_look_in_for_import_statement = grunt.file.read(curfile);
+      var import_statement_to_look_for = relpath.replace('../', '').replace('/_','/').replace(path.extname(relpath),'');
+      if( import_statement_to_look_for.substr(0,1) === "_" ){
+        import_statement_to_look_for = import_statement_to_look_for.replace('_','');
+      }
+      if(string_to_look_in_for_import_statement.indexOf(import_statement_to_look_for) !== -1){
+        var ispartial = (path.basename(curfile).substr(0,1) === '_' ? true : false);
+        if(ispartial){
+          getDependencies(curfile,haystack);
+        } else {
+          if(dependentFiles.indexOf(curfile) == -1){ //__ dont repeat files in array;
+            dependentFiles.push(curfile);
+          }
+        }
+      }
+    }
+    return dependentFiles;
+  }
+
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
     var options = this.options();
+    var asyncArray = this.files;
     var bundleExec = options.bundleExec;
     var banner;
+    var checkDependentFiles;
     var passedArgs;
 
     if (bundleExec) {
@@ -54,21 +88,45 @@ module.exports = function (grunt) {
       delete options.banner;
     }
 
+    // Unset checkDependentFiles option if set
+    if (options.checkDependentFiles) {
+      checkDependentFiles = options.checkDependentFiles;
+      delete options.checkDependentFiles;
+    }
+
     passedArgs = dargs(options, ['bundleExec']);
 
-    async.eachLimit(this.files, numCPUs, function (file, next) {
+    async.eachLimit(asyncArray, numCPUs, function (file, next) {
       var src = file.src[0];
+      console.log( chalk.red.bgWhite.bold('ASYNC ARRAY') )
+      console.log(asyncArray);
+      console.log();
 
       if (typeof src !== 'string') {
         src = file.orig.src[0];
       }
 
-      if (!grunt.file.exists(src)) {
-        grunt.log.warn('Source file "' + src + '" not found.');
-        return next();
+      if (path.basename(src)[0] === '_') {
+        // check if checkDependentFiles is defined
+        // or if the file we're compiling is *.css
+        // SASS doesn't import css files AS css files -- this might be fixed with SASS 4.0;
+        if (!checkDependentFiles || path.extname(src) === '.css') {
+          return next();
+        } else {
+          // console.log('checking dependent files...');
+          var needle = src;
+          var ext = path.extname(src);
+          var globbingPattern = '**/*'+ext;
+          var haystack = grunt.file.expand(globbingPattern);
+        }
+        var toPush = getDependencies(needle, haystack);
+        console.log(toPush);
+        // asyncArray.push('this is a test');
+        asyncArray.push('PUSHING/TEST!');
       }
 
-      if (path.basename(src)[0] === '_') {
+      if (!grunt.file.exists(src)) {
+        grunt.log.warn('Source file "' + src + '" not found.');
         return next();
       }
 

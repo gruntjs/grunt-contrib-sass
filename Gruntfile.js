@@ -60,6 +60,27 @@ module.exports = function (grunt) {
         dest: 'test/tmp',
         expand: true,
         ext: '.css'
+      },
+      dependentFiles: {
+        options: {
+          checkDependentFiles: true
+        },
+        files: [{
+          cwd: 'test/',
+          src: '**/*.scss',
+          dest: 'test/tmp',
+          expand: true,
+          ext: '.css'
+        }]
+      },
+      dependentFilesNoCwd: {
+        options: {
+          checkDependentFiles: true
+        },
+        files: {
+          'test/tmp/partial.css': ['test/fixtures/partials/_partial.scss'],
+          'test/tmp/css-banner.css': ['test/fixtures/banner.css']
+        }
       }
     }
   });
