@@ -32,6 +32,7 @@ module.exports = function (grunt) {
   };
 
   var getDependencies = function (needle, haystack) {
+
     //__ REMOVE THE NEEDLE FROM THE ARRAY OF FILES BECAUSE A FILE SHOULD NOT IMPORT ITSELF
     var index = haystack.indexOf(needle);
     var dependentFiles = [];
@@ -41,7 +42,6 @@ module.exports = function (grunt) {
     for(straw in haystack) {
       //_ DEFINE CURRENT FILE
       var curfile = haystack[straw];
-      var check = chalk.bold.bgYellow()
 
       var relpath = path.relative(curfile, needle); //__ GET RELATIVE PATH BETWEEN OUR CURRENT FILE AND OUR NEEDLE
       var string_to_look_in_for_import_statement = grunt.file.read(curfile);
@@ -54,14 +54,14 @@ module.exports = function (grunt) {
         if(ispartial){
           getDependencies(curfile,haystack);
         } else {
-          if(dependentFiles.indexOf(curfile) == -1){ //__ dont repeat files in array;
+          if(dependentFiles.indexOf(curfile) === -1){ //__ dont repeat files in array;
             dependentFiles.push(curfile);
           }
         }
       }
     }
     return dependentFiles;
-  }
+  };
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
@@ -98,9 +98,6 @@ module.exports = function (grunt) {
 
     async.eachLimit(asyncArray, numCPUs, function (file, next) {
       var src = file.src[0];
-      console.log( chalk.red.bgWhite.bold('ASYNC ARRAY') )
-      console.log(asyncArray);
-      console.log();
 
       if (typeof src !== 'string') {
         src = file.orig.src[0];
@@ -109,20 +106,31 @@ module.exports = function (grunt) {
       if (path.basename(src)[0] === '_') {
         // check if checkDependentFiles is defined
         // or if the file we're compiling is *.css
-        // SASS doesn't import css files AS css files -- this might be fixed with SASS 4.0;
+        // SASS doesn't import css files as scss or sass files -- this might be fixed with SASS 4.0;
         if (!checkDependentFiles || path.extname(src) === '.css') {
           return next();
         } else {
-          // console.log('checking dependent files...');
-          var needle = src;
+          console.log()
+          console.log(file)
           var ext = path.extname(src);
           var globbingPattern = '**/*'+ext;
           var haystack = grunt.file.expand(globbingPattern);
+          var newFilesToPush = getDependencies(src, haystack);
+          for(var i in newFilesToPush){
+            var newFile = newFilesToPush[i];
+            var basename = path.basename(newFile, ext) + '.css';
+            var dest = path.dirname(file.dest) + '/' + basename;
+            var addToAsyncArray = {
+              src: [newFile],
+              dest: dest,
+              orig: file.orig
+            };
+            console.log(chalk.red('asyncArray'));
+            console.log(asyncArray);
+            asyncArray.push(addToAsyncArray);
+          }
+          return next();
         }
-        var toPush = getDependencies(needle, haystack);
-        console.log(toPush);
-        // asyncArray.push('this is a test');
-        asyncArray.push('PUSHING/TEST!');
       }
 
       if (!grunt.file.exists(src)) {
