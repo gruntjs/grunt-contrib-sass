@@ -105,7 +105,7 @@ module.exports = function (grunt) {
       }
 
       // Make sure grunt creates the destination folders if they don't exist
-      if(!grunt.file.exists(file.dest)) {
+      if (!grunt.file.exists(file.dest)) {
         grunt.file.write(file.dest, '');
       }
 
