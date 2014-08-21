@@ -26,5 +26,20 @@ exports.sass = {
     test.ok(!grunt.file.exists('test/tmp/_partial.css'), 'underscore partial files should be ignored');
 
     test.done();
+  },
+
+  update: function (test) {
+    test.expect(3);
+
+    var scss = grunt.file.read('test/tmp/updatetrue.css');
+    var sass = grunt.file.read('test/tmp/updatetrue.css');
+    var css = grunt.file.read('test/tmp/updatetrue.css');
+    var expected = grunt.file.read('test/expected/updatetrue.css');
+
+    test.equal(scss, expected, 'should compile SCSS to CSS');
+    test.equal(sass, expected, 'should compile SASS to CSS');
+    test.equal(css, expected, 'should compile CSS to CSS');
+
+    test.done();
   }
 };

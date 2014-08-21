@@ -77,6 +77,21 @@ module.exports = function (grunt) {
         file.dest
       ].concat(passedArgs);
 
+      if (options.update) {
+        // When the source file hasn't yet been compiled SASS will write an empty file.
+        // If this is the first time the file has been written we treat it as a if update was not passed
+        if (!grunt.file.exists(file.dest)) {
+          // Find where the --update flag is and remove it.
+          var index = args.indexOf('--update');
+          args.splice(index, 1);
+        } else {
+          // The first two elements in args is our source and destination files,
+          // we use those values to build a path that SASS recognizes namely: source:destination
+          var sassPath = args.shift() + ':' + args.shift();
+          args.push(sassPath);
+        }
+      }
+
       var bin = 'sass';
 
       if (bundleExec) {
