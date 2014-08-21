@@ -168,7 +168,7 @@ Prepend the specified string to the output file. Useful for licensing informatio
 Type: `Boolean`  
 Default: `false`
 
-Prevent files that haven't changed from compiling.
+Only compile changed files.
 
 ### Examples
 
@@ -276,4 +276,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Wed Aug 20 2014 11:01:33.*
+*This file was generated on Thu Aug 21 2014 17:38:30.*
