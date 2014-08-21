@@ -75,16 +75,16 @@ module.exports = function (grunt) {
           ext: '.css'
         }]
       },
-      dependentFilesNoCwd: {
-        options: {
-          checkDependentFiles: true
-        },
-        files: {
-          'test/tmp/import_partial-scss.css': ['test/fixtures/import_partial.scss'],
-          'test/tmp/import_partial-sass.css': ['test/fixtures/import_partial.sass'],
-          'test/tmp/anotherFolder/import_partial_deeper-scss.css': ['test/fixtures/partials/_partial.scss'],
-        }
-      }
+      // dependentFilesNoCwd: {
+      //   options: {
+      //     checkDependentFiles: true
+      //   },
+      //   files: {
+      //     'test/tmp/import_partial-scss.css': ['test/fixtures/import_partial.scss'],
+      //     'test/tmp/import_partial-sass.css': ['test/fixtures/import_partial.sass'],
+      //     'test/tmp/anotherFolder/import_partial_deeper-scss.css': ['test/fixtures/partials/_partial.scss'],
+      //   }
+      // }
     }
   });
 

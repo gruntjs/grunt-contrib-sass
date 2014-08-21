@@ -110,14 +110,19 @@ module.exports = function (grunt) {
         if (!checkDependentFiles || path.extname(src) === '.css') {
           return next();
         } else {
-          console.log()
-          console.log(file)
+          // console.log(
+          //   chalk.black.bgYellow.bold('THIS IS FILE INFORMATION')
+          // );
+          // console.log(file)
           var ext = path.extname(src);
           var globbingPattern = '**/*'+ext;
           var haystack = grunt.file.expand(globbingPattern);
           var newFilesToPush = getDependencies(src, haystack);
           for(var i in newFilesToPush){
             var newFile = newFilesToPush[i];
+            console.log(
+              chalk.red.bgWhite.bold(newFile)
+            );
             var basename = path.basename(newFile, ext) + '.css';
             var dest = path.dirname(file.dest) + '/' + basename;
             var addToAsyncArray = {
@@ -125,8 +130,6 @@ module.exports = function (grunt) {
               dest: dest,
               orig: file.orig
             };
-            console.log(chalk.red('asyncArray'));
-            console.log(asyncArray);
             asyncArray.push(addToAsyncArray);
           }
           return next();
