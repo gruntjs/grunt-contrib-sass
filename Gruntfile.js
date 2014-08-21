@@ -72,7 +72,7 @@ module.exports = function (grunt) {
           dest: 'test/tmp',
           ext: '.css'
         }]
-      }
+      },
       dependentFiles: {
         options: {
           checkDependentFiles: true
