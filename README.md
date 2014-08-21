@@ -1,4 +1,4 @@
-# grunt-contrib-sass v0.7.4 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.8.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -258,6 +258,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-08-21   v0.8.0   Support Sass 3.4 Source Map option. Add `update` option.
  * 2014-08-09   v0.7.4   Fix bundleExec option. Fix `os.cpus()` issue. Log `sass` command when `--verbose` flag is set.
  * 2014-03-06   v0.7.3   Only create empty dest files when they don't already exist.
  * 2014-02-02   v0.7.2   Fix error reporting when Sass is not available.
@@ -281,4 +282,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Thu Aug 21 2014 17:50:54.*
+*This file was generated on Thu Aug 21 2014 17:55:01.*
