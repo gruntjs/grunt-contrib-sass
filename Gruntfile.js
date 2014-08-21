@@ -33,9 +33,7 @@ module.exports = function (grunt) {
     },
     sass: {
       options: {
-        //debugInfo: true,
-        // style: 'expanded',
-        // bundleExec: true
+        sourcemap: 'none'
       },
       compile: {
         files: {

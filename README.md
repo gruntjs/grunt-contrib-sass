@@ -1,4 +1,4 @@
-# grunt-contrib-sass v0.7.4 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.8.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -36,12 +36,17 @@ Note: Files that begin with "_" are ignored even if they match the globbing patt
 
 #### sourcemap
 
-Type: `Boolean`  
-Default: `false`
+Type: `String`  
+Default: `auto`
 
-Enable Source Maps.
+Values:
 
-**Requires Sass 3.3.0, which can be installed with `gem install sass`**
+- `auto` - relative paths where possible, file URIs elsewhere
+- `file` - always absolute file URIs
+- `inline` - include the source text in the sourcemap
+- `none`- no sourcemaps
+
+**Requires Sass 3.4.0, which can be installed with `gem install sass`**
 
 
 #### trace
@@ -168,7 +173,7 @@ Prepend the specified string to the output file. Useful for licensing informatio
 Type: `Boolean`  
 Default: `false`
 
-Prevent files that haven't changed from compiling.
+Only compile changed files.
 
 ### Examples
 
@@ -253,6 +258,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2014-08-21   v0.8.0   Support Sass 3.4 Source Map option. Add `update` option.
  * 2014-08-09   v0.7.4   Fix bundleExec option. Fix `os.cpus()` issue. Log `sass` command when `--verbose` flag is set.
  * 2014-03-06   v0.7.3   Only create empty dest files when they don't already exist.
  * 2014-02-02   v0.7.2   Fix error reporting when Sass is not available.
@@ -276,4 +282,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Wed Aug 20 2014 11:01:33.*
+*This file was generated on Thu Aug 21 2014 17:55:01.*

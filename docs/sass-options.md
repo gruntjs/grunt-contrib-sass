@@ -3,12 +3,17 @@
 
 ## sourcemap
 
-Type: `Boolean`  
-Default: `false`
+Type: `String`  
+Default: `auto`
 
-Enable Source Maps.
+Values:
 
-**Requires Sass 3.3.0, which can be installed with `gem install sass`**
+- `auto` - relative paths where possible, file URIs elsewhere
+- `file` - always absolute file URIs
+- `inline` - include the source text in the sourcemap
+- `none`- no sourcemaps
+
+**Requires Sass 3.4.0, which can be installed with `gem install sass`**
 
 
 ## trace
@@ -130,11 +135,9 @@ Prepend the specified string to the output file. Useful for licensing informatio
 *Can't be used if you use the `sourcemap` option.*
 
 
-#### update
+## update
 
 Type: `Boolean`  
 Default: `false`
 
-Prevent files that haven't changed from compiling.
-
-
+Only compile changed files.
