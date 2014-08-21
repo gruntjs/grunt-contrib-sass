@@ -61,6 +61,18 @@ module.exports = function (grunt) {
         expand: true,
         ext: '.css'
       },
+      updateTrue: {
+        options: {
+          update: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures',
+          src: ['updatetrue.scss', 'updatetrue.sass', 'updatetrue.css'],
+          dest: 'test/tmp',
+          ext: '.css'
+        }]
+      }
       dependentFiles: {
         options: {
           checkDependentFiles: true

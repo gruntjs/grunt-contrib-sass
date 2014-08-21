@@ -162,6 +162,14 @@ Prepend the specified string to the output file. Useful for licensing informatio
 
 *Can't be used if you use the `sourcemap` option.*
 
+
+#### update
+
+Type: `Boolean`  
+Default: `false`
+
+Prevent files that haven't changed from compiling.
+
 ### Examples
 
 #### Example config
@@ -268,4 +276,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Sat Aug 09 2014 15:21:14.*
+*This file was generated on Wed Aug 20 2014 11:01:33.*
