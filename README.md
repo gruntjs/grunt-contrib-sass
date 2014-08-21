@@ -162,6 +162,14 @@ Prepend the specified string to the output file. Useful for licensing informatio
 
 *Can't be used if you use the `sourcemap` option.*
 
+
+#### update
+
+Type: `Boolean`  
+Default: `false`
+
+Prevent files that haven't changed from compiling.
+
 ### Examples
 
 #### Example config
