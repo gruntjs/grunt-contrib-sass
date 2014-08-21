@@ -103,6 +103,7 @@ module.exports = function (grunt) {
         src = file.orig.src[0];
       }
 
+      // If this file is a partial...
       if (path.basename(src)[0] === '_') {
         // check if checkDependentFiles is defined
         // or if the file we're compiling is *.css
