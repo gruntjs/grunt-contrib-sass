@@ -121,7 +121,10 @@ module.exports = function (grunt) {
           for(var i in newFilesToPush){
             var newFile = newFilesToPush[i];
             console.log(
-              chalk.red.bgWhite.bold(newFile)
+              chalk.red.bgWhite.bold('NewFile: '+newFile+'\nfile.dest: '+file.dest+'\nfile.orig.dest: '+file.orig.dest)
+            );
+            console.log(
+              chalk.red.bgWhite.bold('path.relative: '+path.relative(file.dest,path.dirname(newFile)))
             );
             var basename = path.basename(newFile, ext) + '.css';
             var dest = path.dirname(file.dest) + '/' + basename;
