@@ -79,23 +79,19 @@ module.exports = function (grunt) {
           cwd: 'test',
           src: ['**/fixtures/partials/*.scss', '**/fixtures/partials/*.sass'],
           dest: 'test/tmp',
-          // dest: '/Users/development/Desktop/sass-dependentFiles-test',
-          // dest: 'childForTesting',
-          // dest: '/Users/tom.bremer/vagrant/www/gruntjs',
           expand: true,
           ext: '.css'
         }]
       },
-      // dependentFilesNoCwd: {
-      //   options: {
-      //     checkDependentFiles: true
-      //   },
-      //   files: {
-      //     'test/tmp/import_partial-scss.css': ['test/fixtures/import_partial.scss'],
-      //     'test/tmp/import_partial-sass.css': ['test/fixtures/import_partial.sass'],
-      //     'test/tmp/anotherFolder/import_partial_deeper-scss.css': ['test/fixtures/partials/_partial.scss'],
-      //   }
-      // }
+      dependentFilesNoCwd: {
+        options: {
+          checkDependentFiles: true
+        },
+        files: {
+          'test/tmp/import_partial-scss.css': ['test/fixtures/partials/_dependentFiles_test_scss.scss'],
+          'test/tmp/import_partial-sass.css': ['test/fixtures/partials/_dependentFiles_test_sass.sass'],
+        }
+      }
     }
   });
 
