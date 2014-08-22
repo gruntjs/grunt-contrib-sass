@@ -77,7 +77,7 @@ module.exports = function (grunt) {
         },
         files: [{
           cwd: 'test',
-          src: ['**/fixtures/**/*.scss', '**/fixtures/**/*.sass'],
+          src: ['**/fixtures/partials/*.scss', '**/fixtures/partials/*.sass'],
           dest: 'test/tmp',
           // dest: 'childForTesting',
           // dest: '/Users/tom.bremer/vagrant/www/gruntjs',

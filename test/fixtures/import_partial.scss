@@ -1,5 +1,7 @@
-@import "partials/partial";
+@import "partials/partial_import_test01";
 
 html {
-  color: #d00;
+  color: #dd0000;
 }
+
+@import "partials/partial_import_test02";
