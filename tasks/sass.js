@@ -32,16 +32,15 @@ module.exports = function (grunt) {
   };
 
   var getDependencies = function (needle, haystack) {
-
     //__ REMOVE THE NEEDLE FROM THE ARRAY OF FILES BECAUSE A FILE SHOULD NOT IMPORT ITSELF
     var index = haystack.indexOf(needle);
     var dependentFiles = [];
-    var straw;
+    var i; // used to itterate through the array of files
     haystack.splice(index, 1);
 
-    for(straw in haystack) {
+    for(i in haystack) {
       //_ DEFINE CURRENT FILE
-      var curfile = haystack[straw];
+      var curfile = haystack[i];
 
       var relpath = path.relative(curfile, needle); //__ GET RELATIVE PATH BETWEEN OUR CURRENT FILE AND OUR NEEDLE
       var string_to_look_in_for_import_statement = grunt.file.read(curfile);
