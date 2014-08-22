@@ -116,8 +116,11 @@ module.exports = function (grunt) {
           var newFilesToPush = getDependencies(src, haystack);
           for(var i in newFilesToPush){
             var newFile = newFilesToPush[i];
-            var basename = path.basename(newFile, ext) + '.css';
-            var dest = file.orig.dest+'/'+basename;
+            var dest = file.dest;
+            if(file.orig.expand) {
+              var basename = path.basename(newFile, ext) + '.css';
+              dest = file.orig.dest+'/'+basename;
+            }
             var addToAsyncArray = {
               src: [newFile],
               dest: dest,
