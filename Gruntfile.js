@@ -78,7 +78,7 @@ module.exports = function (grunt) {
         },
         files: [{
           cwd: 'test',
-          src: ['**/fixtures/partials/*.scss', '**/fixtures/partials/*.sass'],
+          src: ['**/fixtures/partials/*.scss', '**/fixtures/partials/*.sass', '**/fixtures/partials/*.css'],
           dest: 'test/tmp',
           expand: true,
           ext: '.css'
