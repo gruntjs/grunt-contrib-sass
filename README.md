@@ -84,7 +84,7 @@ Output style. Can be `nested`, `compact`, `compressed`, `expanded`.
 #### precision
 
 Type: `Number`  
-Default: `3`
+Default: `5`
 
 How many digits of precision to use when outputting decimal numbers.
 
