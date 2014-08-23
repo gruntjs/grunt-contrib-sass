@@ -102,7 +102,39 @@ module.exports = function (grunt) {
         src = file.orig.src[0];
       }
 
-      // If this file is a partial...
+      // If this file is a partial && checkDependentFiles is whether
+      if (path.basename(src)[0] === '_' && (!checkDependentFiles || path.extname(src) === '.css')) {
+        console.log(
+          chalk.red.bgWhite("Partial that doesn't have checkDependentFiles or is *.css")
+        );
+        console.log(
+          chalk.red.bgWhite('FILE!!!')
+        );
+        console.log(
+          file
+        );
+        return next();
+      } else {
+        console.log(
+          chalk.red.bgWhite("Check dependentFiles")
+        );
+        console.log(
+          chalk.red.bgWhite('FILE!!!')
+        );
+        console.log(
+          file
+        );
+        var fileExtenstion = path.extname(src); // Is this a SASS file or a SCSS file
+        var globbingPattern = '**/*'+fileExtenstion; // We are going to look at every file within the
+        var haystack = grunt.file.expand(globbingPattern);
+        var newFilesToPush = getDependencies(src, haystack);
+        console.log(
+          chalk.red.bgWhite("newFilesToPush")
+        );
+        console.log(newFilesToPush);
+        // We are still working with our original partial file, so we still want to skip it.
+        return next();
+      }
       if (path.basename(src)[0] === '_') {
         // check if checkDependentFiles is defined
         // or if the file we're compiling is *.css
