@@ -91,6 +91,7 @@ module.exports = function (grunt) {
         files: {
           'test/tmp/import_partial-scss.css': ['test/fixtures/partials/_dependentFiles_test_scss.scss'],
           'test/tmp/import_partial-sass.css': ['test/fixtures/partials/_dependentFiles_test_sass.sass'],
+          'test/tmp/import_partial-css.css': ['test/fixtures/partials/_dependentFiles_test_css.css'],
         }
       }
     }
