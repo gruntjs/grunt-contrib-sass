@@ -47,29 +47,32 @@
   var testingFunction = function() { return "testing"; }
 
   var getDependencies = function (needle, haystack) {
-    // REMOVE THE NEEDLE FROM THE ARRAY OF FILES BECAUSE A FILE SHOULD NOT IMPORT ITSELF
-    var index = haystack.indexOf(needle);
-    var dependentFiles = [];
-    var i; // Used to itterate through the array of files
-    haystack.splice(index, 1);
+    grunt.verbose.writeln('Checking if: ' + chalk.cyan(path.basename(needle)) + ' has dependencies');
 
+    // Remove the needle from the array of files because files cannot (should not) import themselves
+    var index = haystack.indexOf(needle);
+    haystack.splice(index, 1);
+    var dependentFiles = [];
+    var i;
+
+    // We then loop through the haystack of files, determine the relative path between our current file and the needle
+    // Create a string based on the relative path removing the first `../` (this takes the file out of the CWD)
+    // And taking off any references to the file being a partial.
+    // We make a check for the file being in the same directory as the curfile & being a partial, removing the _ from that if it's true.
+    // Next we check if the file curfile is a partial (in this instance you would have  something like a colors partial that is imported into a bootstrap file)
+    // If it's a partial we restart the process, if not
+    // We add the file to the dependentFiles variable if is not already in the array.
+    // return the array to whomever called it.
     for(i in haystack) {
-      //_ DEFINE CURRENT FILE
       var curfile = haystack[i];
-      //READ FILE TEST
-      grunt.verbose.writeln('curfile: '+chalk.black.bgYellow.bold(curfile));
-      // Get the relative path between our current file and the needle
       var relpath = path.relative(curfile, needle);
-      // var string_to_look_in_for_import_statement = grunt.file.read(curfile);
       var string_to_look_in_for_import_statement = fs.readFileSync(curfile, {encoding: 'utf8'});
-      console.log(string_to_look_in_for_import_statement);
       var import_statement_to_look_for = relpath.replace('../', '').replace('/_','/').replace(path.extname(relpath),'');
 
       if( import_statement_to_look_for.substr(0,1) === "_" ){
         import_statement_to_look_for = import_statement_to_look_for.replace('_','');
       }
       if(string_to_look_in_for_import_statement.indexOf(import_statement_to_look_for) !== -1){
-        grunt.verbose.writeln(chalk.black.bgYellow.bold('IU AM HERE'));
         var ispartial = (path.basename(curfile).substr(0,1) === '_' ? true : false);
         if(ispartial){
           getDependencies(curfile,haystack);
@@ -79,6 +82,9 @@
           }
         }
       }
+    }
+    if (dependentFiles.length > 0) {
+      grunt.verbose.writeln('Files dependent on ' + chalk.cyan(needle) + ' are ' + chalk.cyan(dependentFiles));
     }
     return dependentFiles;
   };
@@ -134,13 +140,9 @@
         // We loop through that array and build an object (addToAsyncArray) and push that to asyncArray.
         // A new object is put in the array called "fileCalledFrom" -- this could be used for some sort of trace.
         if (checkDependentFiles) {
-          grunt.verbose.writeln('Checking if: ' + chalk.cyan(path.basename(src)) + ' has dependencies');
           var fileExtenstion = path.extname(src);
           var globbingPattern = ['**/*'+fileExtenstion, '!node_modules/**'];
-          // grunt.verbose.writeln(chalk.black.bgYellow.bold(globbingPattern));
           var haystack = grunt.file.expand(globbingPattern);
-          // grunt.verbose.writeln(chalk.black.bgYellow.bold('HAYSTACK'));
-          // grunt.verbose.writeln(haystack);
           var newFilesToPush = getDependencies(src, haystack);
           for(var i in newFilesToPush){
             var newFile = newFilesToPush[i];
