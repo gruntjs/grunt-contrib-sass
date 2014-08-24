@@ -44,8 +44,6 @@
     });
   }
 
-  var testingFunction = function() { return "testing"; }
-
   var getDependencies = function (needle, haystack) {
     grunt.verbose.writeln('Checking if: ' + chalk.cyan(path.basename(needle)) + ' has dependencies');
 
@@ -87,6 +85,50 @@
       grunt.verbose.writeln('Files dependent on ' + chalk.cyan(needle) + ' are ' + chalk.cyan(dependentFiles));
     }
     return dependentFiles;
+}
+
+  var checkFiles = function (files, options, cb) {
+    var failCount = 0;
+    var filesToCheck = files.filter(function (src) {
+      return path.basename(src)[0] !== '_' && grunt.file.exists(src);
+    });
+
+    async.eachLimit(filesToCheck, numCPUs, function (src, next) {
+      var bin;
+      var args;
+
+      if (options.bundleExec) {
+        bin = 'bundle';
+        args = ['exec', 'sass', '--check', src];
+      } else {
+        bin = 'sass';
+        args = ['--check', src];
+      }
+
+      grunt.verbose.writeln('Command: ' + bin + ' ' + args.join(' '));
+
+      grunt.verbose.writeln('Checking file ' + chalk.cyan(src) + ' syntax.');
+      spawn(bin, args, { stdio: 'inherit' })
+        .on('error', grunt.warn)
+        .on('close', function (code) {
+          if (code > 0) {
+            failCount++;
+            grunt.log.error('Checking file ' + chalk.cyan(src) + ' - ' + chalk.red('failed') + '.');
+          } else {
+            grunt.verbose.ok('Checking file ' + chalk.cyan(src) + ' - ' + chalk.green('passed') + '.');
+          }
+
+          next();
+        });
+    }, function () {
+      if (failCount > 0) {
+        grunt.warn('Sass check failed for ' + failCount + ' files.');
+      } else {
+        grunt.log.ok('All ' + chalk.cyan(filesToCheck.length) + ' files passed.');
+      }
+
+      cb();
+    });
   };
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
@@ -107,6 +149,11 @@
       checkBinary('sass',
         'You need to have Ruby and Sass installed and in your PATH for this task to work.'
         );
+    }
+
+    if (options.check) {
+      checkFiles(this.filesSrc, options, cb);
+      return;
     }
 
     // Unset banner option if set
