@@ -56,7 +56,7 @@ module.exports = function (grunt) {
         .on('error', grunt.warn)
         .on('close', function (code) {
           if (code > 0) {
-            ++failCount;
+            failCount++;
             grunt.log.error('Checking file ' + chalk.cyan(src) + ' - ' + chalk.red('failed') + '.');
           } else {
             grunt.verbose.ok('Checking file ' + chalk.cyan(src) + ' - ' + chalk.green('passed') + '.');
@@ -66,9 +66,9 @@ module.exports = function (grunt) {
         });
     }, function () {
       if (failCount > 0) {
-        grunt.warn('Sass check failed for ' + failCount + ' files.')
+        grunt.warn('Sass check failed for ' + failCount + ' files.');
       } else {
-        grunt.log.ok('All ' + chalk.cyan(filesToCheck.length) + ' files passed.')
+        grunt.log.ok('All ' + chalk.cyan(filesToCheck.length) + ' files passed.');
       }
 
       cb();
