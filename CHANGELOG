@@ -1,3 +1,7 @@
+v0.8.1:
+  date: 2014-08-24
+  changes:
+    - Fix `check` option.
 v0.8.0:
   date: 2014-08-21
   changes:
