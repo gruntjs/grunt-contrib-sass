@@ -73,8 +73,7 @@ module.exports = function (grunt) {
       },
       dependentFiles: {
         options: {
-          checkDependentFiles: true,
-          trace: true
+          checkDependentFiles: true
         },
         files: [{
           cwd: 'test',

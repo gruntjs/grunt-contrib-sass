@@ -5,16 +5,19 @@
  * Copyright (c) 2013 Sindre Sorhus, contributors
  * Licensed under the MIT license.
  */
-'use strict';
-var path = require('path');
-var dargs = require('dargs');
-var numCPUs = require('os').cpus().length || 1;
-var async = require('async');
-var chalk = require('chalk');
-var spawn = require('win-spawn');
-var which = require('which');
+ 'use strict';
+ var path = require('path');
+ var fs = require('fs');
+ var dargs = require('dargs');
+ var numCPUs = require('os').cpus().length || 1;
+ var async = require('async');
+ var chalk = require('chalk');
+ var spawn = require('win-spawn');
+ var which = require('which');
+ var timer = require("grunt-timer");
 
-module.exports = function (grunt) {
+ module.exports = function (grunt) {
+  timer.init(grunt);
   var bannerCallback = function (filename, banner) {
     grunt.verbose.writeln('Writing CSS banner for ' + filename);
     grunt.file.write(filename, banner + grunt.util.linefeed + grunt.file.read(filename));
@@ -27,28 +30,46 @@ module.exports = function (grunt) {
       return grunt.warn(
         '\n' + errMess + '\n' +
         'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
-      );
+        );
     }
   };
 
+  var readFile = function (file) {
+    // console.log('FILLLLE');
+    console.log(file);
+    fs.readFileSync(file, {encoding: 'utf8'}, function (err, data) {
+      console.log(data);
+      console.log("FS!");
+      return data;
+    });
+  }
+
+  var testingFunction = function() { return "testing"; }
+
   var getDependencies = function (needle, haystack) {
-    //__ REMOVE THE NEEDLE FROM THE ARRAY OF FILES BECAUSE A FILE SHOULD NOT IMPORT ITSELF
+    // REMOVE THE NEEDLE FROM THE ARRAY OF FILES BECAUSE A FILE SHOULD NOT IMPORT ITSELF
     var index = haystack.indexOf(needle);
     var dependentFiles = [];
-    var i; // used to itterate through the array of files
+    var i; // Used to itterate through the array of files
     haystack.splice(index, 1);
 
     for(i in haystack) {
       //_ DEFINE CURRENT FILE
       var curfile = haystack[i];
-
-      var relpath = path.relative(curfile, needle); //__ GET RELATIVE PATH BETWEEN OUR CURRENT FILE AND OUR NEEDLE
-      var string_to_look_in_for_import_statement = grunt.file.read(curfile);
+      //READ FILE TEST
+      grunt.verbose.writeln('curfile: '+chalk.black.bgYellow.bold(curfile));
+      // Get the relative path between our current file and the needle
+      var relpath = path.relative(curfile, needle);
+      // var string_to_look_in_for_import_statement = grunt.file.read(curfile);
+      var string_to_look_in_for_import_statement = fs.readFileSync(curfile, {encoding: 'utf8'});
+      console.log(string_to_look_in_for_import_statement);
       var import_statement_to_look_for = relpath.replace('../', '').replace('/_','/').replace(path.extname(relpath),'');
+
       if( import_statement_to_look_for.substr(0,1) === "_" ){
         import_statement_to_look_for = import_statement_to_look_for.replace('_','');
       }
       if(string_to_look_in_for_import_statement.indexOf(import_statement_to_look_for) !== -1){
+        grunt.verbose.writeln(chalk.black.bgYellow.bold('IU AM HERE'));
         var ispartial = (path.basename(curfile).substr(0,1) === '_' ? true : false);
         if(ispartial){
           getDependencies(curfile,haystack);
@@ -63,9 +84,10 @@ module.exports = function (grunt) {
   };
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
+
     var cb = this.async();
     var options = this.options();
-    var asyncArray = this.files;
+    var asyncArray = this.files; // Define the files sent in as a variable.
     var bundleExec = options.bundleExec;
     var banner;
     var checkDependentFiles;
@@ -74,11 +96,11 @@ module.exports = function (grunt) {
     if (bundleExec) {
       checkBinary('bundle',
         'bundleExec options set but no Bundler executable found in your PATH.'
-      );
+        );
     } else {
       checkBinary('sass',
         'You need to have Ruby and Sass installed and in your PATH for this task to work.'
-      );
+        );
     }
 
     // Unset banner option if set
@@ -102,66 +124,44 @@ module.exports = function (grunt) {
         src = file.orig.src[0];
       }
 
-      // If this file is a partial && checkDependentFiles is whether
-      if (path.basename(src)[0] === '_' && (!checkDependentFiles || path.extname(src) === '.css')) {
-        console.log(
-          chalk.red.bgWhite("Partial that doesn't have checkDependentFiles or is *.css")
-        );
-        console.log(
-          chalk.red.bgWhite('FILE!!!')
-        );
-        console.log(
-          file
-        );
-        return next();
-      } else {
-        console.log(
-          chalk.red.bgWhite("Check dependentFiles")
-        );
-        console.log(
-          chalk.red.bgWhite('FILE!!!')
-        );
-        console.log(
-          file
-        );
-        var fileExtenstion = path.extname(src); // Is this a SASS file or a SCSS file
-        var globbingPattern = '**/*'+fileExtenstion; // We are going to look at every file within the
-        var haystack = grunt.file.expand(globbingPattern);
-        var newFilesToPush = getDependencies(src, haystack);
-        console.log(
-          chalk.red.bgWhite("newFilesToPush")
-        );
-        console.log(newFilesToPush);
-        // We are still working with our original partial file, so we still want to skip it.
-        return next();
-      }
+      // If this file is a partial
       if (path.basename(src)[0] === '_') {
-        // check if checkDependentFiles is defined
-        // or if the file we're compiling is *.css
-        // SASS doesn't import css files as scss or sass files -- this might be fixed with SASS 4.0;
-        if (!checkDependentFiles || path.extname(src) === '.css') {
-          return next();
-        } else {
-          var ext = path.extname(src);
-          var globbingPattern = '**/*'+ext;
+        // since this is a partial we check if checkDependentFiles is true or not and then move forward
+        // If checkDependentFiles is true we get the file extension from the source
+        // Set a globbing pattern based on the CWD using our file extension
+        // We create an array ('haystack') of files to search through.
+        // Declare a variable newFilesToPush with the function getDependencies passing in the needle (src) and haystack.
+        // We loop through that array and build an object (addToAsyncArray) and push that to asyncArray.
+        // A new object is put in the array called "fileCalledFrom" -- this could be used for some sort of trace.
+        if (checkDependentFiles) {
+          grunt.verbose.writeln('Checking if: ' + chalk.cyan(path.basename(src)) + ' has dependencies');
+          var fileExtenstion = path.extname(src);
+          var globbingPattern = ['**/*'+fileExtenstion, '!node_modules/**'];
+          // grunt.verbose.writeln(chalk.black.bgYellow.bold(globbingPattern));
           var haystack = grunt.file.expand(globbingPattern);
+          // grunt.verbose.writeln(chalk.black.bgYellow.bold('HAYSTACK'));
+          // grunt.verbose.writeln(haystack);
           var newFilesToPush = getDependencies(src, haystack);
           for(var i in newFilesToPush){
             var newFile = newFilesToPush[i];
             var dest = file.dest;
             if(file.orig.expand) {
-              var basename = path.basename(newFile, ext) + '.css';
-              dest = file.orig.dest+'/'+basename;
+              var basename = path.basename(newFile, fileExtenstion) + '.css';
+              var expandPath = (file.orig.dest!==undefined ? file.orig.dest : process.cwd());
+              dest = expandPath+'/'+basename;
             }
             var addToAsyncArray = {
               src: [newFile],
               dest: dest,
-              orig: file.orig
+              orig: file.orig,
+              fileCalledFrom: src
             };
             asyncArray.push(addToAsyncArray);
           }
-          return next();
         }
+
+        // Since we are still in a partial we need to goto the next file.
+        return next();
       }
 
       if (!grunt.file.exists(src)) {
@@ -228,5 +228,5 @@ module.exports = function (grunt) {
         next();
       });
     }, cb);
-  });
+});
 };
