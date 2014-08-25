@@ -88,9 +88,9 @@ module.exports = function (grunt) {
           checkDependentFiles: true
         },
         files: {
-          'test/tmp/import_partial-scss.css': ['test/fixtures/partials/_dependentFiles_test_scss.scss'],
-          'test/tmp/import_partial-sass.css': ['test/fixtures/partials/_dependentFiles_test_sass.sass'],
-          'test/tmp/import_partial-css.css': ['test/fixtures/partials/_dependentFiles_test_css.css'],
+          'test/tmp/import_partial_noCwd_scss.css': ['test/fixtures/partials/_dependentFiles_test_scss.scss'],
+          'test/tmp/import_partial_cwCwd_sass.css': ['test/fixtures/partials/_dependentFiles_test_sass.sass'],
+          'test/tmp/import_partial_noCwd_css.css': ['test/fixtures/partials/_dependentFiles_test_css.css'],
         }
       }
     }
@@ -108,7 +108,7 @@ module.exports = function (grunt) {
     'mkdir:tmp',
     'sass',
     'nodeunit',
-    // 'clean'
+    'clean'
   ]);
   grunt.registerTask('default', ['jshint', 'test', 'build-contrib']);
 };

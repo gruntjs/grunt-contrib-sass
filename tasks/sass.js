@@ -14,7 +14,7 @@
  var chalk = require('chalk');
  var spawn = require('win-spawn');
  var which = require('which');
- var timer = require("grunt-timer");
+ var timer = require('grunt-timer');
 
  module.exports = function (grunt) {
   timer.init(grunt);
@@ -34,16 +34,6 @@
     }
   };
 
-  var readFile = function (file) {
-    // console.log('FILLLLE');
-    console.log(file);
-    fs.readFileSync(file, {encoding: 'utf8'}, function (err, data) {
-      console.log(data);
-      console.log("FS!");
-      return data;
-    });
-  }
-
   var getDependencies = function (needle, haystack) {
     grunt.verbose.writeln('Checking if: ' + chalk.cyan(path.basename(needle)) + ' has dependencies');
 
@@ -60,11 +50,11 @@
     // Next we check if the file curfile is a partial (in this instance you would have  something like a colors partial that is imported into a bootstrap file)
     // If it's a partial we restart the process, if not
     // We add the file to the dependentFiles variable if is not already in the array.
-    // return the array to whomever called it.
+    // return the array to whomever called it.365
     for(i in haystack) {
       var curfile = haystack[i];
       var relpath = path.relative(curfile, needle);
-      var string_to_look_in_for_import_statement = fs.readFileSync(curfile, {encoding: 'utf8'});
+      var string_to_look_in_for_import_statement = fs.readFileSync(curfile, {encoding: 'utf8'}); // Node's filereader appeared to be significantly faster when reading large data sets.
       var import_statement_to_look_for = relpath.replace('../', '').replace('/_','/').replace(path.extname(relpath),'');
 
       if( import_statement_to_look_for.substr(0,1) === "_" ){
@@ -85,7 +75,7 @@
       grunt.verbose.writeln('Files dependent on ' + chalk.cyan(needle) + ' are ' + chalk.cyan(dependentFiles));
     }
     return dependentFiles;
-}
+  };
 
   var checkFiles = function (files, options, cb) {
     var failCount = 0;
@@ -181,7 +171,7 @@
       if (path.basename(src)[0] === '_') {
         // since this is a partial we check if checkDependentFiles is true or not and then move forward
         // If checkDependentFiles is true we get the file extension from the source
-        // Set a globbing pattern based on the CWD using our file extension
+        // Set a globbing pattern based on the CWD using our file extension excluding node modules
         // We create an array ('haystack') of files to search through.
         // Declare a variable newFilesToPush with the function getDependencies passing in the needle (src) and haystack.
         // We loop through that array and build an object (addToAsyncArray) and push that to asyncArray.
