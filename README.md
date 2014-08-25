@@ -183,7 +183,6 @@ Default: `false`
 
 When a partial is saved this adds all files that the import the partial to the current compiling queue
 
-
 ### Examples
 
 #### Example config
@@ -292,4 +291,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
 
-*This file was generated on Sun Aug 24 2014 16:51:41.*
+*This file was generated on Sun Aug 24 2014 21:40:35.*
