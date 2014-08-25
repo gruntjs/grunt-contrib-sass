@@ -148,7 +148,7 @@ The path to put cached Sass files.
 Type: `Boolean`  
 Default: `false`
 
-Don't cache to sassc files.
+Don't cache to sass files.
 
 
 #### bundleExec
@@ -174,6 +174,15 @@ Type: `Boolean`
 Default: `false`
 
 Only compile changed files.
+
+
+#### checkDependentFiles
+
+Type: `Boolean`  
+Default: `false`
+
+When a partial is saved this adds all files that the import the partial to the current compiling queue
+
 
 ### Examples
 
