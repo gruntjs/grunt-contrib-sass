@@ -82,11 +82,12 @@ module.exports = function (grunt) {
 
   grunt.registerTask('mkdir', grunt.file.mkdir);
   grunt.registerTask('test', [
+    'jshint',
     'clean',
     'mkdir:tmp',
     'sass',
     'nodeunit',
     'clean'
   ]);
-  grunt.registerTask('default', ['jshint', 'test', 'build-contrib']);
+  grunt.registerTask('default', ['test', 'build-contrib']);
 };
