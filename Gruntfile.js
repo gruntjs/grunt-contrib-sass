@@ -89,7 +89,7 @@ module.exports = function (grunt) {
         },
         files: {
           'test/tmp/import_partial_noCwd_scss.css': ['test/fixtures/partials/_dependentFiles_test_scss.scss'],
-          'test/tmp/import_partial_cwCwd_sass.css': ['test/fixtures/partials/_dependentFiles_test_sass.sass'],
+          'test/tmp/import_partial_noCwd_sass.css': ['test/fixtures/partials/_dependentFiles_test_sass.sass'],
           'test/tmp/import_partial_noCwd_css.css': ['test/fixtures/partials/_dependentFiles_test_css.css'],
         }
       }

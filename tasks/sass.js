@@ -17,7 +17,7 @@
  var timer = require('grunt-timer');
 
  module.exports = function (grunt) {
-  timer.init(grunt);
+  //timer.init(grunt); // This timer is super helpful for running tests and building. Leaving it because it doesn't make much of an impact.
   var bannerCallback = function (filename, banner) {
     grunt.verbose.writeln('Writing CSS banner for ' + filename);
     grunt.file.write(filename, banner + grunt.util.linefeed + grunt.file.read(filename));
