@@ -41,5 +41,28 @@ exports.sass = {
     test.equal(css, expected, 'should compile CSS to CSS');
 
     test.done();
+  },
+
+  checkDependentFiles: function (test) {
+    test.expect(6);
+
+    var import_scss = grunt.file.read('test/tmp/import_partial_scss.css');
+    var import_sass = grunt.file.read('test/tmp/import_partial_sass.css');
+    var import_scss_nocwd = grunt.file.read('test/tmp/import_partial_noCwd_scss.css');
+    var import_sass_nocwd = grunt.file.read('test/tmp/import_partial_noCwd_sass.css');
+
+    var import_scss_expected = grunt.file.read('test/expected/import_partial_scss.css');
+    var import_sass_expected = grunt.file.read('test/expected/import_partial_sass.css');
+    var import_scss_nocwd_expected = grunt.file.read('test/expected/import_partial_noCwd_scss.css');
+    var import_sass_nocwd_expected = grunt.file.read('test/expected/import_partial_noCwd_sass.css');
+
+    test.equal(import_scss, import_scss_expected, 'SCSS Partial should export SCSS');
+    test.equal(import_sass, import_sass_expected, 'SASS Partial should export SASS');
+    test.equal(import_scss_nocwd, import_scss_nocwd_expected, 'SCSS partial without current working direction should export SCSS');
+    test.equal(import_sass_nocwd, import_sass_nocwd_expected, 'SASS partial without current working direction should export SASS');
+    test.ok(!grunt.file.exists('test/tmp/import_partial_noCwd_css.css'), 'SASS does not import *.css partials, so this should not be created');
+    test.ok(!grunt.file.exists('test/tmp/import_partial_css.css'), 'SASS does not import *.css partials, so this should not be created');
+
+    test.done();
   }
 };

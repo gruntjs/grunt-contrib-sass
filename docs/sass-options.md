@@ -141,3 +141,11 @@ Type: `Boolean`
 Default: `false`
 
 Only compile changed files.
+
+
+## checkDependentFiles
+
+Type: `Boolean`  
+Default: `false`
+
+When a partial is saved this adds all files that the import the partial to the current compiling queue
