@@ -48,7 +48,7 @@
     // Next we check if the file curfile is a partial (in this instance you would have  something like a colors partial that is imported into a bootstrap file)
     // If it's a partial we restart the process, if not
     // We add the file to the dependentFiles variable if is not already in the array.
-    // return the array to whomever called it.365
+    // return the array to whomever called it.
     for(i in haystack) {
       var curfile = haystack[i];
       var relpath = path.relative(curfile, needle);
