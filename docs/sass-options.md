@@ -16,6 +16,13 @@ Values:
 **Requires Sass 3.4.0, which can be installed with `gem install sass`**
 
 
+## unquote
+
+Type: `Boolean`
+Default: `true`
+
+Unquotes arguments to Sass. Set this to false when using a lower version than Sass 3.4.0.
+
 ## trace
 
 Type: `Boolean`  
