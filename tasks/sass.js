@@ -103,7 +103,7 @@ module.exports = function (grunt) {
       delete options.banner;
     }
 
-    passedArgs = dargs(options, ['bundleExec']);
+    passedArgs = dargs(options, ['bundleExec'], null, '');
 
     async.eachLimit(this.files, numCPUs, function (file, next) {
       var src = file.src[0];
