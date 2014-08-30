@@ -30,11 +30,9 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
     var options = this.options();
-    var bundleExec = options.bundleExec;
-    var banner;
     var passedArgs;
 
-    if (bundleExec) {
+    if (options.bundleExec) {
       checkBinary('bundle',
         'bundleExec options set but no Bundler executable found in your PATH.'
       );
@@ -50,13 +48,7 @@ module.exports = function (grunt) {
       return;
     }
 
-    // Unset banner option if set
-    if (options.banner) {
-      banner = options.banner;
-      delete options.banner;
-    }
-
-    passedArgs = dargs(options, ['bundleExec']);
+    passedArgs = dargs(options, ['bundleExec', 'banner']);
 
     async.eachLimit(this.files, concurrencyCount, function (file, next) {
       var src = file.src[0];
@@ -81,22 +73,20 @@ module.exports = function (grunt) {
 
       if (options.update) {
         // When the source file hasn't yet been compiled SASS will write an empty file.
-        // If this is the first time the file has been written we treat it as a if update was not passed
+        // If this is the first time the file has been written we treat it as if `update` was not passed
         if (!grunt.file.exists(file.dest)) {
-          // Find where the --update flag is and remove it.
-          var index = args.indexOf('--update');
-          args.splice(index, 1);
+          // Find where the --update flag is and remove it
+          args.splice(args.indexOf('--update'), 1);
         } else {
-          // The first two elements in args is our source and destination files,
-          // we use those values to build a path that SASS recognizes namely: source:destination
-          var sassPath = args.shift() + ':' + args.shift();
-          args.push(sassPath);
+          // The first two elements in args are the source and destination files,
+          // which are used to build a path that SASS recognizes, i.e. "source:destination"
+          args.push(args.shift() + ':' + args.shift());
         }
       }
 
       var bin = 'sass';
 
-      if (bundleExec) {
+      if (options.bundleExec) {
         bin = 'bundle';
         args.unshift('exec', 'sass');
       }
@@ -115,18 +105,15 @@ module.exports = function (grunt) {
 
       var cp = spawn(bin, args, {stdio: 'inherit'});
 
-      cp.on('error', function (err) {
-        grunt.warn(err);
-      });
-
+      cp.on('error', grunt.warn);
       cp.on('close', function (code) {
         if (code > 0) {
           return grunt.warn('Exited with error code ' + code);
         }
 
         // Callback to insert banner
-        if (banner) {
-          bannerCallback(file.dest, banner);
+        if (options.banner) {
+          bannerCallback(file.dest, options.banner);
         }
 
         grunt.verbose.writeln('File ' + chalk.cyan(file.dest) + ' created.');
