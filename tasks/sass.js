@@ -1,10 +1,3 @@
-/*
- * grunt-contrib-sass
- * http://gruntjs.com/
- *
- * Copyright (c) 2013 Sindre Sorhus, contributors
- * Licensed under the MIT license.
- */
 'use strict';
 
 var path = require('path');
@@ -50,10 +43,9 @@ module.exports = function (grunt) {
     }
 
     if (options.check) {
-      require("./lib/check")
-        .init(grunt, numCPUs)
-        .checkFiles(this.filesSrc, options, cb);
+      options.numCPUs = numCPUs;
 
+      require('./lib/check')(this.filesSrc, options, cb);
       return;
     }
 
