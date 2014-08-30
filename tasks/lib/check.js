@@ -12,7 +12,7 @@ module.exports = function (files, options, cb) {
     return path.basename(src)[0] !== '_' && grunt.file.exists(src);
   });
 
-  async.eachLimit(filesToCheck, options.numCPUs, function (src, next) {
+  async.eachLimit(filesToCheck, options.concurrencyCount, function (src, next) {
     var bin;
     var args;
 

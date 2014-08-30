@@ -1,14 +1,14 @@
 'use strict';
 
 var path = require('path');
+var os = require('os');
 var dargs = require('dargs');
-var numCPUs = require('os').cpus().length || 1;
 var async = require('async');
 var chalk = require('chalk');
 var spawn = require('win-spawn');
 var which = require('which');
-
 var checkFilesSyntax = require('./lib/check');
+var concurrencyCount = (os.cpus().length || 1) * 2;
 
 module.exports = function (grunt) {
   var bannerCallback = function (filename, banner) {
@@ -45,8 +45,7 @@ module.exports = function (grunt) {
     }
 
     if (options.check) {
-      options.numCPUs = numCPUs;
-
+      options.concurrencyCount = concurrencyCount;
       checkFilesSyntax(this.filesSrc, options, cb);
       return;
     }
@@ -59,7 +58,7 @@ module.exports = function (grunt) {
 
     passedArgs = dargs(options, ['bundleExec']);
 
-    async.eachLimit(this.files, numCPUs, function (file, next) {
+    async.eachLimit(this.files, concurrencyCount, function (file, next) {
       var src = file.src[0];
 
       if (typeof src !== 'string') {
