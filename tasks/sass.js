@@ -8,6 +8,8 @@ var chalk = require('chalk');
 var spawn = require('win-spawn');
 var which = require('which');
 
+var checkFilesSyntax = require('./lib/check');
+
 module.exports = function (grunt) {
   var bannerCallback = function (filename, banner) {
     grunt.verbose.writeln('Writing CSS banner for ' + filename);
@@ -45,7 +47,7 @@ module.exports = function (grunt) {
     if (options.check) {
       options.numCPUs = numCPUs;
 
-      require('./lib/check')(this.filesSrc, options, cb);
+      checkFilesSyntax(this.filesSrc, options, cb);
       return;
     }
 
