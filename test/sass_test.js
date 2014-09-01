@@ -41,5 +41,29 @@ exports.sass = {
     test.equal(css, expected, 'should compile CSS to CSS');
 
     test.done();
+  },
+
+  checkDependencies: function (test) {
+    test.expect(6);
+
+    var scss = grunt.file.read('test/tmp/dependencies/import_partial_scss.css');
+    var scssExpected = grunt.file.read('test/expected/dependencies/import_partial_scss.css');
+    var sass = grunt.file.read('test/tmp/dependencies/import_partial_sass.css');
+    var sassExpected = grunt.file.read('test/expected/dependencies/import_partial_sass.css');
+    var partialInPartial = grunt.file.read('test/tmp/dependencies/partial_two_deep.css');
+    var partialInPartialExpected = grunt.file.read('test/expected/dependencies/partial_two_deep.css');
+    var acrossMultipleA = grunt.file.read('test/tmp/dependencies/import_across_2_files_1-2.css');
+    var acrossMultipleAExpected = grunt.file.read('test/expected/dependencies/import_across_2_files_1-2.css');
+    var acrossMultipleB = grunt.file.read('test/tmp/dependencies/import_across_2_files_2-2.css');
+    var acrossMultipleBExpected = grunt.file.read('test/expected/dependencies/import_across_2_files_2-2.css');
+
+    test.equal(scss, scssExpected, 'should read SCSS partials');
+    test.equal(sass, sassExpected, 'should read SASS partials');
+    test.equal(partialInPartial, partialInPartialExpected, 'SASS should save properly when referenced from another partial');
+    test.equal(acrossMultipleA, acrossMultipleAExpected, 'When multiple files require a partial they should all get written (1/2)');
+    test.equal(acrossMultipleB, acrossMultipleBExpected, 'When multiple files require a partial they should all get written (2/2)');
+    test.ok(!grunt.file.exists('test/tmp/dependencies/import_partial_css.css'), 'SASS doesn\'t handle importing *.css partials');
+
+    test.done();
   }
 };

@@ -141,3 +141,11 @@ Type: `Boolean`
 Default: `false`
 
 Only compile changed files.
+
+
+## compileDependencies
+
+Type: `Boolean`  
+Default: `false`
+
+When a partial is saved, find it's dependent files and write them.

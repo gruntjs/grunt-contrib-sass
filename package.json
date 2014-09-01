@@ -24,6 +24,7 @@
     "async": "^0.9.0",
     "chalk": "^0.5.1",
     "dargs": "^2.0.0",
+    "sass-get-dependencies": "^0.1.4",
     "which": "^1.0.5",
     "win-spawn": "^2.0.0"
   },
@@ -32,7 +33,8 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-internal": "^0.4.10",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-nodeunit": "^0.4.1"
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-timer": "^0.5.7"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
