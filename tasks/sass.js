@@ -9,12 +9,10 @@ var spawn = require('win-spawn');
 var which = require('which');
 var checkFilesSyntax = require('./lib/check');
 var dependsOn = require('sass-get-dependencies');
-var timer = require("grunt-timer");
 var concurrencyCount = (os.cpus().length || 1) * 2;
 
 
 module.exports = function (grunt) {
-  timer.init(grunt);
   var bannerCallback = function (filename, banner) {
     grunt.verbose.writeln('Writing CSS banner for ' + filename);
     grunt.file.write(filename, banner + grunt.util.linefeed + grunt.file.read(filename));
