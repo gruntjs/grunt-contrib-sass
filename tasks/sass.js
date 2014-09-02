@@ -8,7 +8,7 @@ var chalk = require('chalk');
 var spawn = require('win-spawn');
 var which = require('which');
 var checkFilesSyntax = require('./lib/check');
-var dependsOn = require('sass-get-dependencies');
+var dependsOn = require('sass-get-dependents');
 var concurrencyCount = (os.cpus().length || 1) * 2;
 
 
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
       return;
     }
 
-    passedArgs = dargs(options, ['bundleExec', 'banner', 'compileDependencies']);
+    passedArgs = dargs(options, ['bundleExec', 'banner', 'compileDependents']);
 
     async.eachLimit(asyncArray, concurrencyCount, function (file, next) {
       var src = file.src[0];
@@ -65,10 +65,10 @@ module.exports = function (grunt) {
         return next();
       }
       if (path.basename(src)[0] === '_') {
-        if (options.compileDependencies) {
+        if (options.compileDependents) {
           var dependencies = dependsOn(src);
           var addToAsyncArray;
-          dependencies.forEach(function (cur, index, dependencies) {
+          dependencies.forEach(function (cur) {
             var ext = path.extname(cur);
             var dest = path.normalize(file.orig.dest, file.orig.cwd) + "/" + path.basename(cur, ext) + ".css";
             addToAsyncArray = {

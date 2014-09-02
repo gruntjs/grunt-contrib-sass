@@ -24,7 +24,7 @@
     "async": "^0.9.0",
     "chalk": "^0.5.1",
     "dargs": "^2.0.0",
-    "sass-get-dependencies": "^0.1.4",
+    "sass-get-dependents": "^0.1.6",
     "which": "^1.0.5",
     "win-spawn": "^2.0.0"
   },

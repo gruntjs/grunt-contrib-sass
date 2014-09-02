@@ -176,7 +176,7 @@ Default: `false`
 Only compile changed files.
 
 
-#### compileDependencies
+#### compileDependents
 
 Type: `Boolean`  
 Default: `false`

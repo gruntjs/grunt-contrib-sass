@@ -73,8 +73,7 @@ module.exports = function (grunt) {
       },
       checkDependencies: {
         options: {
-          compileDependencies: true,
-          trace: true
+          compileDependents: true
         },
         files : [{
           cwd: 'test/fixtures/partials/dependencies',
