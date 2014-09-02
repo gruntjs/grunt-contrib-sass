@@ -175,6 +175,14 @@ Default: `false`
 
 Only compile changed files.
 
+
+#### compileDependents
+
+Type: `Boolean`  
+Default: `false`
+
+When a partial is saved, find it's dependent files and write them.
+
 ### Examples
 
 #### Example config
@@ -281,6 +289,6 @@ grunt.initConfig({
 
 ---
 
-Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
+Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Sun Aug 24 2014 16:51:41.*
+*This file was generated on Mon Sep 01 2014 00:53:14.*

@@ -70,7 +70,19 @@ module.exports = function (grunt) {
           dest: 'test/tmp',
           ext: '.css'
         }]
-      }
+      },
+      checkDependencies: {
+        options: {
+          compileDependents: true
+        },
+        files : [{
+          cwd: 'test/fixtures/partials/dependencies',
+          src: ['*.scss', '*.sass', '*.css'],
+          dest: 'test/tmp/dependencies',
+          expand: true,
+          ext: '.css'
+        }]
+      },
     }
   });
 
