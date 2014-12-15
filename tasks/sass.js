@@ -30,6 +30,7 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
     var options = this.options();
+    var underscore;
     var passedArgs;
 
     if (options.bundleExec) {
@@ -48,6 +49,11 @@ module.exports = function (grunt) {
       return;
     }
 
+    if (options.underscore) {
+      underscore = options.underscore;
+      delete options.underscore;
+    }
+
     passedArgs = dargs(options, ['bundleExec', 'banner']);
 
     async.eachLimit(this.files, concurrencyCount, function (file, next) {
@@ -62,7 +68,7 @@ module.exports = function (grunt) {
         return next();
       }
 
-      if (path.basename(src)[0] === '_') {
+      if (path.basename(src)[0] === '_' && !underscore) {
         return next();
       }
 
