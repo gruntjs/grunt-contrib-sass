@@ -10,11 +10,6 @@ var checkFilesSyntax = require('./lib/check');
 var concurrencyCount = (os.cpus().length || 1) * 2;
 
 module.exports = function (grunt) {
-  var bannerCallback = function (filename, banner) {
-    grunt.verbose.writeln('Writing CSS banner for ' + filename);
-    grunt.file.write(filename, banner + grunt.util.linefeed + grunt.file.read(filename));
-  };
-
   var checkBinary = function (cmd, errMess) {
     try {
       which.sync(cmd);
@@ -47,7 +42,7 @@ module.exports = function (grunt) {
       return;
     }
 
-    passedArgs = dargs(options, ['bundleExec', 'banner']);
+    passedArgs = dargs(options, ['bundleExec']);
 
     async.eachLimit(this.files, concurrencyCount, function (file, next) {
       var src = file.src[0];
@@ -110,11 +105,6 @@ module.exports = function (grunt) {
           grunt.warn('Exited with error code ' + code);
           next();
           return;
-        }
-
-        // Callback to insert banner
-        if (options.banner) {
-          bannerCallback(file.dest, options.banner);
         }
 
         grunt.verbose.writeln('File ' + chalk.cyan(file.dest) + ' created.');

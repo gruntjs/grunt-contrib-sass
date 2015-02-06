@@ -42,16 +42,6 @@ module.exports = function (grunt) {
           'test/tmp/css.css': ['test/fixtures/compile.css']
         }
       },
-      compileBanner: {
-        options: {
-          banner: '/* <%= pkg.name %> banner */'
-        },
-        files: {
-          'test/tmp/scss-banner.css': ['test/fixtures/banner.scss'],
-          'test/tmp/sass-banner.css': ['test/fixtures/banner.sass'],
-          'test/tmp/css-banner.css': ['test/fixtures/banner.css']
-        }
-      },
       ignorePartials: {
         cwd: 'test/fixtures/partials',
         src: '*.scss',

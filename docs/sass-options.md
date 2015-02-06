@@ -126,15 +126,6 @@ Default: `false`
 Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
 
 
-## banner
-
-Type: `String`  
-
-Prepend the specified string to the output file. Useful for licensing information.
-
-*Can't be used if you use the `sourcemap` option.*
-
-
 ## update
 
 Type: `Boolean`  
