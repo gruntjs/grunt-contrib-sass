@@ -2,7 +2,6 @@
   "name": "grunt-contrib-sass",
   "description": "Compile Sass to CSS",
   "version": "0.8.1",
-  "homepage": "https://github.com/gruntjs/grunt-contrib-sass",
   "author": {
     "name": "Grunt Team",
     "url": "http://gruntjs.com/"
@@ -23,19 +22,16 @@
   "dependencies": {
     "async": "^0.9.0",
     "chalk": "^0.5.1",
-    "dargs": "^2.0.0",
-    "which": "^1.0.5",
-    "win-spawn": "^2.0.0"
+    "cross-spawn": "^0.2.3",
+    "dargs": "^3.0.1",
+    "which": "^1.0.5"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-internal": "^0.4.10",
-    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-nodeunit": "^0.4.1"
-  },
-  "peerDependencies": {
-    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin",

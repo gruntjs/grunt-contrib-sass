@@ -1,11 +1,10 @@
 'use strict';
-
 var path = require('path');
 var os = require('os');
 var dargs = require('dargs');
 var async = require('async');
 var chalk = require('chalk');
-var spawn = require('win-spawn');
+var spawn = require('cross-spawn');
 var which = require('which');
 var checkFilesSyntax = require('./lib/check');
 var concurrencyCount = (os.cpus().length || 1) * 2;
