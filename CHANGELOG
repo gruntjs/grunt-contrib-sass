@@ -1,3 +1,10 @@
+v0.9.0:
+  date: 2015-02-06
+  changes:
+    - Remove `banner` option.
+    - Allow using `--force` to ignore compile errors.
+    - Increase concurrency count from `2` to `4`.
+    - Improve Windows support.
 v0.8.1:
   date: 2014-08-24
   changes:

@@ -2,7 +2,7 @@
 var path = require('path');
 var async = require('async');
 var chalk = require('chalk');
-var spawn = require('win-spawn');
+var spawn = require('cross-spawn');
 var grunt = require('grunt');
 
 module.exports = function (files, options, cb) {

@@ -1,4 +1,4 @@
-# grunt-contrib-sass v0.8.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.9.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -159,15 +159,6 @@ Default: `false`
 Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
 
 
-#### banner
-
-Type: `String`  
-
-Prepend the specified string to the output file. Useful for licensing information.
-
-*Can't be used if you use the `sourcemap` option.*
-
-
 #### update
 
 Type: `Boolean`  
@@ -258,6 +249,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2015-02-06   v0.9.0   Remove `banner` option. Allow using `--force` to ignore compile errors. Increase concurrency count from `2` to `4`. Improve Windows support.
  * 2014-08-24   v0.8.1   Fix `check` option.
  * 2014-08-21   v0.8.0   Support Sass 3.4 Source Map option. Add `update` option.
  * 2014-08-09   v0.7.4   Fix bundleExec option. Fix `os.cpus()` issue. Log `sass` command when `--verbose` flag is set.
@@ -281,6 +273,6 @@ grunt.initConfig({
 
 ---
 
-Task submitted by [Sindre Sorhus](http://github.com/sindresorhus)
+Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Sun Aug 24 2014 16:51:41.*
+*This file was generated on Fri Feb 06 2015 16:52:23.*
