@@ -47,15 +47,6 @@ module.exports = function (grunt) {
     async.eachLimit(this.files, concurrencyCount, function (file, next) {
       var src = file.src[0];
 
-      if (typeof src !== 'string') {
-        src = file.orig.src[0];
-      }
-
-      if (!grunt.file.exists(src)) {
-        grunt.log.warn('Source file "' + src + '" not found.');
-        return next();
-      }
-
       if (path.basename(src)[0] === '_') {
         return next();
       }
