@@ -7,7 +7,7 @@ var chalk = require('chalk');
 var spawn = require('cross-spawn');
 var which = require('which');
 var checkFilesSyntax = require('./lib/check');
-var concurrencyCount = (os.cpus().length || 1) * 2;
+var concurrencyCount = (os.cpus().length || 1) * 4;
 
 module.exports = function (grunt) {
   var checkBinary = function (cmd, errMsg) {
