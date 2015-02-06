@@ -24,7 +24,6 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
     var options = this.options();
-    var passedArgs;
 
     if (options.bundleExec) {
       checkBinary('bundle',
@@ -42,7 +41,10 @@ module.exports = function (grunt) {
       return;
     }
 
-    passedArgs = dargs(options, ['bundleExec']);
+    var passedArgs = dargs(options, {
+      excludes: ['bundleExec'],
+      ignoreFalse: true
+    });
 
     async.eachLimit(this.files, concurrencyCount, function (file, next) {
       var src = file.src[0];
