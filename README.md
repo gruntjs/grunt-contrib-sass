@@ -1,4 +1,4 @@
-# grunt-contrib-sass v0.9.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v0.9.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
@@ -275,4 +275,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Fri Feb 06 2015 16:52:23.*
+*This file was generated on Fri Feb 06 2015 23:53:06.*
