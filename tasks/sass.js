@@ -108,7 +108,9 @@ module.exports = function (grunt) {
       cp.on('error', grunt.warn);
       cp.on('close', function (code) {
         if (code > 0) {
-          return grunt.warn('Exited with error code ' + code);
+          grunt.warn('Exited with error code ' + code);
+          next();
+          return;
         }
 
         // Callback to insert banner
