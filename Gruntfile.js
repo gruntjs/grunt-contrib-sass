@@ -1,17 +1,6 @@
-/*
- * grunt-contrib-sass
- * http://gruntjs.com/
- *
- * Copyright (c) 2012 Sindre Sorhus, contributors
- * Licensed under the MIT license.
- */
 'use strict';
-
 module.exports = function (grunt) {
   grunt.initConfig({
-    pkg: {
-      name: 'grunt-contrib-sass'
-    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -29,7 +18,7 @@ module.exports = function (grunt) {
       ]
     },
     nodeunit: {
-      tests: ['test/*_test.js']
+      tests: ['test/test.js']
     },
     sass: {
       options: {
@@ -37,9 +26,9 @@ module.exports = function (grunt) {
       },
       compile: {
         files: {
-          'test/tmp/scss.css': ['test/fixtures/compile.scss'],
-          'test/tmp/sass.css': ['test/fixtures/compile.sass'],
-          'test/tmp/css.css': ['test/fixtures/compile.css']
+          'test/tmp/scss.css': 'test/fixtures/compile.scss',
+          'test/tmp/sass.css': 'test/fixtures/compile.sass',
+          'test/tmp/css.css': 'test/fixtures/compile.css'
         }
       },
       ignorePartials: {
@@ -56,7 +45,11 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'test/fixtures',
-          src: ['updatetrue.scss', 'updatetrue.sass', 'updatetrue.css'],
+          src: [
+            'updatetrue.scss',
+            'updatetrue.sass',
+            'updatetrue.css'
+          ],
           dest: 'test/tmp',
           ext: '.css'
         }]

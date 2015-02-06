@@ -10,12 +10,12 @@ var checkFilesSyntax = require('./lib/check');
 var concurrencyCount = (os.cpus().length || 1) * 2;
 
 module.exports = function (grunt) {
-  var checkBinary = function (cmd, errMess) {
+  var checkBinary = function (cmd, errMsg) {
     try {
       which.sync(cmd);
     } catch (err) {
       return grunt.warn(
-        '\n' + errMess + '\n' +
+        '\n' + errMsg + '\n' +
         'More info: https://github.com/gruntjs/grunt-contrib-sass\n'
       );
     }
@@ -91,6 +91,7 @@ module.exports = function (grunt) {
       var cp = spawn(bin, args, {stdio: 'inherit'});
 
       cp.on('error', grunt.warn);
+
       cp.on('close', function (code) {
         if (code > 0) {
           grunt.warn('Exited with error code ' + code);
@@ -98,7 +99,7 @@ module.exports = function (grunt) {
           return;
         }
 
-        grunt.verbose.writeln('File ' + chalk.cyan(file.dest) + ' created.');
+        grunt.verbose.writeln('File ' + chalk.cyan(file.dest) + ' created');
         next();
       });
     }, cb);
