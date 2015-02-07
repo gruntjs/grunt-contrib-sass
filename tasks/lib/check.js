@@ -1,5 +1,6 @@
 'use strict';
 var path = require('path');
+var dargs = require('dargs');
 var async = require('async');
 var chalk = require('chalk');
 var spawn = require('cross-spawn');
@@ -16,6 +17,11 @@ module.exports = function (files, options, cb) {
     var bin;
     var args;
 
+    var passedArgs = dargs(options, {
+      includes: ['loadPath'],
+      ignoreFalse: true
+    });
+
     if (options.bundleExec) {
       bin = 'bundle';
       args = ['exec', 'sass', '--check', src];
@@ -23,6 +29,8 @@ module.exports = function (files, options, cb) {
       bin = 'sass';
       args = ['--check', src];
     }
+
+    args = args.concat(passedArgs);
 
     grunt.verbose.writeln('Command: ' + bin + ' ' + args.join(' '));
 
