@@ -42,7 +42,7 @@ module.exports = function (grunt) {
     }
 
     var passedArgs = dargs(options, {
-      excludes: ['bundleExec'],
+      excludes: ['bundleExec', 'includePaths'],
       ignoreFalse: true
     });
 
