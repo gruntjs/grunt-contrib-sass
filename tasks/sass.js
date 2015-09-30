@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
-    var options = this.options();
+    var options = this.options({excludeRubyOptions: []});
 
     if (options.bundleExec) {
       checkBinary('bundle',
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
     }
 
     var passedArgs = dargs(options, {
-      excludes: ['bundleExec', 'includePaths'],
+      excludes: ['bundleExec', 'excludeRubyOptions'].concat(options.excludeRubyOptions),
       ignoreFalse: true
     });
 
