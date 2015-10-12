@@ -7,7 +7,7 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        'tasks/*.js',
+        'tasks/**/*.js',
         '<%= nodeunit.tests %>'
       ]
     },
