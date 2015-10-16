@@ -2,7 +2,7 @@
 
 ## Example config
 
-```javascript
+```js
 grunt.initConfig({
   sass: {                              // Task
     dist: {                            // Target
@@ -24,7 +24,7 @@ grunt.registerTask('default', ['sass']);
 
 ## Compile
 
-```javascript
+```js
 grunt.initConfig({
   sass: {
     dist: {
@@ -45,7 +45,7 @@ Instead of concatenating the files, just `@import` them into another `.sass` fil
 
 You can specify multiple `destination: source` items in `files`.
 
-```javascript
+```js
 grunt.initConfig({
   sass: {
     dist: {
@@ -62,7 +62,7 @@ grunt.initConfig({
 
 Instead of naming all files you want to compile, you can use the `expand` property allowing you to specify a directory. More information available in the [grunt docs](http://gruntjs.com/configuring-tasks) - `Building the files object dynamically`.
 
-```javascript
+```js
 grunt.initConfig({
   sass: {
     dist: {
