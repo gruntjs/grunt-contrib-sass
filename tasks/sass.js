@@ -24,13 +24,17 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('sass', 'Compile Sass to CSS', function () {
     var cb = this.async();
     var options = this.options();
-
+    var sassBinary = 'sass';
+    
+    if (options.sassBinary) {
+    	sassBinary = options.sassBinary;
+    }
     if (options.bundleExec) {
       checkBinary('bundle',
         'bundleExec options set but no Bundler executable found in your PATH.'
       );
     } else {
-      checkBinary('sass',
+      checkBinary(sassBinary,
         'You need to have Ruby and Sass installed and in your PATH for this task to work.'
       );
     }
@@ -71,7 +75,7 @@ module.exports = function (grunt) {
         }
       }
 
-      var bin = 'sass';
+      var bin = sassBinary;
 
       if (options.bundleExec) {
         bin = 'bundle';
