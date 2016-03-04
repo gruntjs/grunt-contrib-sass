@@ -1,11 +1,10 @@
-# grunt-contrib-sass v0.9.2 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
+# grunt-contrib-sass v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass)
 
 > Compile Sass to CSS
 
 
 
 ## Getting Started
-This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -249,6 +248,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2016-03-04   v1.0.0   bump `chalk`. update to docs and project structure.
  * 2015-02-06   v0.9.0   Remove `banner` option. Allow using `--force` to ignore compile errors. Increase concurrency count from `2` to `4`. Improve Windows support.
  * 2014-08-24   v0.8.1   Fix `check` option.
  * 2014-08-21   v0.8.0   Support Sass 3.4 Source Map option. Add `update` option.
@@ -275,4 +275,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Fri Oct 16 2015 19:03:14.*
+*This file was generated on Fri Mar 04 2016 15:57:01.*
