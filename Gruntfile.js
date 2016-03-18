@@ -63,11 +63,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-internal');
 
-  grunt.registerTask('mkdir', grunt.file.mkdir);
   grunt.registerTask('test', [
-    'jshint',
     'clean',
-    'mkdir:tmp',
+    'jshint',
     'sass',
     'nodeunit',
     'clean'
