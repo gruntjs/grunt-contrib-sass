@@ -9,14 +9,19 @@ environment:
   matrix:
     - nodejs_version: "0.10"
       platform: x86
+      ruby_folder_version: "22"
     - nodejs_version: "0.12"
       platform: x86
+      ruby_folder_version: "22"
     - nodejs_version: "4"
       platform: x64
+      ruby_folder_version: "22-x64"
     - nodejs_version: "4"
       platform: x86
+      ruby_folder_version: "22"
     - nodejs_version: "5"
       platform: x86
+      ruby_folder_version: "22"
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
@@ -25,6 +30,7 @@ install:
         npm -g install npm@3
         $env:PATH="$env:APPDATA\npm;$env:PATH"
       }
+  - SET "PATH=C:\Ruby%ruby_folder_version%\bin;%PATH%"
   - gem install sass
   - npm install
 
