@@ -248,23 +248,23 @@ grunt.initConfig({
 
 ## Release History
 
- * 2016-03-04   v1.0.0   bump `chalk`. update to docs and project structure.
+ * 2016-03-04   v1.0.0   Bump `chalk`. Update to docs and project structure.
  * 2015-02-06   v0.9.0   Remove `banner` option. Allow using `--force` to ignore compile errors. Increase concurrency count from `2` to `4`. Improve Windows support.
  * 2014-08-24   v0.8.1   Fix `check` option.
  * 2014-08-21   v0.8.0   Support Sass 3.4 Source Map option. Add `update` option.
- * 2014-08-09   v0.7.4   Fix bundleExec option. Fix `os.cpus()` issue. Log `sass` command when `--verbose` flag is set.
+ * 2014-08-09   v0.7.4   Fix `bundleExec` option. Fix `os.cpus()` issue. Log `sass` command when `--verbose` flag is set.
  * 2014-03-06   v0.7.3   Only create empty dest files when they don't already exist.
  * 2014-02-02   v0.7.2   Fix error reporting when Sass is not available.
  * 2014-01-28   v0.7.1   Fix regression of Bundler support.
  * 2014-01-26   v0.7.0   Improve Windows support.
  * 2013-12-10   v0.6.0   Ignore files where filename have leading underscore.
- * 2013-08-21   v0.5.0   Add banner option.
- * 2013-07-06   v0.4.1   Use file.orig.src if file.src does not exist and return early to avoid passing non-existent files to sass binary.
+ * 2013-08-21   v0.5.0   Add `banner` option.
+ * 2013-07-06   v0.4.1   Use `file.orig.src` if `file.src` does not exist and return early to avoid passing non-existent files to sass binary.
  * 2013-06-30   v0.4.0   Rewrite task to be able to support Source Maps. Compile Sass files in parallel for better performance.
  * 2013-03-26   v0.3.0   Add support for `bundle exec`. Make sure `.css` files are compiled with SCSS.
  * 2013-02-15   v0.2.2   First official release for Grunt 0.4.0.
  * 2013-01-25   v0.2.2rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
- * 2013-01-09   v0.2.2rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api. Add separator option.
+ * 2013-01-09   v0.2.2rc5   Updating to work with grunt v0.4.0rc5. Switching to `this.files` API. Add `separator` option.
  * 2012-11-05   v0.2.0   Grunt 0.4 compatibility. Improve error message when Sass binary couldn't be found
  * 2012-10-12   v0.1.3   Rename grunt-contrib-lib dep to grunt-lib-contrib.
  * 2012-10-08   v0.1.2   Fix regression for darwin.
@@ -275,4 +275,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Thu Mar 17 2016 19:52:14.*
+*This file was generated on Fri Mar 18 2016 19:07:34.*
