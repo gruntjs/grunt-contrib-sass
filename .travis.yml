@@ -1,9 +1,17 @@
 sudo: false
 language: node_js
 node_js:
-  - '5'
-  - '4'
-  - '0.10'
+  - "0.10"
+  - "0.12"
+  - "4"
+  - "5"
+  - "iojs"
 before_install:
+  - if [ "$TRAVIS_NODE_VERSION" = "0.10" ]; then npm install -g npm@2; fi
   - gem update --system
   - gem install sass
+matrix:
+  fast_finish: true
+cache:
+  directories:
+    - node_modules

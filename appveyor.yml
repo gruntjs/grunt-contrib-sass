@@ -27,7 +27,7 @@ install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - ps: >-
       if ($env:nodejs_version -eq "0.10") {
-        npm -g install npm@3
+        npm -g install npm@2
         $env:PATH="$env:APPDATA\npm;$env:PATH"
       }
   - SET "PATH=C:\Ruby%ruby_folder_version%\bin;%PATH%"
