@@ -165,6 +165,14 @@ Default: `false`
 
 Only compile changed files.
 
+
+#### stopOnError
+
+Type: `Boolean`  
+Default: `false`
+
+If a file fails to compile, exit immediately.
+
 ### Examples
 
 #### Example config
@@ -275,4 +283,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Fri Mar 18 2016 19:07:34.*
+*This file was generated on Wed Jul 27 2016 20:58:04.*

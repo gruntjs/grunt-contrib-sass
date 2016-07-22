@@ -132,3 +132,11 @@ Type: `Boolean`
 Default: `false`
 
 Only compile changed files.
+
+
+## stopOnError
+
+Type: `Boolean`  
+Default: `false`
+
+If a file fails to compile, exit immediately.
