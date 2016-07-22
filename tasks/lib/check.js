@@ -18,7 +18,7 @@ module.exports = function (files, options, cb) {
     var args;
 
     var passedArgs = dargs(options, {
-      includes: ['loadPath'],
+      includes: ['loadPath', 'cacheLocation', 'noCache', 'update'],
       ignoreFalse: true
     });
 
