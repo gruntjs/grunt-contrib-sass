@@ -77,3 +77,29 @@ grunt.initConfig({
   }
 });
 ```
+
+## Yeoman example
+You'll need to add the `'sass'` task to `grunt.task.run` and:
+
+```javascript
+grunt.initConfig({
+  watch: {
+    styles: {
+      files: ['<%= yeoman.app %>/styles/{,*/}*.scss'],
+      tasks: ['newer:copy:styles', 'autoprefixer', 'sass']
+    }
+  },
+  sass: {
+    dist: {
+      files: [{
+        expand: true,
+        cwd: '<%= yeoman.app %>/styles/scss',
+        src: ['*.scss'],
+        dest: '.tmp/styles/',
+        ext: '.css'
+      }]
+    }
+  }
+}
+
+```
