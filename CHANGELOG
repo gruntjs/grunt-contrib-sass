@@ -1,3 +1,8 @@
+v2.0.0:
+  date: 2018-06-06
+  changes:
+    - Upgrade to Dart Sass 1.5.1 (deprecate Ruby Sass).
+    - Improve console logging
 v1.0.0:
   date: 2016-03-04
   changes:
