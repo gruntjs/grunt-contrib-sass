@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     },
     sass: {
       options: {
-        sourcemap: 'none'
+        sourceMap: false
       },
       compile: {
         files: {
