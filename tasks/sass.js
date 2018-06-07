@@ -96,9 +96,6 @@ module.exports = function (grunt) {
 
       const bin = 'sass';
 
-      // If we're compiling scss or css files
-      if (path.extname(src) === '.css') { args.push('--scss'); }
-
       // Make sure grunt creates the destination folders if they don't exist
       if (!grunt.file.exists(file.dest)) { grunt.file.write(file.dest, ''); }
 
