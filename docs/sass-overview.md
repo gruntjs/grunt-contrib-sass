@@ -1,6 +1,6 @@
 [Sass](http://sass-lang.com) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to CSS. Sass files compile into well-formatted, standard CSS to use in your site or application.
 
-This task requires you to have [Dart Sass](http://sass-lang.com/install) installed and for Dart Sass to be added into your system's `PATH`. Refer to the links for an installation guide on this dependency. To confirm you've install Dart Sass, run `sass --version` and make sure it only displays a version number `>= 1.5.0` **without** a version name. (If you are using any other version of Sass other than Dart Sass, then the version name will proceed the version number, e.g. `Ruby Sass x.x.x`.)
+This task requires you to have [Dart Sass](http://sass-lang.com/install) installed and for Dart Sass to be added into your system's `PATH`. Refer to the links for an installation guide on this dependency. To confirm you've installed Dart Sass, run `sass --version` and make sure it only displays a version number `>= 1.5.0` **without** a version name (if you are using any other version of Sass other than Dart Sass, then the version name will proceed the version number, e.g. `Ruby Sass x.x.x`).
 
 Note: Files that begin with "_" are ignored even if they match the globbing pattern. This is done to match the expected [Sass partial behaviour](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#partials).
 

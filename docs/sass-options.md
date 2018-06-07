@@ -2,7 +2,7 @@
 
 ## embedSources
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Embed source file contents in source maps.
@@ -10,7 +10,7 @@ Embed source file contents in source maps.
 
 ## embedSourceMap
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Embed source map contents in CSS.
@@ -18,7 +18,7 @@ Embed source map contents in CSS.
 
 ## loadPath
 
-Type: `String|Array<string>`
+Type: `String|Array<string>`  
 Default: `[]`
 
 A path, or multiple paths, to use when resolving `@imports`.
@@ -26,7 +26,7 @@ A path, or multiple paths, to use when resolving `@imports`.
 
 ## quite
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Whether warnings should (`false`) or should not (`true`) be printed.
