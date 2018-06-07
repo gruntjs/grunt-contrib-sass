@@ -20,6 +20,8 @@
     "chalk": "^1.0.0",
     "cross-spawn": "^2.1.5",
     "dargs": "^4.0.0",
+    "semver": "^5.5.0",
+    "string_decoder": "^1.1.1",
     "which": "^1.0.5"
   },
   "devDependencies": {
