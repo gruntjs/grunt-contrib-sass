@@ -1,4 +1,4 @@
-# grunt-contrib-sass v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ugf9aop97slt5anb/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-sass/branch/master)
+# grunt-contrib-sass v2.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ugf9aop97slt5anb/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-sass/branch/master)
 
 > Compile Sass to CSS
 
@@ -26,136 +26,74 @@ _Run this task with the `grunt sass` command._
 
 [Sass](http://sass-lang.com) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to CSS. Sass files compile into well-formatted, standard CSS to use in your site or application.
 
-This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+This task requires you to have [Dart Sass](http://sass-lang.com/install) installed and for Dart Sass to be added into your system's `PATH`. Refer to the links for an installation guide on this dependency. To confirm you've installed Dart Sass, run `sass --version` and make sure it only displays a version number `>= 1.5.0` **without** a version name (if you are using any other version of Sass other than Dart Sass, then the version name will proceed the version number, e.g. `Ruby Sass x.x.x`).
 
 Note: Files that begin with "_" are ignored even if they match the globbing pattern. This is done to match the expected [Sass partial behaviour](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#partials).
 
+> [Ruby Sass](https://sass-lang.com/ruby-sass) was deprecated in March 2018. It's recommended that you migrate to [Dart Sass](https://sass-lang.com/dart-sass), but for anyone still using Ruby Sass, use `npm install grunt-contrib-sass@1.0.0 --save-dev` and refer back to the [README](https://github.com/gruntjs/grunt-contrib-sass/blob/4d564555ecb138108129c53a896bf03818d11e3d/README.md) for v1.0.0 instead.
 ### Options
 
+#### embedSources
 
-#### sourcemap
+Type: `Boolean`  
+Default: `false`
+
+Embed source file contents in source maps.
+
+
+#### embedSourceMap
+
+Type: `Boolean`  
+Default: `false`
+
+Embed source map contents in CSS.
+
+
+#### loadPath
+
+Type: `String|Array<string>`  
+Default: `[]`
+
+A path, or multiple paths, to use when resolving `@imports`.
+
+
+#### quite
+
+Type: `Boolean`  
+Default: `false`
+
+Whether warnings should (`false`) or should not (`true`) be printed.
+
+#### sourceMap
 
 Type: `String`  
-Default: `auto`
+Default: `true`
+
+Whether to generate source maps.
+
+
+#### sourceMapUrls
+
+Type: `string`  
+Default: `relative`
 
 Values:
+- `relative` - uses relative paths
+- `absolute` - uses absolute paths
 
-- `auto` - relative paths where possible, file URIs elsewhere
-- `file` - always absolute file URIs
-- `inline` - include the source text in the sourcemap
-- `none`- no sourcemaps
-
-**Requires Sass 3.4.0, which can be installed with `gem install sass`**
-
-
-#### trace
-
-Type: `Boolean`  
-Default: `false`
-
-Show a full traceback on error.
-
-
-#### unixNewlines
-
-Type: `Boolean`  
-Default: `false` on Windows, otherwise `true`
-
-Force Unix newlines in written files.
-
-
-#### check
-
-Type: `Boolean`  
-Default: `false`
-
-Just check the Sass syntax, does not evaluate and write the output.
+How to link from source maps to source files.
 
 
 #### style
 
 Type: `String`  
-Default: `nested`
+Default: `expanded`
 
-Output style. Can be `nested`, `compact`, `compressed`, `expanded`.
+Values
+- `expanded` - with line breaks and indentation
+- `condensed` - without line breaks and indentation
 
-
-#### precision
-
-Type: `Number`  
-Default: `5`
-
-How many digits of precision to use when outputting decimal numbers.
-
-
-#### quiet
-
-Type: `Boolean`  
-Default: `false`
-
-Silence warnings and status messages during compilation.
-
-
-#### compass
-
-Type: `Boolean`  
-Default: `false`
-
-Make Compass imports available and load project configuration (`config.rb` located close to the `Gruntfile.js`).
-
-
-#### debugInfo
-
-Type: `Boolean`  
-Default: `false`
-
-Emit extra information in the generated CSS that can be used by the FireSass Firebug plugin.
-
-
-#### lineNumbers
-
-Type: `Boolean`  
-Default: `false`
-
-Emit comments in the generated CSS indicating the corresponding source line.
-
-
-#### loadPath
-
-Type: `String|Array`
-
-Add a (or multiple) Sass import path.
-
-
-#### require
-
-Type: `String|Array`
-
-Require a (or multiple) Ruby library before running Sass.
-
-
-#### cacheLocation
-
-Type: `String`  
-Default: `.sass-cache`
-
-The path to put cached Sass files.
-
-
-#### noCache
-
-Type: `Boolean`  
-Default: `false`
-
-Don't cache to sassc files.
-
-
-#### bundleExec
-
-Type: `Boolean`  
-Default: `false`
-
-Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
+Output style.
 
 
 #### update
@@ -163,7 +101,7 @@ Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bu
 Type: `Boolean`  
 Default: `false`
 
-Only compile changed files.
+Only compile out-of-date stylesheets.
 
 ### Examples
 
@@ -248,6 +186,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2018-06-06   v2.0.0   Upgrade to Dart Sass 1.5.0 (deprecate Ruby Sass).
  * 2016-03-04   v1.0.0   Bump `chalk`. Update to docs and project structure.
  * 2015-02-06   v0.9.0   Remove `banner` option. Allow using `--force` to ignore compile errors. Increase concurrency count from `2` to `4`. Improve Windows support.
  * 2014-08-24   v0.8.1   Fix `check` option.
@@ -275,4 +214,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Fri Mar 18 2016 19:07:34.*
+*This file was generated on Thu Jun 07 2018 09:11:10.*

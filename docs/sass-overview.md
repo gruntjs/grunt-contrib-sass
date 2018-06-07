@@ -1,5 +1,7 @@
 [Sass](http://sass-lang.com) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to CSS. Sass files compile into well-formatted, standard CSS to use in your site or application.
 
-This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+This task requires you to have [Dart Sass](http://sass-lang.com/install) installed and for Dart Sass to be added into your system's `PATH`. Refer to the links for an installation guide on this dependency. To confirm you've installed Dart Sass, run `sass --version` and make sure it only displays a version number `>= 1.5.0` **without** a version name (if you are using any other version of Sass other than Dart Sass, then the version name will proceed the version number, e.g. `Ruby Sass x.x.x`).
 
 Note: Files that begin with "_" are ignored even if they match the globbing pattern. This is done to match the expected [Sass partial behaviour](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#partials).
+
+> [Ruby Sass](https://sass-lang.com/ruby-sass) was deprecated in March 2018. It's recommended that you migrate to [Dart Sass](https://sass-lang.com/dart-sass), but for anyone still using Ruby Sass, use `npm install grunt-contrib-sass@1.0.0 --save-dev` and refer back to the [README](https://github.com/gruntjs/grunt-contrib-sass/blob/4d564555ecb138108129c53a896bf03818d11e3d/README.md) for v1.0.0 instead.
