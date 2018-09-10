@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven't used [Grunt](https://gruntjs.com/) before, be sure to check out the [Getting Started](https://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](https://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
 npm install grunt-contrib-sass --save-dev
@@ -24,9 +24,9 @@ grunt.loadNpmTasks('grunt-contrib-sass');
 ## Sass task
 _Run this task with the `grunt sass` command._
 
-[Sass](http://sass-lang.com) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to CSS. Sass files compile into well-formatted, standard CSS to use in your site or application.
+[Sass](http://sass-lang.com/) is a preprocessor that adds nested rules, variables, mixins and functions, selector inheritance, and more to CSS. Sass files compile into well-formatted, standard CSS to use in your site or application.
 
-This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/download.html) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
+This task requires you to have [Ruby](http://www.ruby-lang.org/en/downloads/) and [Sass](http://sass-lang.com/install) installed. If you're on OS X or Linux you probably already have Ruby installed; test with `ruby -v` in your terminal. When you've confirmed you have Ruby installed, run `gem install sass` to install Sass.
 
 Note: Files that begin with "_" are ignored even if they match the globbing pattern. This is done to match the expected [Sass partial behaviour](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#partials).
 
@@ -155,7 +155,7 @@ Don't cache to sassc files.
 Type: `Boolean`  
 Default: `false`
 
-Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
+Run `sass` with [bundle exec](https://bundler.io/man/bundle-exec.1.html): `bundle exec sass`.
 
 
 #### update
@@ -227,7 +227,7 @@ grunt.initConfig({
 
 #### Compile files in a directory
 
-Instead of naming all files you want to compile, you can use the `expand` property allowing you to specify a directory. More information available in the [grunt docs](http://gruntjs.com/configuring-tasks) - `Building the files object dynamically`.
+Instead of naming all files you want to compile, you can use the `expand` property allowing you to specify a directory. More information available in the [grunt docs](https://gruntjs.com/configuring-tasks) - `Building the files object dynamically`.
 
 ```js
 grunt.initConfig({
@@ -275,4 +275,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Fri Mar 18 2016 19:07:34.*
+*This file was generated on Mon Sep 10 2018 16:43:57.*

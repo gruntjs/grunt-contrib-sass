@@ -123,7 +123,7 @@ Don't cache to sassc files.
 Type: `Boolean`  
 Default: `false`
 
-Run `sass` with [bundle exec](http://gembundler.com/man/bundle-exec.1.html): `bundle exec sass`.
+Run `sass` with [bundle exec](https://bundler.io/man/bundle-exec.1.html): `bundle exec sass`.
 
 
 ## update
