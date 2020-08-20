@@ -1,3 +1,8 @@
+v2.0.0:
+  date: 2020-03-04
+  changes:
+    - Bump `chalk`.
+    - Update to docs and project structure.
 v1.0.0:
   date: 2016-03-04
   changes:
