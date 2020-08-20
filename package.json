@@ -9,7 +9,7 @@
   "repository": "gruntjs/grunt-contrib-sass",
   "license": "MIT",
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "main": "tasks/sass.js",
   "scripts": {

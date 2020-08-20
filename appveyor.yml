@@ -5,15 +5,15 @@ version: "{build}"
 # What combinations to test
 environment:
   matrix:
-    - nodejs_version: "6"
-      platform: x86
-      ruby_folder_version: "22"
     - nodejs_version: "8"
       platform: x86
-      ruby_folder_version: "22"
+      ruby_folder_version: "23"
     - nodejs_version: "10"
       platform: x86
-      ruby_folder_version: "22"
+      ruby_folder_version: "23"
+    - nodejs_version: "12"
+      platform: x86
+      ruby_folder_version: "23"
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
