@@ -1,4 +1,4 @@
-# grunt-contrib-sass v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ugf9aop97slt5anb/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-sass/branch/master)
+# grunt-contrib-sass v2.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-sass.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-sass) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ugf9aop97slt5anb/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-sass/branch/master)
 
 > Compile Sass to CSS
 
@@ -248,6 +248,7 @@ grunt.initConfig({
 
 ## Release History
 
+ * 2020-03-04   v2.0.0   Update dependencies. Now requires at least Node 8.
  * 2016-03-04   v1.0.0   Bump `chalk`. Update to docs and project structure.
  * 2015-02-06   v0.9.0   Remove `banner` option. Allow using `--force` to ignore compile errors. Increase concurrency count from `2` to `4`. Improve Windows support.
  * 2014-08-24   v0.8.1   Fix `check` option.
@@ -275,4 +276,4 @@ grunt.initConfig({
 
 Task submitted by [Sindre Sorhus](https://github.com/sindresorhus)
 
-*This file was generated on Mon Sep 10 2018 16:43:57.*
+*This file was generated on Thu Aug 20 2020 12:31:17.*
