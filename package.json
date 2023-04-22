@@ -27,7 +27,7 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-internal": "^3.1.0",
     "grunt-contrib-jshint": "^3.2.0",
-    "grunt-contrib-nodeunit": "^2.1.0"
+    "grunt-contrib-nodeunit": "^5.0.0"
   },
   "keywords": [
     "gruntplugin",
